@@ -27,6 +27,18 @@
     <link rel="stylesheet" type="text/css" href="./css/pratice_class.css" />
     <script src="./js/practice_class.js" type="module"> </script>    
 
+	<style>
+		.YM{
+			height: 15%;
+			width: 100%;
+		}
+		.tbl_cal{
+			height: 70%;
+			width: 90%;
+		}
+	
+	</style>
+
 </head>
 
 <body>
@@ -45,9 +57,9 @@
     </script>
     <!-- 헤더고정 끝 -->
     
-    <div class="row align-items-end" style="margin-left: 300px;">
+    <div class="row align-items-end" style="margin-left: 50px;">
         <!-- 달력 -->
-        <section id="defaultCal"></section>
+        <section id="defaultCal" style="height: 920px; width: 60%; top: 70px;"></section>
 
         <!-- 추천 자격증 구현(수정) -->
         
