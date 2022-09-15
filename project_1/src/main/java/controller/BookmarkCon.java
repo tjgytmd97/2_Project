@@ -63,11 +63,11 @@ public class BookmarkCon extends HttpServlet {
 			{
 				String name = rs.getString(2); 
 				
-				Bookrmark vo = new Bookrmark(name);
+				Bookrmark bookrmarkvo = new Bookrmark(name);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("certi_name", name);
-				session.setAttribute("vo", vo);
+				session.setAttribute("bookrmarkvo", bookrmarkvo);
 
 				System.out.println("즐겨찾기 성공");
 			}

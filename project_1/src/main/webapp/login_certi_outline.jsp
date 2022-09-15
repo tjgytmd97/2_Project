@@ -46,7 +46,7 @@
       String id = (String)session.getAttribute("id");
    
       // 세션에 저정된 vo 가져오기
-      Certificate vo = (Certificate)session.getAttribute("vo");
+      Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
    %>
    <!-- 헤더고정 -->
    <div id="login_header"></div>
@@ -75,7 +75,7 @@
                      <h4>
                      <!-- (삽입) -->
                         <form id="certi_send" action ="GetCertiCon">
-                           <h2><%= vo.getCerti_name()%></h2>
+                           <h2><%= certificatevo.getCerti_name()%></h2>
                         </form>
                         <!-- (삽입)취득 자격증 icon -->
                         <% 
@@ -103,7 +103,7 @@
                         String member_userid = id;
                         
                         //2. 세션 생성하기(자격증명 가져오기)
-                        String certi_name = vo.getCerti_name();
+                        String certi_name = certificatevo.getCerti_name();
                         session = request.getSession();
                         session.setAttribute("certiNameInfo",certi_name);
                         
@@ -227,12 +227,12 @@
                      </h4>
                      <div class="post-meta mb-50">
                         <p style="font-size:large;">
-                           <%= vo.getCerti_instt() %> <br> 
-                           <a style="font-size:15px; " target="_blank" href="<%= vo.getCerti_instt_url() %>"><%= vo.getCerti_instt_url() %></a>
+                           <%= certificatevo.getCerti_instt() %> <br> 
+                           <a style="font-size:15px; " target="_blank" href="<%= certificatevo.getCerti_instt_url() %>"><%= certificatevo.getCerti_instt_url() %></a>
                         </p>
                      </div>
                      <h5>1. 자격증 정보</h5>
-                     <p style="font-size:15px; "><%= vo.getCerti_outline()%></p>
+                     <p style="font-size:15px; "><%= certificatevo.getCerti_outline()%></p>
                      <div>
                      <table style="width: 1000px;">
                         <tr>
@@ -243,10 +243,10 @@
                         </tr>
                         
                         <tr>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_fee() %></td>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_hndw_rcp_start_date() %>~<%= vo.getCerti_hndw_rcp_end_date() %></td>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_hndw_test_start_date() %>~<%= vo.getCerti_hndw_test_end_date() %></td>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_hndw_pass_start_date() %>~<%= vo.getCerti_hndw_pass_end_date() %></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_fee() %></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_rcp_start_date() %>~<%= certificatevo.getCerti_hndw_rcp_end_date() %></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_test_start_date() %>~<%= certificatevo.getCerti_hndw_test_end_date() %></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_pass_start_date() %>~<%= certificatevo.getCerti_hndw_pass_end_date() %></td>
                         </tr>
                         
                         <tr>
@@ -256,9 +256,9 @@
                         </tr>
                         
                         <tr>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_prctc_rcp_start_date() %>~<%= vo.getCerti_prctc_rcp_end_date() %></td>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_prctc_test_start_date()%>~<%= vo.getCerti_prctc_test_end_date()%></td>
-                        <td style="padding-bottom:10px;"><%= vo.getCerti_final_pass_start_date()%>~<%= vo.getCerti_final_pass_end_date()%></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_prctc_rcp_start_date() %>~<%= certificatevo.getCerti_prctc_rcp_end_date() %></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_prctc_test_start_date()%>~<%= certificatevo.getCerti_prctc_test_end_date()%></td>
+                        <td style="padding-bottom:10px;"><%= certificatevo.getCerti_final_pass_start_date()%>~<%= certificatevo.getCerti_final_pass_end_date()%></td>
                         </tr>
                      </table>
                      </div>

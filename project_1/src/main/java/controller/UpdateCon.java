@@ -27,7 +27,14 @@ public class UpdateCon extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
-
+		
+		System.out.println(num);
+		System.out.println(id);
+		System.out.println(name);
+		System.out.println(email);
+		System.out.println(pw);
+		
+		
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		String sql = "";

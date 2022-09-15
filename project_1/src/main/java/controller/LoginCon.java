@@ -69,10 +69,10 @@ public class LoginCon extends HttpServlet {
 				String upw = rs.getString(4);  
 				String uemail = rs.getString(5); 
 			
-				Member vo = new Member(unum, uid, uname, upw, uemail);
+				Member membervo = new Member(unum, uid, uname, upw, uemail);
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("vo", vo);
+				session.setAttribute("membervo", membervo);
 
 				System.out.println("로그인성공");
 				response.sendRedirect("login_index.jsp");

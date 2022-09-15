@@ -95,7 +95,7 @@ public class SearchCon extends HttpServlet {
             // Certificate.java에서 객체 만들기
             
             // 객체 선언해주기 
-            Certificate vo = new Certificate(certi_num1, certi_name1, certi_category1, certi_year1, certi_rnd1, 
+            Certificate certificatevo = new Certificate(certi_num1, certi_name1, certi_category1, certi_year1, certi_rnd1, 
             		certi_outline1, certi_instt1, certi_instt_url1, certi_fee1, certi_acq_mthd1, certi_qlf1, certi_related1, 
             		certi_testId_issue_start_date1, certi_testId_issue_end_date1, certi_hndw_rcp_start_date1, certi_hndw_rcp_end_date1, 
             		certi_hndw_test_start_date1, certi_hndw_test_end_date1, certi_hndw_pass_start_date1, certi_hndw_pass_end_date1, 
@@ -106,7 +106,7 @@ public class SearchCon extends HttpServlet {
             
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("vo", vo);
+			session.setAttribute("certificatevo", certificatevo);
             
             System.out.println("데이터가져오기 성공");
 			response.sendRedirect("certi_outline.jsp");

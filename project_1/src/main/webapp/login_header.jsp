@@ -22,7 +22,7 @@
 
 <body>
 	<% 
-		Member vo = (Member)session.getAttribute("vo");
+		Member membervo = (Member)session.getAttribute("membervo");
 	%>
 
 	<!-- 마이페이지 기능 구현(수정) -->
@@ -38,11 +38,11 @@
 					<div class="modal-body">
 						<h5 class="title">마이페이지</h5>
 						<form action="UpdateCon" class="newsletterForm" method="post">
-							회원번호<input type="text" name="num" id="subscribesForm2" placeholder="<%=vo.getNum() %>" disabled>
-							이름<input type="text" name="name" id="subscribesForm2" placeholder="<%=vo.getName() %>"> 
-							메일<input type="email" name="email" id="subscribesForm2" placeholder="<%=vo.getEmail() %>">
-							아이디<input type="text" name="id" id="subscribesForm2" placeholder="<%=vo.getId() %>"> 
-							비밀번호<input type="password" name="pw" id="subscribesForm2" placeholder="<%=vo.getPw() %>">
+							회원번호<input type="text" name="num" id="subscribesForm2" value="<%=membervo.getNum() %>" placeholder="<%=membervo.getNum() %>" disabled>
+							이름<input type="text" name="name" id="subscribesForm2" placeholder="<%=membervo.getName() %>"> 
+							메일<input type="email" name="email" id="subscribesForm2" placeholder="<%=membervo.getEmail() %>">
+							아이디<input type="text" name="id" id="subscribesForm2" placeholder="<%=membervo.getId() %>"> 
+							비밀번호<input type="password" name="pw" id="subscribesForm2" placeholder="<%=membervo.getPw() %>">
 							
 							<button type="submit" class="btn original-btn">저장</button>
 							<a href="login_index.jsp" class="btn original-btn">닫기</a>
