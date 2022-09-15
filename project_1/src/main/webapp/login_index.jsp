@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- 모두의 자격증 -->
+    <!-- Title -->
     <title>Original - Lifestyle Blog Template</title>
 
     <!-- Favicon -->
@@ -26,9 +26,9 @@
     
     <!-- 달력 관련 파일 -->
     <link rel="stylesheet" type="text/css" href="./css/pratice_class.css" />
-    <script src="./js/practice_class.js" type="module"> </script>    
-
-	<style>
+    <script src="./js/practice_class.js" type="module"> </script>  
+    
+    <style>
 		.YM{
 			height: 15%;
 			width: 100%;
@@ -39,12 +39,12 @@
 		}
 	
 	</style>
-	
+      
 </head>
 
 <body>
     <!-- 헤더고정 -->
-    <div id="header"> </div>
+    <div id="login_header"> </div>
     <script>
         async function fetchHtmlAsText(url) {
             return await (await fetch(url)).text();
@@ -53,17 +53,16 @@
         async function importPage(target) {
             document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.html');
         }
-        importPage("header")
+        importPage("login_header")
 
     </script>
     <!-- 헤더고정 끝 -->
-
     
     <div class="row align-items-end" style="margin-left: 50px;">
         <!-- 달력 -->
         <section id="defaultCal" style="height: 920px; width: 60%; top: 70px;"></section>
-<!--  ................................................................................................................ -->
-	<%
+
+        <%
 		// post방식 인코딩
 		request.setCharacterEncoding("UTF-8");
 		// 데이터 가져오기

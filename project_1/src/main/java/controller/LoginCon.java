@@ -73,11 +73,11 @@ public class LoginCon extends HttpServlet {
 				session.setAttribute("vo", vo);
 
 				System.out.println("로그인성공");
-				response.sendRedirect("login_index.html");
+				response.sendRedirect("login_index.jsp");
 			}
 			else
 			{
-				response.sendRedirect("index.html");
+				response.sendRedirect("index.jsp");
 			}
 					
 		} catch (Exception e) {
