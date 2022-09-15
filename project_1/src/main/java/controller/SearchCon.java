@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import domain.Certificate;
 
@@ -26,7 +27,7 @@ public class SearchCon extends HttpServlet {
       // 0. post 방식의 인코딩
       request.setCharacterEncoding("UTF-8");
 
-      /////// 데이터 가져오기
+      // 데이터 가져오기
       String certi_name = request.getParameter("certi_name");
 
       // 전역변수로 선언해주기
@@ -58,13 +59,20 @@ public class SearchCon extends HttpServlet {
          rs = psmt.executeQuery();
 
          if (rs.next() == true) {
-            String certi_name1 = rs.getString("certi_name");
-            String certi_outline1 = rs.getString("certi_outline");
+            String certi_name1 = rs.getString(2);
+            String certi_outline1 = rs.getString(6);
             
             Certificate vo = new Certificate(certi_name1, certi_outline1);
+            
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("certi_name", certi_name1);
+			session.setAttribute("certi_outline", certi_outline1);
+			session.setAttribute("vo", vo);
+            
             System.out.println(certi_outline1);
             System.out.println("데이터가져오기 성공");
-            response.sendRedirect("certi_outline.html");
+			response.sendRedirect("certi_outline.jsp");
             
          } else {
             
