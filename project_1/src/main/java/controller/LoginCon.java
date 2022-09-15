@@ -63,12 +63,13 @@ public class LoginCon extends HttpServlet {
 			
 			if(rs.next() == true)
 			{
-				String uid = rs.getString(1); 
-				String uname = rs.getString(2); 
-				String upw = rs.getString(3);  
-				String uemail = rs.getString(4); 
+				String unum = rs.getString(1); 
+				String uid = rs.getString(2); 
+				String uname = rs.getString(3); 
+				String upw = rs.getString(4);  
+				String uemail = rs.getString(5); 
 			
-				Member vo = new Member(uid, uname, upw, uemail);
+				Member vo = new Member(unum, uid, uname, upw, uemail);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("vo", vo);
