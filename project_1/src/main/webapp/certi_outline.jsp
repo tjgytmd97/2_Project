@@ -12,7 +12,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- 모두의 자격증 -->
-<title>Original - Lifestyle Blog Template</title>
+<title>자격증 상세 페이지</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
@@ -51,24 +51,6 @@
 	<!-- ##### Single Blog Area Start ##### -->
 	<div class="single-blog-wrapper section-padding-0-100">
 
-		<!-- Single Blog Area  -->
-		<div class="single-blog-area blog-style-2 mb-50">
-			<div class="single-blog-thumbnail">
-				<img src="img/bg-img/b5.jpg" alt="">
-				<div class="post-tag-content">
-					<div class="container">
-						<div class="row">
-							<div class="col-12">
-								<div class="post-date">
-									<a href="#">12 <span>march</span></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="container">
 			<div class="row">
 				<!-- 자격증 상세정보표시(수정) -->
@@ -79,14 +61,38 @@
 						<div class="single-blog-content">
 							<div class="line"></div>
 							<h4>
-								<a href="#" class="post-headline mb-0"><%= vo.getCerti_name()%> </a>
+								<h2><%= vo.getCerti_name()%></h2>
 							</h4>
 							<div class="post-meta mb-50">
-								<p>
-									사이트 이름 <a href="#">자격증 접수 페이지 연결!</a>
+								<p style="font-size:large;">
+									<%= vo.getCerti_instt() %> <br> 
+									<a target="_blank" href="<%= vo.getCerti_instt_url() %>"><%= vo.getCerti_instt_url() %></a>
 								</p>
 							</div>
+							<h3>자격증 정보</h3>
 							<p><%= vo.getCerti_outline()%></p>
+							<div>
+							<table >
+								<tr>
+								<th>가격</th>
+								<th>필기 원서 접수 기간</th>
+								<th>필기 시험 기간</th>
+								<th>필기 시험 발표일</th>
+								<th>실기 원서 접수 기간</th>
+								<th>실기 시험 기간</th>
+								<th>최종 합격 발표일</th>
+								</tr>
+								<tr>
+								<td><%= vo.getCerti_fee() %></td>
+								<td><%= vo.getCerti_hndw_rcp_start_date() %>~<%= vo.getCerti_hndw_rcp_end_date() %></td>
+								<td><%= vo.getCerti_hndw_test_start_date() %>~<%= vo.getCerti_hndw_test_end_date() %></td>
+								<td><%= vo.getCerti_hndw_pass_start_date() %>~<%= vo.getCerti_hndw_pass_end_date() %></td>
+								<td><%= vo.getCerti_prctc_rcp_start_date() %>~<%= vo.getCerti_prctc_rcp_end_date() %></td>
+								<td><%= vo.getCerti_prctc_test_start_date()%>~<%= vo.getCerti_prctc_test_end_date()%></td>
+								<td><%= vo.getCerti_final_pass_start_date()%>~<%= vo.getCerti_final_pass_end_date()%></td>
+								</tr>
+							</table>
+							</div>
 						</div>
 					</div>
 
