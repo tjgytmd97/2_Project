@@ -1,3 +1,4 @@
+<%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
 <%@page import="domain.Member"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -97,18 +98,17 @@
 							<h4>
 							<!-- (삽입) -->
 								<form id="certi_send" action ="GetCertiCon">
-									<a href="#" class="post-headline mb-0"><%= vo.getCerti_name()%> </a>
+ 									<a href="#" class="post-headline mb-0"><%= vo.getCerti_name()%> </a>
 								</form>
 								<!-- (삽입)취득 자격증 icon -->
+								
+								
 								<a type="submit" onclick="document.getElementById('certi_send').submit();">
 								<%
 									// 1. 세션에서 아이디 정보 가져와서
 									// 2. select * from member해서 세션 id와 일치하는 id의 member_num를 가져온다.
 									// 3. select * from certificate limit 1해서 페이지자격증이름과 일치하는 이름의 certi_num를 (제일 위 하나만) 가져온다(자격증정보)
 									// 4. select * from get_certificate를 리스트로 뽑아내서 
-									
-
-											
 									// 5. if member_num과 certi_num이 같은 get_num이 get_num이 있다면 TURE
 									// 6. 아니면 false
 									
@@ -117,14 +117,31 @@
 								// post 방식의 한글 인코딩
 								request.setCharacterEncoding("UTF-8");
 								
-								// 데이터 가져오기(파라미터 수집)
-								//String id = request.getParameter("id");
-								//String pw = request.getParameter("pw");
+								//1. 세션 받아오기(id받아오기)
+								String member_userid = (String)session.getAttribute("id");
+								
+								//2. 세션 생성하기(자격증명 가져오기)
+								session.setAttribute("outlinePageInfo", vo.getCerti_name());
+
+								String certi_name = vo.getCerti_name();
+								
+								
+								System.out.println("vo.getCerti_name() : "+vo.getCerti_name());
 								
 								// 전역변수로 선언해주기
 								Connection conn = null;
-								PreparedStatement psmt = null;
-								ResultSet rs = null;
+								PreparedStatement psmt01 = null;
+								PreparedStatement psmt02 = null;
+								PreparedStatement psmt03 = null;
+								
+								ResultSet rs01 = null;
+								ResultSet rs02 = null;
+								ResultSet rs03 = null;
+								
+								String uid_rs03 = null;
+								String cname_rs03 = null;
+								
+								boolean userCheck = false;
 												
 								try {
 									Class.forName("com.mysql.jdbc.Driver");
@@ -147,55 +164,98 @@
 									
 									// member_num = select member_num from member where member_userid = ?
 									// certi_num = select certi_num from certificate where certi_name= ? limit 1;
-									
-									
 									// get_num = select get_num from get_certificate where certi_num = ? and membenum= ?																		
 									
 									// 계속 수정해야하는 부분 sql문
 									String sql01 = "select member_num from member where member_userid = ?";
 									String sql02 = "select certi_num from certificate where certi_name= ? limit 1";
 									
-									psmt =  conn.prepareStatement(sql01);
-									//psmt.setString(1, id);
-									//psmt.setString(2, pw);
+									psmt01 =  conn.prepareStatement(sql01);
+									psmt01.setString(1, member_userid);
 									
-									rs = psmt.executeQuery();
+									psmt02 =  conn.prepareStatement(sql02);
+									psmt02.setString(1, certi_name);
 									
-									if(rs.next() == true)
+									rs01 = psmt01.executeQuery();
+									rs02 = psmt02.executeQuery();
+									
+									if(rs01.next() == true)
 									{
-										String uid = rs.getString(1); //rs.getString("id"); 왁 같음
-										String upw = rs.getString(2); //rs.getString(2); 왁 같음
-									
-										//Member vo = new Member(uid, upw);
-										
-										session = request.getSession();
-										session.setAttribute("id", uid);
-										session.setAttribute("vo", vo);
-
-										System.out.println("로그인성공");
-										response.sendRedirect("login_index.html");
+										String uid = rs01.getString(1);
+										System.out.println("rs01 : "+uid);
+										uid_rs03 = uid;
 									}
 									else
 									{
-										response.sendRedirect("index.html");
+										System.out.println("실패");
+										//response.sendRedirect("index.html");
 									}
-											
+									
+									if(rs02.next() == true)
+									{
+										String cname = rs02.getString(1);
+										System.out.println("rs02 : "+cname);
+										cname_rs03 = cname;
+									}
+									else
+									{
+										System.out.println("실패");
+										//response.sendRedirect("index.html");
+									}
+									
+									
+									String sql03 = "select * from get_certificate where member_num= ? and certi_num = ?";
+									
+									psmt03 =  conn.prepareStatement(sql03);
+									
+									psmt03.setString(1, uid_rs03);//유저 번호가 담겨있음
+									psmt03.setString(2, cname_rs03);
+									
+									
+									rs03 = psmt03.executeQuery();
+									
+									if(rs03.next() == true)
+									{
+										String unum = rs03.getString("member_num");
+										System.out.println(unum);
+										
+										String cnum = rs03.getString("certi_num");
+										System.out.println(cnum);
+										
+										System.out.println("rs03 : "+unum);
+										System.out.println("rs03 : "+cnum);
+										
+										//Member vo = new Member(uid, upw);
+									
+										//response.sendRedirect("login_index.html");
+										userCheck = true;
+									}
+									else
+									{
+										System.out.println("실패");
+										//response.sendRedirect("index.html");
+										userCheck = false;
+									}
+									
 								} catch (Exception e) {
 									e.printStackTrace();
 								} finally {
 									try {
-										if(psmt != null) psmt.close();
+										if(psmt01 != null) psmt01.close();
+										if(psmt02 != null) psmt02.close();
+										if(psmt03 != null) psmt03.close();
 										if(conn != null) conn.close();
-										if(rs != null) rs.close();
+										if(rs01 != null) rs01.close();
+										if(rs02 != null) rs02.close();
+										if(rs03 != null) rs03.close();
 									} catch (Exception e2) {
 												e2.printStackTrace();
 									}
 								}
+								
+								
 									
-									
-									
-									
-									if(false){
+									if(!userCheck){
 										
 								%>
 									<img alt="" src="img/btn-img/medal_gray.png" class = getCerti title="내가 취득한 자격증에 추가">
