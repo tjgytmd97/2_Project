@@ -58,9 +58,15 @@ public class GetCertiCon extends HttpServlet {
 			// sql 실행전 셋팅
 			psmt = conn.prepareStatement(sql);
 			// 바인드 변수는 자동으로 "" 안에 id를 넣는다.
-			psmt.setString(1, "c_001");
-			psmt.setString(2, "6");
-
+			
+			HttpSession session = request.getSession();
+//			자격증 번호랑 유저 id 세션으로 받아오기
+			 String userid= (String)session.getAttribute("id");
+			//2. 세션 생성하기(id, 자격증명 가져오기)
+			String cname = (String)session.getAttribute("outlinePageInfo");
+			
+			psmt.setString(1, cname);
+			psmt.setString(2, userid);
 			
 			int cnt = psmt.executeUpdate();
 
