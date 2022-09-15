@@ -33,17 +33,46 @@ public class Certificate {
    private int certi_bookmark_cnt;
    
    
-   
-   
-   
-   
    public Certificate(String certi_name, String certi_outline) {
       super();
       this.certi_name = certi_name;
       this.certi_outline = certi_outline;
    }
 
-   public Certificate(String certi_num, String certi_name, String certi_category, String certi_year, String certi_rnd,
+   
+   public Certificate(String certi_name, String certi_year, String certi_rnd, String certi_outline, String certi_instt,
+		String certi_instt_url) {
+	super();
+	this.certi_name = certi_name;
+	this.certi_year = certi_year;
+	this.certi_rnd = certi_rnd;
+	this.certi_outline = certi_outline;
+	this.certi_instt = certi_instt;
+	this.certi_instt_url = certi_instt_url;
+}
+
+
+
+public Certificate(String certi_name, String certi_outline, String certi_instt, String certi_instt_url,
+		String certi_fee, String certi_testId_issue_start_date, String certi_testId_issue_end_date,
+		String certi_hndw_rcp_start_date, String certi_hndw_rcp_end_date, String certi_hndw_test_start_date,
+		String certi_hndw_test_end_date) {
+	super();
+	this.certi_name = certi_name;
+	this.certi_outline = certi_outline;
+	this.certi_instt = certi_instt;
+	this.certi_instt_url = certi_instt_url;
+	this.certi_fee = certi_fee;
+	this.certi_testId_issue_start_date = certi_testId_issue_start_date;
+	this.certi_testId_issue_end_date = certi_testId_issue_end_date;
+	this.certi_hndw_rcp_start_date = certi_hndw_rcp_start_date;
+	this.certi_hndw_rcp_end_date = certi_hndw_rcp_end_date;
+	this.certi_hndw_test_start_date = certi_hndw_test_start_date;
+	this.certi_hndw_test_end_date = certi_hndw_test_end_date;
+}
+
+
+public Certificate(String certi_num, String certi_name, String certi_category, String certi_year, String certi_rnd,
          String certi_outline, String certi_instt, String certi_instt_url, String certi_fee, String certi_acq_mthd,
          String certi_qlf, String certi_related, String certi_testId_issue_start_date,
          String certi_testId_issue_end_date, String certi_hndw_rcp_start_date, String certi_hndw_rcp_end_date,
