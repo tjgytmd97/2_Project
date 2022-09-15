@@ -15,14 +15,14 @@ import javax.servlet.http.HttpSession;
 
 import domain.Certificate;
 
-@WebServlet("/SearchCon")
-public class SearchCon extends HttpServlet {
+@WebServlet("/SearchCon2")
+public class SearchCon2 extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
    protected void service(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
       // TODO Auto-generated method stub
-      System.out.println("[SearchCon]");
+      System.out.println("[SearchCon2]");
 
       // 0. post 방식의 인코딩
       request.setCharacterEncoding("UTF-8");
@@ -109,7 +109,7 @@ public class SearchCon extends HttpServlet {
 			session.setAttribute("vo", vo);
             
             System.out.println("데이터가져오기 성공");
-			response.sendRedirect("certi_outline.jsp");
+			response.sendRedirect("login_certi_outline.jsp");
             
          } else {
             

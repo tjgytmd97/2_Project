@@ -2,45 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- 모두의 자격증 -->
-    <title>Original - Lifestyle Blog Template</title>
+<!-- 모두의 자격증 -->
+<title>Original - Lifestyle Blog Template</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+<!-- Favicon -->
+<link rel="icon" href="img/core-img/favicon.ico">
 
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="style.css">
+<!-- Style CSS -->
+<link rel="stylesheet" href="style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-        li {
-            list-style: none;
-        }
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+li {
+	list-style: none;
+}
 
-        .jgif {
-            margin: 60px;
-        }
+.jgif {
+	margin: 60px;
+}
 
-        summary {
-            border: 3px solid skyblue;
-            width: 250px;
-            height: 50px;
-            font-size: 25px;
-            padding-top: 7px;
-        }
-    </style>
+summary {
+	border: 3px solid #D4DFE6;
+	width: 250px;
+	height: 50px;
+	font-size: 25px;
+	padding-top: 7px;
+}
+a {
+font-size: 20px;
+}
+form button{
+	background-color: white;
+	font-size: 20px;
+	border: 1px solid skyblue;
+	color: black;
+	width: 250px;
+	padding: 5px;
+	
+}
+</style>
+
+<script type="text/javascript">
+            function submit(){
+               $("#click").submit();
+            }
+</script>
+
 </head>
 
 <body>
-    <!-- 헤더고정 -->
-    <div id="login_header"> </div>
-    <script>
+	<!-- 헤더고정 -->
+	<div id="login_header"></div>
+	<script>
         async function fetchHtmlAsText(url) {
             return await (await fetch(url)).text();
         }
@@ -52,176 +73,185 @@
 
     </script>
 
-    <hr>
-    <!-- 자격증 상세정보표시(수정) -->
-    <!-- Single Blog Area  -->
-    <div style="margin-left: 400px; display: flex;">
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; flex: 1;">
+	<hr>
+	<!-- 자격증 상세정보표시(수정) -->
+	<!-- Single Blog Area  -->
+	<div style="margin-left: 400px; display: flex;">
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2"
+				style="text-align: center; flex: 1;">
 
-                <details>
-                    <summary>정보통신</summary>
-                    <div style="width: 250px;">
-                     <form action="BookmarkCon" method="post">
-                        <hr style="width: 250px; background-color: black;">
-                        <!-- <h5><a href="#">ICDL </a><input type="checkbox" name="bookmark" value="ICDL"></h5> -->
-                        <h5><a href="#">ICDL </a><button type="submit" class="btn original-btn" name="bookmark" value="ICDL">★</button></h5>
-                        
-                        
-                        <h5><a href="#">SW코딩자격 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">리눅스마스터1급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">리눅스마스터2급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">무선설비기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">무선설비기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">무선설비산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">방송통신기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">방송통신기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">방송통신산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">전자계산기조직응용기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">전파전자통신기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">전파전자통신기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">전파전자통신산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보기기운용기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보처리기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보처리기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보처리산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보통신기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보통신기술사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보통신산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">컴퓨터시스템응용기술사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">코딩능력마스터2급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">통신기기기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">통신선로기능사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">통신선로산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">통신설비기능장 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">파이썬마스터1급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">파이썬마스터2급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">파이썬마스터3급 </a><input type="checkbox" name="1" value="2"></h5>
-                         </form>
-                    </div>
-                   
-                </details>
-            </div>
-        </li>
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; flex: 1;">
-                <details>
-                    <summary>네트워크 및 보안</summary>
-                    <div style="width: 250px">
-                        <hr style="width: 250px; background-color: black;">
-                        <h5><a href="#">CCIE </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">CCNA </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">CCNP </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">CCT </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">ERP 정보관리사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">인터넷정보관리사1급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">인터넷정보관리사2급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">인터넷정보관리사3급 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">인터넷정보관리사전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보관리기술사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보보안기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보보안산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                    </div>
-                </details>
-            </div>
-        </li>
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; ">
-                <details>
-                    <summary>데이터베이스</summary>
-                    <div style="width: 250px">
-                        <hr style="width: 250px; background-color: black;">
-                        <h5><a href="#">DA전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">DA준전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">DSAC 데이터 사이언티스트 능력인증자격 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">SQL전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">SQL개발자 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">데이터분석 전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">데이터분석 준전문가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">빅데이터분석기사 </a><input type="checkbox" name="1" value="2"></h5>
-                    </div>
-                </details>
-            </div>
-        </li>
-    </div>
-    <div style="margin-left: 400px; display: flex;">
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; flex: 1;">
-                <details>
-                    <summary>웹디자인</summary>
-                    <div style="width: 250px">
-                        <hr style="width: 250px; background-color: black;">
-                        <h5><a href="#">CAD 실무능력평가 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">GTQ(그래픽기술자격) </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">디지털영상편집1급 </a><input type="checkbox" name="1" value="2"></h5>
-                    </div>
-                </details>
-            </div>
-        </li>
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; flex: 1;">
-                <details>
-                    <summary>클라우드</summary>
-                    <div style="width: 250px">
-                        <hr style="width: 250px; background-color: black;">
-                        <h5><a href="#">AWS </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">AZURE </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">GCP </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">NAVER CLOUD PLATFORM Certified Associate </a><input type="checkbox" name="1"
-                                value="2"></h5>
-                        <h5><a href="#">NAVER CLOUD PLATFORM Certified Expert </a><input type="checkbox" name="1"
-                                value="2">
-                        </h5>
-                        <h5><a href="#">NAVER CLOUD PLATFORM Certified Professional </a><input type="checkbox" name="1"
-                                value="2"></h5>
-                        <h5><a href="#">OCA </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">OCM </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">OCP </a><input type="checkbox" name="1" value="2"></h5>
-                    </div>
-                </details>
-            </div>
-        </li>
+				<details>
+					<summary>정보통신</summary>
+					<div style="width: 250px;">
+						<form action="SearchCon2" method="post">
+							<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="ICDL">ICDL</button>
+								<button type="submit" name="certi_name" value="SW코딩자격">SW코딩자격 </button>
+								<button type="submit" name="certi_name" value="리눅스마스터1급">리눅스마스터1급</button>
+								<button type="submit" name="certi_name" value="리눅스마스터2급">리눅스마스터2급 </button>
+								<button type="submit" name="certi_name" value="무선설비기능사">무선설비기능사 </button>
+								<button type="submit" name="certi_name" value="무선설비기사">무선설비기사 </button>
+								<button type="submit" name="certi_name" value="무선설비산업기사">무선설비산업기사 </button>
+								<button type="submit" name="certi_name" value="방송통신기능사">방송통신기능사 </button>
+								<button type="submit" name="certi_name" value="방송통신기사">방송통신기사 </button>
+								<button type="submit" name="certi_name" value="방송통신산업기사">방송통신산업기사 </button>
+								<button type="submit" name="certi_name" value="전자계산기조직응용기사">전자계산기조직응용기사 </button>
+								<button type="submit" name="certi_name" value="전파전자통신기능사">전파전자통신기능사 </button>
+								<button type="submit" name="certi_name" value="전파전자통신기사">전파전자통신기사 </button>
+								<button type="submit" name="certi_name" value="전파전자통신산업기사">전파전자통신산업기사 </button>
+								<button type="submit" name="certi_name" value="정보기기운용기능사">정보기기운용기능사 </button>
+								<button type="submit" name="certi_name" value="정보처리기능사">정보처리기능사 </button>
+								<button type="submit" name="certi_name" value="정보처리기사">정보처리기사 </button>
+								<button type="submit" name="certi_name" value="정보처리산업기사">정보처리산업기사 </button>
+								<button type="submit" name="certi_name" value="정보통신기사">정보통신기사 </button>
+								<button type="submit" name="certi_name" value="정보통신기술사">정보통신기술사 </button>
+								<button type="submit" name="certi_name" value="정보통신산업기사">정보통신산업기사 </button>
+								<button type="submit" name="certi_name" value="컴퓨터시스템응용기술사">컴퓨터시스템응용기술사 </button>
+								<button type="submit" name="certi_name" value="코딩능력마스터2급">코딩능력마스터2급 </button>
+								<button type="submit" name="certi_name" value="통신기기기능사">통신기기기능사 </button>
+								<button type="submit" name="certi_name" value="통신선로기능사">통신선로기능사 </button>
+								<button type="submit" name="certi_name" value="통신선로산업기사">통신선로산업기사 </button>
+								<button type="submit" name="certi_name" value="통신설비기능장">통신설비기능장 </button>
+								<button type="submit" name="certi_name" value="파이썬마스터">파이썬마스터2급 </button>
+								<button type="submit" name="certi_name" value="파이썬마스터">파이썬마스터3급 </button>
+							 
+						</form> 
+					</div>
+				</details>
+			</div>
+		</li>
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2"
+				style="text-align: center; flex: 1;">
+				<details>
+					<summary>네트워크 및 보안</summary>
+					<div style="width: 250px">
+						<form action="SearchCon2" method="post">
+						<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="CCIE">CCIE </button>
+							<button type="submit" name="certi_name" value="CCNA">CCNA </button>
+							<button type="submit" name="certi_name" value="CCNP">CCNP </button>
+							<button type="submit" name="certi_name" value="CCT">CCT </button>
+							<button type="submit" name="certi_name" value="ERP 정보관리사">ERP 정보관리사 </button>
+							<button type="submit" name="certi_name" value="인터넷정보관리사1급">인터넷정보관리사1급 </button>
+							<button type="submit" name="certi_name" value="인터넷정보관리사2급">인터넷정보관리사2급 </button>
+							<button type="submit" name="certi_name" value="인터넷정보관리사3급">인터넷정보관리사3급 </button>
+							<button type="submit" name="certi_name" value="인터넷정보관리사전문가">인터넷정보관리사전문가 </button>
+							<button type="submit" name="certi_name" value="정보관리기술사">정보관리기술사 </button>
+							<button type="submit" name="certi_name" value="정보보안기사">정보보안기사 </button>
+							<button type="submit" name="certi_name" value="정보보안산업기사">정보보안산업기사 </button>
+							</form>
+					</div>
+				</details>
+			</div>
+		</li>
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2" style="text-align: center;">
+				<details>
+					<summary>데이터베이스</summary>
+					<div style="width: 250px">
+						<form action="SearchCon2" method="post">
+						<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="DA전문가">DA전문가 </button>
+							<button type="submit" name="certi_name" value="DA준전문가">DA준전문가 </button>
+							<button type="submit" name="certi_name" value="DSAC 데이터 사이언티스트 능력인증자격">DSAC 데이터 사이언티스트 능력인증자격 </button>
+							<button type="submit" name="certi_name" value="SQL전문가">SQL전문가 </button>
+							<button type="submit" name="certi_name" value="SQL개발자">SQL개발자 </button>
+							<button type="submit" name="certi_name" value="데이터분석 전문가">데이터분석 전문가 </button>
+							<button type="submit" name="certi_name" value="데이터분석 준전문가">데이터분석 준전문가 </button>
+							<button type="submit" name="certi_name" value="빅데이터분석기사">빅데이터분석기사 </button>
+							</form>
+					</div>
+				</details>
+			</div>
+		</li>
+	</div>
+	<div style="margin-left: 400px; display: flex;">
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2"
+				style="text-align: center; flex: 1;">
+				<details>
+					<summary>웹디자인</summary>
+					<div style="width: 250px">
+						<form action="SearchCon2" method="post">
+						<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="CAD 실무능력평가">CAD 실무능력평가 </button>
+							<button type="submit" name="certi_name" value="GTQ(그래픽기술자격)">GTQ(그래픽기술자격) </button>
+							<button type="submit" name="certi_name" value="디지털영상편집1급">디지털영상편집1급 </button>
+							</form>
+					</div>
+				</details>
+			</div>
+		</li>
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2"
+				style="text-align: center; flex: 1;">
+				<details>
+					<summary>클라우드</summary>
+					<div style="width: 250px">
+						<form action="SearchCon2" method="post">
+						<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="AWS">AWS </button>
+							<button type="submit" name="certi_name" value="AZURE">AZURE </button>
+							<button type="submit" name="certi_name" value="GCP">GCP </button>
+							<button type="submit" name="certi_name" value="NAVER CLOUD PLATFORM Certified Associate">NAVER CLOUD PLATFORM Certified Associate </button>
+							<button type="submit" name="certi_name" value="NAVER CLOUD PLATFORM Certified Expert">NAVER CLOUD PLATFORM Certified Expert </button>
+							<button type="submit" name="certi_name" value="NAVER CLOUD PLATFORM Certified Professional">NAVER CLOUD PLATFORM Certified Professional </button>
+							<button type="submit" name="certi_name" value="OCA">OCA </button>
+							<button type="submit" name="certi_name" value="OCM">OCM </button>
+							<button type="submit" name="certi_name" value="OCP">OCP </button>
+							</form>
+					</div>
+				</details>
+			</div>
+		</li>
 
-        <li class="jgif">
-            <!-- Blog Content -->
-            <div class="single-blog-content jg2" style="text-align: center; flex: 1;">
-                <details>
-                    <summary>공용</summary>
-                    <div style="width: 250px">
-                        <hr style="width: 250px; background-color: black;">
-                        <h5><a href="#">IEQ(인터넷윤리자격) </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">IT Plus </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">PAC(프레젠테이션능력인증자격) </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">디지털정보활용능력 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">사무자동화산업기사 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">엑셀플러스 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">워드프로세서 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">정보기술자격(ITQ) </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">컴퓨터활용능력 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">파워포인트플러스 </a><input type="checkbox" name="1" value="2"></h5>
-                        <h5><a href="#">한글플러스 </a><input type="checkbox" name="1" value="2"></h5>
-                    </div>
-                </details>
-            </div>
-        </li>
-    </div>
+		<li class="jgif">
+			<!-- Blog Content -->
+			<div class="single-blog-content jg2"
+				style="text-align: center; flex: 1;">
+				<details>
+					<summary>공용</summary>
+					<div style="width: 250px">
+					<form action="SearchCon2" method="post">
+						<hr style="width: 250px; background-color: black;">
+							<button type="submit" name="certi_name" value="IEQ(인터넷윤리자격)">IEQ(인터넷윤리자격) </button>
+							<button type="submit" name="certi_name" value="IT Plus">IT Plus </button>
+							<button type="submit" name="certi_name" value="PAC(프레젠테이션능력인증자격)">PAC(프레젠테이션능력인증자격) </button>
+							<button type="submit" name="certi_name" value="디지털정보활용능력">디지털정보활용능력 </button>
+							<button type="submit" name="certi_name" value="사무자동화산업기사">사무자동화산업기사 </button>
+							<button type="submit" name="certi_name" value="엑셀플러스">엑셀플러스 </button>
+							<button type="submit" name="certi_name" value="워드프로세서">워드프로세서 </button>
+							<button type="submit" name="certi_name" value="정보기술자격(ITQ)">정보기술자격(ITQ) </button>
+							<button type="submit" name="certi_name" value="컴퓨터활용능력">컴퓨터활용능력 </button>
+							<button type="submit" name="certi_name" value="파워포인트플러스">파워포인트플러스 </button>
+							<button type="submit" name="certi_name" value="한글플러스">한글플러스 </button>
+							</form>
+					</div>
+					
+				</details>
+			</div>
+		</li>
+	</div>
 
-    <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
-
+	<!-- jQuery (Necessary for All JavaScript Plugins) -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugins js -->
+	<script src="js/plugins.js"></script>
+	<!-- Active js -->
+	<script src="js/active.js"></script>
+	
+ 	
 </body>
 
 </html>
