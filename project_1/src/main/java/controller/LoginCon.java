@@ -63,7 +63,7 @@ public class LoginCon extends HttpServlet {
 			
 			if(rs.next() == true)
 			{
-				String unum = rs.getString(1); 
+				int unum = rs.getInt(1); 
 				String uid = rs.getString(2); 
 				String uname = rs.getString(3); 
 				String upw = rs.getString(4);  
