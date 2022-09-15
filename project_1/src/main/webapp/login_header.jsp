@@ -45,7 +45,7 @@
 							비밀번호<input type="password" name="pw" id="subscribesForm2" placeholder="<%=vo.getPw() %>">
 							
 							<button type="submit" class="btn original-btn">저장</button>
-							<a href="login_index.html" class="btn original-btn">닫기</a>
+							<a href="login_index.jsp" class="btn original-btn">닫기</a>
 						</form>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 			</div>
 			<!-- 로그아웃 버튼 (수정)-->
 			<div class="subscribe-btn">
-				<a href="index.html" class="btn subscribe-btn" data-target="#subsModal1">로그아웃</a>
+				<a href="index.jsp" class="btn subscribe-btn" data-target="#subsModal1">로그아웃</a>
 			</div>
 			<!-- 마이페이지 버튼 (수정) -->
 			<div class="subscribe-btn">
