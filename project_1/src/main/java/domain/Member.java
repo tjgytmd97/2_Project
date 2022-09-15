@@ -1,6 +1,7 @@
 package domain;
 
 public class Member {
+	private String num;
 	private String id;
 	private String name;
 	private String email;
@@ -12,12 +13,20 @@ public class Member {
 		this.id = id;
 		this.pw = pw;
 	}
-	public Member(String id, String name, String email, String pw) {
+	public Member(String num, String id, String name, String email, String pw) {
 		super();
+		this.num = num;
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.pw = pw;
+	}
+
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
 	}
 	public String getId() {
 		return id;

@@ -63,13 +63,15 @@ public class LoginCon extends HttpServlet {
 			
 			if(rs.next() == true)
 			{
-				String uid = rs.getString(1); //rs.getString("id"); 왁 같음
-				String upw = rs.getString(2); //rs.getString(2); 왁 같음
+				String unum = rs.getString(1); 
+				String uid = rs.getString(2); 
+				String uname = rs.getString(3); 
+				String upw = rs.getString(4);  
+				String uemail = rs.getString(5); 
 			
-				Member vo = new Member(uid, upw);
+				Member vo = new Member(unum, uid, uname, upw, uemail);
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("id", uid);
 				session.setAttribute("vo", vo);
 
 				System.out.println("로그인성공");
