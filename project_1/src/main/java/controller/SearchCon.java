@@ -59,18 +59,55 @@ public class SearchCon extends HttpServlet {
          rs = psmt.executeQuery();
 
          if (rs.next() == true) {
+        	 
+        	// 필요한 데이터 가져오기 
+        	 String certi_num1 = rs.getString(1);
             String certi_name1 = rs.getString(2);
+            String certi_category1 = rs.getString(3);
+            String certi_year1 = rs.getString(4);
+            String certi_rnd1 = rs.getString(5);
             String certi_outline1 = rs.getString(6);
+            String certi_instt1 = rs.getString(7);
+            String certi_instt_url1 = rs.getString(8);
+            String certi_fee1 = rs.getString(9);
+            String certi_acq_mthd1 = rs.getString(10);
+            String certi_qlf1 = rs.getString(11);
+            String certi_related1 = rs.getString(12);
+            String certi_testId_issue_start_date1 = rs.getString(13);
+            String certi_testId_issue_end_date1 = rs.getString(14);
+            String certi_hndw_rcp_start_date1 = rs.getString(15);
+            String certi_hndw_rcp_end_date1 = rs.getString(16);
+            String certi_hndw_test_start_date1 = rs.getString(17);
+            String certi_hndw_test_end_date1 = rs.getString(18);
+            String certi_hndw_pass_start_date1 = rs.getString(19);
+            String certi_hndw_pass_end_date1 = rs.getString(20);
+            String certi_doc_submit_start_date1 = rs.getString(21);
+            String certi_doc_submit_end_date1 = rs.getString(22);
+            String certi_prctc_rcp_start_date1 = rs.getString(23);
+            String certi_prctc_rcp_end_date1 = rs.getString(24);
+            String certi_prctc_test_start_date1 = rs.getString(25);
+            String certi_prctc_test_end_date1 = rs.getString(26);
+            String certi_final_pass_start_date1 = rs.getString(27);
+            String certi_final_pass_end_date1 = rs.getString(28);
+            int certi_bookmark_cnt1 = rs.getInt(29);
+            System.out.println("test");
             
-            Certificate vo = new Certificate(certi_name1, certi_outline1);
+            // Certificate.java에서 객체 만들기
+            
+            // 객체 선언해주기 
+            Certificate vo = new Certificate(certi_num1, certi_name1, certi_category1, certi_year1, certi_rnd1, 
+            		certi_outline1, certi_instt1, certi_instt_url1, certi_fee1, certi_acq_mthd1, certi_qlf1, certi_related1, 
+            		certi_testId_issue_start_date1, certi_testId_issue_end_date1, certi_hndw_rcp_start_date1, certi_hndw_rcp_end_date1, 
+            		certi_hndw_test_start_date1, certi_hndw_test_end_date1, certi_hndw_pass_start_date1, certi_hndw_pass_end_date1, 
+            		certi_doc_submit_start_date1, certi_doc_submit_end_date1, certi_prctc_rcp_start_date1, certi_prctc_rcp_end_date1, 
+            		certi_prctc_test_start_date1, certi_prctc_test_end_date1, certi_final_pass_start_date1, certi_final_pass_end_date1, 
+            		certi_bookmark_cnt1);
+            
             
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("certi_name", certi_name1);
-			session.setAttribute("certi_outline", certi_outline1);
 			session.setAttribute("vo", vo);
             
-            System.out.println(certi_outline1);
             System.out.println("데이터가져오기 성공");
 			response.sendRedirect("certi_outline.jsp");
             
