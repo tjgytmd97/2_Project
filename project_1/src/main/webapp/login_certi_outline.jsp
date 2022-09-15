@@ -37,7 +37,7 @@
 		Certificate vo = (Certificate)session.getAttribute("vo");
 	%>
 	<!-- 헤더고정 -->
-	<div id="header"></div>
+	<div id="login_header"></div>
 	<script>
         async function fetchHtmlAsText(url) {
             return await (await fetch(url)).text();
@@ -46,7 +46,7 @@
         async function importPage(target) {
             document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.html');
         }
-        importPage("header")
+        importPage("login_header")
 
     </script>
 	<!-- 헤더고정 끝 -->
