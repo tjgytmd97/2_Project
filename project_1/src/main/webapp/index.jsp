@@ -58,12 +58,12 @@
     </script>
     <!-- 헤더고정 끝 -->
 
-    
-    <div class="row align-items-end" style="margin-left: 50px;">
-        <!-- 달력 -->
-        <section id="defaultCal" style="height: 920px; width: 60%; top: 70px;"></section>
-<!--  ................................................................................................................ -->
-	<%
+
+	<div class="row align-items-end" style="margin-left: 50px;">
+		<!-- 달력 -->
+		<section id="defaultCal" style="height: 920px; width: 60%; top: 70px;"></section>
+		<!--  ................................................................................................................ -->
+		<%
 		// post방식 인코딩
 		request.setCharacterEncoding("UTF-8");
 		// 데이터 가져오기
@@ -114,13 +114,13 @@
 			rs2 = psmt2.executeQuery();
 			rs3 = psmt3.executeQuery();
 			%>
-			<!-- 뉴스 구현(수정) -->
-        <div class="sidebar-widget-area">
-            <h5 class="title" style="margin-right: 500px;">뉴스</h5>
-            <div class="widget-content">
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <div class="post-content">
-                    	<% 
+		<!-- 뉴스 구현(수정) -->
+		<div class="sidebar-widget-area">
+			<h5 class="title" style="margin-right: 500px;">뉴스</h5>
+			<div class="widget-content">
+				<div class="single-blog-post d-flex align-items-center widget-post">
+					<div class="post-content">
+						<% 
                     		out.print("<h3>");
                     		if(rs1.next() == true){
                     		String media = rs1.getString("news_media");
@@ -136,13 +136,13 @@
                         	out.print("</a>");
                         	out.print("</h4>");
                     	} %>
-                    </div>
-                </div>
-                
-                <div class="widget-content">
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <div class="post-content">
-                    	<% 
+					</div>
+				</div>
+
+				<div class="widget-content">
+					<div class="single-blog-post d-flex align-items-center widget-post">
+						<div class="post-content">
+							<% 
                     		out.print("<h3>");
                     		if(rs2.next() == true){
                     		String media2 = rs2.getString("news_media");
@@ -158,13 +158,14 @@
                         	out.print("</a>");
                         	out.print("</h4>");
                     	} %>
-                    </div>
-                </div>
-                
-                <div class="widget-content">
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <div class="post-content">
-                    	<% 
+						</div>
+					</div>
+
+					<div class="widget-content">
+						<div
+							class="single-blog-post d-flex align-items-center widget-post">
+							<div class="post-content">
+								<% 
                     		out.print("<h3>");
                     		if(rs3.next() == true){
                     		String media3 = rs3.getString("news_media");
@@ -180,11 +181,11 @@
                         	out.print("</a>");
                         	out.print("</h4>");
                     	} %>
-                    </div>
-                </div>
-            </div>
-        </div>
-		<%	
+							</div>
+						</div>
+					</div>
+				</div>
+				<%	
 		} catch (Exception e) {
 			// Exception --> 모즌 종류의 오류를 다 잡을 수 있는 큰개념의 오류
 			
@@ -206,10 +207,13 @@
 		}
 	
 	%>
-        <!-- 추천 자격증 구현 끝! -->
-    </div>
+				<!-- 추천 자격증 구현 끝! -->
+			</div>
+		</div>
 
-    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+	</div>
+
+	<!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="js/popper.min.js"></script>

@@ -51,7 +51,7 @@
         }
 
         async function importPage(target) {
-            document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.html');
+            document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(target + '.jsp');
         }
         importPage("login_header")
 

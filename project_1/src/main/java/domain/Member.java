@@ -6,13 +6,6 @@ public class Member {
 	private String name;
 	private String email;
 	private String pw;
-	
-	
-	public Member(String id, String pw) {
-		super();
-		this.id = id;
-		this.pw = pw;
-	}
 	public Member(int num, String id, String name, String email, String pw) {
 		super();
 		this.num = num;
@@ -21,7 +14,11 @@ public class Member {
 		this.email = email;
 		this.pw = pw;
 	}
-
+	public Member(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -52,6 +49,7 @@ public class Member {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+	
 	
 	
 }

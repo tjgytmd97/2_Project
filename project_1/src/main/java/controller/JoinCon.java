@@ -61,7 +61,7 @@ public class JoinCon extends HttpServlet {
 			// 6. 실행 후 처리
 			if (cnt > 0) {
 				// sql문 실행 성공시 Main.jsp로 이동
-				response.sendRedirect("index.html");
+				response.sendRedirect("index.jsp");
 			} else {
 				// sql문 실행 실패시
 				System.out.println("sql문 실행 실패!!!");
