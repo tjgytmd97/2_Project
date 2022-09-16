@@ -1,3 +1,4 @@
+<%@page import="java.awt.font.ImageGraphicAttribute"%>
 <%@page import="domain.Member"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -37,7 +38,25 @@
    height: 50px;
 }
 </style>
+<script type="text/javascript">
+function click_get_btn(){
+	 const element = document.getElementById('get_btn');
+	 var text = element.innerHTML;
+	 exp = /gray/;
+	 
+	 if(exp.test(text))
+	{
+	// 버튼 안눌렀을 때
+	// alert(element.innerHTML);
+	 $("#get_btn").attr("href", "GetCertiCon");
+	}
+	 else{
+		//버튼 눌렸을 때
+		 $("#get_btn").attr("href", "CancleGetCertiCon");
+	 }
+}
 
+</script>
 </head>
 
 <body>
@@ -79,15 +98,12 @@
                      <h2><%= certificatevo.getCerti_name()%></h2>
                         
                         <!-- (삽입)취득 자격증 icon -->
-                        <% 
-                           //button count
-                           // 짝수면 버튼 안누른 상태
-                           // 홀수면 버튼 누른 상태
-                           int cnt =0;
-                        %>
-                           <a href="GetCertiCon">
+                           <a id = "get_btn" href="GetCertiCon" onclick="click_get_btn()">
                         <%
-
+                        	session.setAttribute("cnt_session",0);
+                        	
+                        	boolean check = false;
+                        	
                            // 1. 세션에서 아이디 정보 가져와서
                            // 2. select * from member해서 세션 id와 일치하는 id의 member_num를 가져온다.
                            // 3. select * from certificate limit 1해서 페이지자격증이름과 일치하는 이름의 certi_num를 (제일 위 하나만) 가져온다(자격증정보)
@@ -95,7 +111,7 @@
                            // 5. (중복이면 insert안하게)if member_num과 certi_num이 같은 get_num이 get_num이 있다면 TURE
                            // 6. 아니면 false
                            
-                           System.out.println("[취득 자격증 정보 확인 중]");
+                           System.out.println("[\n\n취득 자격증 정보 확인 중]");
                            
                         // post 방식의 한글 인코딩
                         request.setCharacterEncoding("UTF-8");
@@ -137,6 +153,7 @@
                            // get_num = select get_num from get_certificate where certi_num = ? and membenum= ?                                                      
                            
                            // 계속 수정해야하는 부분 sql문
+                           // 취득 자격증 표시해주려고 하는 select문
                            String sql = "select * from get_certificate where member_num="
                         		   		+"(select member_num from member where member_userid = ?)"
                         		   		+"and certi_num = (select certi_num from certificate where certi_name= ? limit 1)";
@@ -146,7 +163,6 @@
                            psmt.setString(2, certi_name);
                            
                            rs = psmt.executeQuery();
-                          
                            
                            if(rs.next() == true)
                            {
@@ -154,6 +170,8 @@
                               String cnumber = rs.getString("certi_num");
                               
                               System.out.println("rs실행 성공!!");
+                              
+                              check = true;
                            }
                            else
                            {
@@ -171,10 +189,15 @@
                                     e2.printStackTrace();
                            }
                         }
-                        %>
-<!--                             <img alt="" src="img/btn-img/medal_gray.png" class = getCerti title="내가 취득한 자격증에 추가"> -->
-                        
-                           <img alt="" src="img/btn-img/medal.png" class = getCerti title="내가 취득한 자격증">
+                   		
+                        if(check==false)
+                        {
+                        	out.println("<img class = 'getCerti' alt='' src='img/btn-img/medal_gray.png' title='내가 취득한 자격증에 추가>'");
+                        }
+                        else
+                        {
+                        	out.println("<img  class = 'getCerti' alt='' src='img/btn-img/medal.png' title='내가 취득한 자격증>'");
+ 						}%>
 
                         </a>
                      </h4>

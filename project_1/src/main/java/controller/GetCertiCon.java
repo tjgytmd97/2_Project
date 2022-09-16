@@ -23,16 +23,11 @@ public class GetCertiCon extends HttpServlet {
 
 
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//     	1. 버튼 취소
+//      2. 취득자격증을 화면에 표시 시키기
+	   
 
-//      세션받아와야 하는데 아직 못받아옴 그래서 세션별 표시는 아직 못함
-//      남은거
-//      1. 취득자격증을 화면에 표시 시키기
-      
-      
-      System.out.println("[GetCertiCon]");
-      // 1. 파라미터 수집
-   
-
+      System.out.println("\n\n[GetCertiCon]");
 
       // 전역변수로 선언해주기
       Connection conn = null;
@@ -55,8 +50,6 @@ public class GetCertiCon extends HttpServlet {
          }
          
          HttpSession session = request.getSession();
-//       자격증 번호랑 유저 id 세션으로 받아오기
-
        
        Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
        String cnum = certificatevo.getCerti_num(); 
