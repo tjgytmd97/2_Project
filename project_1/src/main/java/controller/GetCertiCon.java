@@ -25,6 +25,7 @@ public class GetCertiCon extends HttpServlet {
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //     	1. 버튼 취소
 //      2. 취득자격증을 화면에 표시 시키기
+//	    3. 버튼 위치 수정
 	   
 
       System.out.println("\n\n[GetCertiCon]");
