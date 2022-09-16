@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,16 +29,10 @@ public class UpdateCon extends HttpServlet {
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
 		
-		System.out.println(num);
-		System.out.println(id);
-		System.out.println(name);
-		System.out.println(email);
-		System.out.println(pw);
-		
 		
 		Connection conn = null;
 		PreparedStatement psmt = null;
-		String sql = "";
+		ResultSet rs = null;
 
 		try {
 			// 동적로딩: 해당 경로의 클래스를 실행해서 JVM이 Driver에 로딩한다.
@@ -53,10 +48,9 @@ public class UpdateCon extends HttpServlet {
 				System.out.println("DB 연결 성공");
 			} else {
 				System.out.println("DB 연결 실패");
-			}
-
-			// sql준비
-			sql = "update member set member_name=?,member_email=?,member_userid=?,member_pw=? where member_num=?";
+			}			
+			
+			String sql = "update member set member_name=?,member_email=?,member_userid=?,member_pw=? where member_num=?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, name);

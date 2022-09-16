@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.Certificate;
 import domain.Member;
 
 
@@ -52,22 +53,33 @@ public class GetCertiCon extends HttpServlet {
          } else {
             System.out.println("DB 연결 실패");
          }
-         String sql = "insert into get_certificate(certi_num,member_num) values(?,?)";
+         
+         HttpSession session = request.getSession();
+//       자격증 번호랑 유저 id 세션으로 받아오기
+
+       
+       Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
+       String cnum = certificatevo.getCerti_num(); 
+      
+       Member membervo = (Member)session.getAttribute("membervo");
+       String unum= Integer.toString(membervo.getNum());
+         
+         String sql = "INSERT INTO get_certificate(certi_num, member_num) "
+         			+ "SELECT ?,? FROM dual "
+         			+ "where NOT EXISTS "
+         			+ "(SELECT certi_num, member_num FROM get_certificate "
+         			+ "WHERE certi_num = ? AND member_num = ?)";
          // sql 실행전 셋팅
          psmt = conn.prepareStatement(sql);
          // 바인드 변수는 자동으로 "" 안에 id를 넣는다.
          
-         HttpSession session = request.getSession();
-//         자격증 번호랑 유저 id 세션으로 받아오기
-          String userid= (String)session.getAttribute("id");
-          String cname = (String)session.getAttribute("certiNameInfo");
-          
-         System.out.println("서블릿 세션에서 받아온 아이디"+userid);
-//         psmt.setString(1, cname);
-//         psmt.setString(2, userid);
+         psmt.setString(1, cnum);
+         psmt.setString(2, unum);
+         psmt.setString(3, cnum);
+         psmt.setString(4, unum);
          
-         psmt.setString(1, "i_091");
-         psmt.setString(2, "6");
+//         psmt.setString(1, "i_091");
+//         psmt.setString(2, "6");
          
          int cnt = psmt.executeUpdate();
 
@@ -80,6 +92,7 @@ public class GetCertiCon extends HttpServlet {
          } else {
             // sql문 실행 실패시
             System.out.println("sql문 실행 실패!!!");
+            response.sendRedirect("login_certi_outline.jsp");
          }
 
       } catch (Exception e) {
