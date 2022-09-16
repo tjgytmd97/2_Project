@@ -120,7 +120,7 @@
             <h5 class="title" style="margin-right: 500px;">추천 자격증</h5>
 
             <div class="widget-content">
-				<form action="SearchCon">
+				<form action="SearchCon3">
 	                <!-- Single Blog Post 폼테그 실험중 -->
 	                <input type="hidden" name="kind" id="kind" value="" />
 	                <div class="single-blog-post d-flex align-items-center widget-post">
