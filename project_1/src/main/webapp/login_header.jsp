@@ -38,7 +38,7 @@
 					<div class="modal-body">
 						<h5 class="title">마이페이지</h5>
 						<form action="UpdateCon" class="newsletterForm" method="post">
-							회원번호<input type="text" name="num" id="subscribesForm2" value="<%=membervo.getNum() %>" placeholder="<%=membervo.getNum() %>" disabled>
+							회원번호<input type="text" name="num" id="subscribesForm2" value="<%=membervo.getNum() %>">
 							이름<input type="text" name="name" id="subscribesForm2" placeholder="<%=membervo.getName() %>"> 
 							메일<input type="email" name="email" id="subscribesForm2" placeholder="<%=membervo.getEmail() %>">
 							아이디<input type="text" name="id" id="subscribesForm2" placeholder="<%=membervo.getId() %>"> 

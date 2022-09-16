@@ -12,6 +12,7 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
@@ -56,6 +57,8 @@
 
     </script>
     <!-- 헤더고정 끝 -->
+    
+	    
     
     <div class="row align-items-end" style="margin-left: 50px;">
         <!-- 달력 -->
@@ -117,35 +120,41 @@
             <h5 class="title" style="margin-right: 500px;">추천 자격증</h5>
 
             <div class="widget-content">
-
+				<form action="SearchCon3">
+	                <!-- Single Blog Post 폼테그 실험중 -->
+	                <input type="hidden" name="kind" id="kind" value="" />
+	                <div class="single-blog-post d-flex align-items-center widget-post">
+	                    
+	                    <!-- Post Content -->
+	                    <div class="post-content">
+	                        <h4><a href="#" class="post-headline sub1"><% if(rs1.next() == true){
+	                        	String name1 = rs1.getString("certi_name");
+	                        	out.print(name1);
+	                        } %></a></h4>
+	                    </div>
+	                </div>
+                
+                <!-- Single Blog Post -->
+                <!-- <form action="SearchCon">
+	                Single Blog Post 폼테그 실험중
+	                <input type="hidden" name="kind" id="kind" value="" /> -->
+	                <div class="single-blog-post d-flex align-items-center widget-post">
+	                    
+	                    <!-- Post Content -->
+	                    <div class="post-content">
+	                        <h4><a href="#" class="post-headline sub2"><% if(rs2.next() == true){
+	                        	String name2 = rs2.getString("certi_name");
+	                        	out.print(name2);
+	                        } %></a></h4>
+	                    </div>
+	                </div>
+	            <!-- </form> -->
                 <!-- Single Blog Post -->
                 <div class="single-blog-post d-flex align-items-center widget-post">
                     
                     <!-- Post Content -->
                     <div class="post-content">
-                        <h4><a href="#" class="post-headline"><% if(rs1.next() == true){
-                        	String name1 = rs1.getString("certi_name");
-                        	out.print(name1);
-                        } %></a></h4>
-                    </div>
-                </div>
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <h4><a href="#" class="post-headline"><% if(rs2.next() == true){
-                        	String name2 = rs2.getString("certi_name");
-                        	out.print(name2);
-                        } %></a></h4>
-                    </div>
-                </div>
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <h4><a href="#" class="post-headline"><% if(rs3.next() == true){
+                        <h4><a href="#" class="post-headline sub3"><% if(rs3.next() == true){
                         	String name3 = rs3.getString("certi_name");
                         	out.print(name3);
                         } %></a></h4>
@@ -153,6 +162,7 @@
                 </div>
             </div>
         </div>
+        </form>
 			<%
 			// 회원 정보 가져왔을때 처리할일 -> 회면에 출력출력!
 			// rs.next() --> true인 경우에 정보를 볼 수 있다!
@@ -210,6 +220,23 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+	<script type="text/javascript">
+				$('.sub1').click(function () {
+					   var hello = $(this).text();
+				        $('#kind').val(hello);
+				        $('form').submit();
+				});
+				$('.sub2').click(function () {
+					   var hello = $(this).text();
+				        $('#kind').val(hello);
+				        $('form').submit();
+				});
+				$('.sub3').click(function () {
+					   var hello = $(this).text();
+				        $('#kind').val(hello);
+				        $('form').submit();
+				});
+	</script>
 
 </body>
 

@@ -22,13 +22,18 @@ public class SearchCon extends HttpServlet {
    protected void service(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
       // TODO Auto-generated method stub
-      System.out.println("[SearchCon]");
+      System.out.println("[SearchCon1]");
 
       // 0. post 방식의 인코딩
       request.setCharacterEncoding("UTF-8");
 
       // 데이터 가져오기
       String certi_name = request.getParameter("certi_name");
+//      String certi_name2 = request.getParameter("kind");
+		/*
+		 * String pahm = request.getParameter("pham"); System.out.println(pahm);
+		 */
+//      System.out.println("certi_name2 :::: "+certi_name2);
 
       // 전역변수로 선언해주기
       Connection conn = null;
@@ -55,6 +60,7 @@ public class SearchCon extends HttpServlet {
          String sql = "select * from certificate where certi_name=?";
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, certi_name);
+//         psmt.setString(1, certi_name2);
 
          rs = psmt.executeQuery();
 
