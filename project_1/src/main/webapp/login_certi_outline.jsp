@@ -41,6 +41,8 @@
    width : 45px;
    height: 45px;
 }
+
+
 </style>
 
 </head>
@@ -80,10 +82,7 @@
                      <div class="line"></div>
                      <h4>
                      <!-- (삽입) -->
-                     <form>
-                     <table border="1" >
-                     <tr>
-                     <td><h1><%= certificatevo.getCerti_name()%></h1></td>
+						<h1><%= certificatevo.getCerti_name()%></h1>
   <%--                       <!-- (삽입)취득 자격증 icon -->
                            <a id = "get_btn" href="GetCertiCon" onclick="click_get_btn()">
                         <%
@@ -187,8 +186,8 @@
                         </a> --%>
                            <!-- (삽입)즐겨찾기 icon --> 
                            
-							<td>
-                           <a id = "bookmark_btn" href="BookmarkCon" onclick="click_bookmark()">
+							
+                           <a id = "bookmark_btn" href="BookmarkCon" onclick="click_bookmark()" style="text-decoration: none;">
                            	<%
                         	boolean mark_check = false;
                            
@@ -301,19 +300,19 @@
                         
                         if(mark_check==false)
                         {
-                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star_gray.png' title='즐겨찾기하기'></td>");
+                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star_gray.png' title='즐겨찾기하기'>");
                         }
                         else
                         {
-                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star.png' title='즐겨찾기취소'></td>");
+                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star.png' title='즐겨찾기취소'>");
  						}  	
  						%>
-                           </a>
-                           </tr>
-                          <tr><td></td><td align="center"><h6 style="margin-left : "><%= rowCnt%></h6></td></tr>
-                          </table>
+ 						<h6 style="margin-left : 2%"><%= rowCnt%></h6>
+                        </a>
+                          
+                          
                         <!-- 버튼들 끝 -->
-                        </form>
+                        
                      </h4>
                      <div class="post-meta mb-50">
                         <p style="font-size:large;">
