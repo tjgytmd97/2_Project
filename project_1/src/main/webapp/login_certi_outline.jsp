@@ -33,30 +33,16 @@
 
 <!-- (삽입)버튼 크키 조정 -->   
 <style type="text/css">
-.getCerti{
+.getCerti_img{
    width : 50px;
    height: 50px;
 }
-</style>
-<script type="text/javascript">
-function click_get_btn(){
-	 const element = document.getElementById('get_btn');
-	 var text = element.innerHTML;
-	 exp = /gray/;
-	 
-	 if(exp.test(text))
-	{
-	// 버튼 안눌렀을 때
-	// alert(element.innerHTML);
-	 $("#get_btn").attr("href", "GetCertiCon");
-	}
-	 else{
-		//버튼 눌렸을 때
-		 $("#get_btn").attr("href", "CancleGetCertiCon");
-	 }
+.boormark_img{
+   width : 45px;
+   height: 45px;
 }
+</style>
 
-</script>
 </head>
 
 <body>
@@ -94,14 +80,13 @@ function click_get_btn(){
                      <div class="line"></div>
                      <h4>
                      <!-- (삽입) -->
-                        
-                     <h2><%= certificatevo.getCerti_name()%></h2>
-                        
-                        <!-- (삽입)취득 자격증 icon -->
+                     <form>
+                     <table border="1" >
+                     <tr>
+                     <td><h1><%= certificatevo.getCerti_name()%></h1></td>
+  <%--                       <!-- (삽입)취득 자격증 icon -->
                            <a id = "get_btn" href="GetCertiCon" onclick="click_get_btn()">
                         <%
-                        	session.setAttribute("cnt_session",0);
-                        	
                         	boolean check = false;
                         	
                            // 1. 세션에서 아이디 정보 가져와서
@@ -192,14 +177,143 @@ function click_get_btn(){
                    		
                         if(check==false)
                         {
-                        	out.println("<img class = 'getCerti' alt='' src='img/btn-img/medal_gray.png' title='내가 취득한 자격증에 추가>'");
+                        	out.println("<img class = 'getCerti_img' alt='' src='img/btn-img/medal_gray.png' title='내가 취득한 자격증에 추가'>");
                         }
                         else
                         {
-                        	out.println("<img  class = 'getCerti' alt='' src='img/btn-img/medal.png' title='내가 취득한 자격증>'");
+                        	out.println("<img  class = 'getCerti_img' alt='' src='img/btn-img/medal.png' title='내가 취득한 자격증 취소'>");
  						}%>
 
-                        </a>
+                        </a> --%>
+                           <!-- (삽입)즐겨찾기 icon --> 
+                           
+							<td>
+                           <a id = "bookmark_btn" href="BookmarkCon" onclick="click_bookmark()">
+                           	<%
+                        	boolean mark_check = false;
+                           
+                           System.out.println("\n\n[즐겨찾기 자격증 정보 확인 중]");
+                           
+                        // post 방식의 한글 인코딩
+                        request.setCharacterEncoding("UTF-8");
+                        
+                        //1. 세션 받아오기(id받아오기)
+                        Member membervo = (Member)session.getAttribute("membervo");
+                        //String member_userid = member.getId();
+                        
+                        //2. 세션 생성하기(자격증명 가져오기)
+                        //String certi_name = certificatevo.getCerti_name();
+                        
+                        // 전역변수로 선언해주기
+                        Connection conn = null;
+                        
+                        PreparedStatement psmt01 = null;
+                        PreparedStatement psmt02 = null;
+                        
+                        ResultSet rs01 = null;
+                        ResultSet rs02 = null; 
+                        
+                        
+                        int rowCnt = 0;
+                        
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                           System.out.println("클래스파일 로딩 도전!");
+
+                           String url = "jdbc:mysql://project-db-stu.ddns.net:3307/suncheon_0825_5";
+                           String dbid = "suncheon_0825_5";
+                           String dbpw = "smhrd5";
+                           conn = DriverManager.getConnection(url, dbid, dbpw);
+                                 
+                           // db 연결확인
+                           if(conn != null)
+                           {
+                              System.out.println("DB 연결 성공");
+                           }
+                           else
+                           {
+                              System.out.println("DB 연결 실패");
+                           } 
+                           
+                           // 계속 수정해야하는 부분 sql문
+                           // 북마크 개수 확인 sql문
+                           String sql01 = "select count(*) from bookmark where certi_name=?";                     
+                           
+                           psmt01 =  conn.prepareStatement(sql01);
+                           psmt01.setString(1, certificatevo.getCerti_name());
+                           rs01 = psmt01.executeQuery();
+                          
+                           if(rs01.next() == true)
+                           {
+                            	rowCnt = rs01.getInt(1);
+                            	System.out.println("rs01실행 성공!!");
+                            	System.out.println("rowCnt : "+rowCnt);
+                           }
+                           else
+                           {
+                              System.out.println("실패");
+                           }
+                           
+                           System.out.println("test01");
+                           //로그인한 회원이 북마크 한 상태인지 체크
+                           String sql02 ="select * from bookmark where member_num=? and certi_num = ?";
+                           String member_num = Integer.toString(membervo.getNum());
+                           
+                           System.out.println("member_num : " + member_num);
+                           System.out.println("certi_num : " + certificatevo.getCerti_num());
+                           
+                           psmt02 =  conn.prepareStatement(sql02);
+                           psmt02.setString(1, member_num);
+                           psmt02.setString(2, certificatevo.getCerti_num());
+                           
+                           //여기서 안된다
+                           rs02 = psmt02.executeQuery();
+                           System.out.println("test07");
+                          
+                           if(rs02.next() == true)
+                           {
+                        	   System.out.println("test08");
+                               String unumber = rs02.getString("member_num");
+                               String cnumber = rs02.getString("certi_num");
+                               System.out.println("test09");
+                               System.out.println("rs02실행 성공!!");
+                               System.out.println("test010");
+                               mark_check = true;
+                           }
+                           else
+                           {
+                              System.out.println("실패");
+                           }
+                           
+                        } catch (Exception e) {
+                           e.printStackTrace();
+                        } finally {
+                           try {
+                              if(psmt01 != null) psmt01.close();
+                              if(psmt02 != null) psmt02.close();
+                              if(conn != null) conn.close();
+                              if(rs01 != null) rs01.close();
+                              if(rs02 != null) rs02.close();
+                           } catch (Exception e2) {
+                                    e2.printStackTrace();
+                           }
+                        }
+                        
+                        if(mark_check==false)
+                        {
+                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star_gray.png' title='즐겨찾기하기'></td>");
+                        }
+                        else
+                        {
+                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star.png' title='즐겨찾기취소'></td>");
+ 						}  	
+ 						%>
+                           </a>
+                           </tr>
+                          <tr><td></td><td align="center"><h6 style="margin-left : "><%= rowCnt%></h6></td></tr>
+                          </table>
+                        <!-- 버튼들 끝 -->
+                        </form>
                      </h4>
                      <div class="post-meta mb-50">
                         <p style="font-size:large;">
@@ -295,7 +409,7 @@ function click_get_btn(){
    <script src="js/plugins.js"></script>
    <!-- Active js -->
    <script src="js/active.js"></script>
-
-
+	<!-- 자격증 체크/취소 js -->
+	<script src="js/get_certi_or_bookmark.js"></script>
 </body>
 </html>
