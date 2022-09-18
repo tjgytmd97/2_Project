@@ -18,9 +18,44 @@
 <!-- Style CSS -->
 <link rel="stylesheet" href="style.css">
 
-<!-- 달력 관련 파일 -->
-<link rel="stylesheet" type="text/css" href="./css/pratice_class.css" />
-<script src="./js/practice_class.js" type="module"> </script>
+<!-- 마이켈린더 -->  
+    <link href='./fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
+	<script src='./fullcalendar-5.11.3/lib/main.js'></script>
+	
+	<script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          contentHeight: 600,//캘린더 크기 설정
+          editable: true,//수정 여부
+          locale:'ko',
+          dateClick: function() {
+        	    alert('a day has been clicked!');
+        	  },
+          events: [
+            {
+              title  : 'event2',
+              start  : '2022-09-05',
+              end    : '2022-09-07'
+            },
+            {
+              title  : 'event3',
+              start  : '2010-01-09T12:30:00',
+              allDay : false // will make the time show
+            }
+          ]
+        ,eventClick:function(info){
+            window.location.href(info.event.url);
+            }
+        });
+        calendar.render();
+        
+      });
+      
+	</script>
+
 <style>
 .YM {
 	height: 15%;
@@ -97,7 +132,7 @@
 
 	<div class="row align-items-end" style="margin-left: 50px;">
 		<!-- 달력 -->
-		<section id="defaultCal" style="height: 920px; width: 60%; top: 70px;"></section>
+		<div id="calendar" style="height: 920px; width: 60%; margin-bottom: auto; margin-right: auto;"></div>
 		<!-- 취득 자격증 구현(수정) -->
 		<div class="sidebar-widget-area" style="margin: 50px 200px 50px 1px;">
 			<div style="margin-bottom: 50px;">
