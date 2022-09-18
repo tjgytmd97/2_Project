@@ -35,7 +35,7 @@ public class BookmarkCon extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("[BookmarkCon]");
+		System.out.println("\n\n[BookmarkCon]");
 		// post 방식의 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
 
@@ -113,13 +113,15 @@ public class BookmarkCon extends HttpServlet {
 			if (cnt > 0) {
 				// sql문 실행 성공
 				System.out.println("sql문 실행 성공!!!");
-				response.sendRedirect("BeforeBookmarkCon");
+
 
 			} else {
 				// sql문 실행 실패시
 				System.out.println("sql문 실행 실패!!!");
-				response.sendRedirect("BeforeBookmarkCon");
+
 			}
+			//response.sendRedirect("BeforeBookmarkCon");
+			response.sendRedirect("AfterBookmarkCon");
 
 		} catch (Exception e) {
 			// Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류

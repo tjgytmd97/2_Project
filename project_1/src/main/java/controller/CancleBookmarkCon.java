@@ -69,13 +69,11 @@ public class CancleBookmarkCon extends HttpServlet {
 	         if (cnt > 0) {
 	            // sql문 실행 성공
 	            System.out.println("sql문 실행 성공!!!");
-	        	response.sendRedirect("BeforeBookmarkCon");
-	   
 	         } else {
 	            // sql문 실행 실패시
 	            System.out.println("sql문 실행 실패!!!");
-	        	response.sendRedirect("BeforeBookmarkCon");
 	         }
+	         response.sendRedirect("AfterBookmarkCon");
 
 	      } catch (Exception e) {
 	         // Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류

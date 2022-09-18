@@ -25,7 +25,7 @@ public class BeforeBookmarkCon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean mark_check = false;
         
-        System.out.println("\n\n[즐겨찾기 자격증 정보 확인 중]");
+     System.out.println("\n\n[BeforeBookmarkCon]");
         
      // post 방식의 한글 인코딩
      request.setCharacterEncoding("UTF-8");
@@ -43,7 +43,6 @@ public class BeforeBookmarkCon extends HttpServlet {
      
      ResultSet rs01 = null;
      ResultSet rs02 = null; 
-     
      
      int rowCnt = 0;
      
@@ -85,7 +84,7 @@ public class BeforeBookmarkCon extends HttpServlet {
            System.out.println("실패");
         }
         
-        System.out.println("test01");
+        
         //로그인한 회원이 북마크 한 상태인지 체크
         String sql02 ="select * from bookmark where member_num=? and certi_num = ?";
         String member_num = Integer.toString(membervo.getNum());
@@ -97,19 +96,14 @@ public class BeforeBookmarkCon extends HttpServlet {
         psmt02.setString(1, member_num);
         psmt02.setString(2, certificatevo.getCerti_num());
         
-        //여기서 안된다
-        rs02 = psmt02.executeQuery();
-        System.out.println("test07");
-       
+        System.out.println("member_num : "+member_num);
+        System.out.println("certificatevo.getCerti_num() : "+certificatevo.getCerti_num());
+        
+        rs02 = psmt02.executeQuery();        
+        
         if(rs02.next() == true)
         {
-     	   System.out.println("test08");
-            String unumber = rs02.getString("member_num");
-            String cnumber = rs02.getString("certi_num");
-            System.out.println("test09");
             System.out.println("rs02실행 성공!!");
-            System.out.println("test010");
-            
             mark_check = true; 
         }
         else
@@ -117,21 +111,21 @@ public class BeforeBookmarkCon extends HttpServlet {
            System.out.println("실패");
         }
         
-        
        	session.setAttribute("mark_check", mark_check);
        	session.setAttribute("rowCnt", rowCnt);
-       	
-       	response.sendRedirect("login_certi_outline.jsp");
+        
+        response.sendRedirect("login_certi_outline.jsp");
+        
         
      } catch (Exception e) {
         e.printStackTrace();
      } finally {
         try {
            if(psmt01 != null) psmt01.close();
-           if(psmt02 != null) psmt02.close();
+           if(psmt02 != null) psmt02.close();           
            if(conn != null) conn.close();
            if(rs01 != null) rs01.close();
-           if(rs02 != null) rs02.close();
+           if(rs02 != null) rs02.close();          
         } catch (Exception e2) {
                  e2.printStackTrace();
         }
