@@ -1,10 +1,19 @@
 <%@page import="java.awt.font.ImageGraphicAttribute"%>
 <%@page import="domain.Member"%>
+<%@page import="domain.Comment"%>
+<%@page import="domain.Certificate"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="domain.Certificate"%>
+<%@page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<!-- 현재시간 가져오기 -->
+<%
+   Date nowTime = new Date();
+   SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ page session = "true" %>
@@ -49,12 +58,9 @@
 
 <body>
    <% 
-      // 1. 세션에 저장된 로그인 정보 가져오기
-      // 형변환(다운캐스팅) 해주기
-      String id = (String)session.getAttribute("id");
-   
       // 세션에 저정된 vo 가져오기
       Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
+      Member membervo = (Member)session.getAttribute("membervo");
    %>
    <!-- 헤더고정 -->
    <div id="login_header"></div>
@@ -268,30 +274,38 @@
                   </ol>
                </div>
 
-               <!-- 댓글달기 기능 구현(수정) -->
+              <!-- 댓글달기 기능 구현(수정) -->
                <div class="post-a-comment-area mt-70">
                   <h5>댓글달기</h5>
                   <!-- Reply Form -->
-                  <form action="#" method="post">
+                  <form action="CommentCon" method="post">
+                     <input type="hidden" name="num" value="<%=membervo.getNum()%>">
+                     <input type="hidden" name="certi_num" value="<%=certificatevo.getCerti_num()%>">
+                     <input type="hidden" name="datetime" value="<%=(String)sf.format(nowTime)%>">
+                  <div style="margin-bottom: 50px">
+                     <span>회원아이디: <%=membervo.getId()%></span>
+                     <span> / </span>
+                     <span>현재시간: <%=sf.format(nowTime)%></span>
+                  </div>
                      <div class="row">
                         <div class="col-12">
                            <div class="group">
-                              <textarea name="message" id="message" required></textarea>
-                              <span class="highlight"></span> <span class="bar"></span> <label>댓글</label>
+                              <textarea style="font-size: 0.95em;" name="message" id="message" required ></textarea>
+                              <span class="highlight"></span> <span class="bar"></span> <label style="font-size: 15px;">댓글입력</label>
                            </div>
                         </div>
-                        <div class="col-12">
-                           <button type="submit" class="btn original-btn">확인</button>
-                        </div>
+                     </div>
+                     <div class="col-12">
+                        <button type="submit" class="btn original-btn">확인</button>
                      </div>
                   </form>
                </div>
-               
-               
             </div>
          </div>
       </div>
    </div>
+
+
    
    <!-- jQuery (Necessary for All JavaScript Plugins) -->
    <script src="js/jquery/jquery-2.2.4.min.js"></script>
