@@ -109,7 +109,7 @@ public class SearchCon2 extends HttpServlet {
 			session.setAttribute("certificatevo", certificatevo);
             
             System.out.println("데이터가져오기 성공");
-			response.sendRedirect("login_certi_outline.jsp");
+			response.sendRedirect("BeforeBookmarkCon");
             
          } else {
             

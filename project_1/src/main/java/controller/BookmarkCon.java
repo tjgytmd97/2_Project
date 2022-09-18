@@ -113,12 +113,12 @@ public class BookmarkCon extends HttpServlet {
 			if (cnt > 0) {
 				// sql문 실행 성공
 				System.out.println("sql문 실행 성공!!!");
-				response.sendRedirect("login_certi_outline.jsp");
+				response.sendRedirect("BeforeBookmarkCon");
 
 			} else {
 				// sql문 실행 실패시
 				System.out.println("sql문 실행 실패!!!");
-				response.sendRedirect("login_certi_outline.jsp");
+				response.sendRedirect("BeforeBookmarkCon");
 			}
 
 		} catch (Exception e) {
