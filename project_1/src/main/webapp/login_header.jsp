@@ -81,7 +81,7 @@
 		<!-- 모두의 자격증 로고 끝 -->
 
 		<!-- 메뉴바 -->
-		<div class="original-nav-area" id="stickyNav">
+		<div class="original-nav-area" id="stickyNav" style="margin-left: 700px;">
 			<div class="classy-nav-container breakpoint-off">
 				<div class="container">
 					<nav class="classy-navbar justify-content-between">
@@ -110,16 +110,6 @@
 									<li><a href="login_calendar.jsp"
 										style="font-size: 20px; font-weight: bold;">My 달력</a></li>
 								</ul>
-
-								<!-- 검색기능구현 (수정)-->
-								<div id="search-wrapper">
-									<form action="#">
-										<input type="text" id="search"
-											placeholder="Search something...">
-										<div id="close-icon"></div>
-										<input class="d-none" type="submit" value="">
-									</form>
-								</div>
 							</div>
 						</div>
 					</nav>

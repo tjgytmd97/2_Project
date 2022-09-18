@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -96,24 +97,21 @@
 
                     <!-- 댓글달기 기능 구현(수정) -->
                     <div class="post-a-comment-area mt-70">
-                        <h5>댓글달기</h5>
-                        <!-- Reply Form -->
-                        <form action="#" method="post">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="group">
-                                        <textarea name="message" id="message" required></textarea>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>댓글</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn original-btn">확인</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+						<!-- Reply Form -->
+						<form action="#" method="post">
+							<div class="row">
+								<div class="col-12">
+									<div class="group">
+										<textarea name="message" id="message" required></textarea>
+										<span class="highlight"></span> <span class="bar"></span> <label>댓글</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<button class="writeCom">댓글작성</button>
+								</div>
+							</div>
+						</form>
+					</div>
                 </div>
             </div>
         </div>
@@ -130,6 +128,17 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <script>
+	$(".writeCom").click(function(){
+        let com = $('input[type=text]').val();
+        let com2 = '<span>'+com+'</span><button class="removeCom">삭제</button><br>';
+        $('#com').append(com2);
+        $('input[type=text]').val('');
+    });
+	$(document).on('click', '.removeCom', function(){
+        $('#com').empty();
+    });
+	</script>
 
 </body>
 
