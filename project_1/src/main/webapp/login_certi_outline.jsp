@@ -86,9 +86,24 @@
                <div class="single-blog-area blog-style-2 mb-50">
                   <div class="single-blog-content">
                      <div class="line"></div>
-                     <h4>
                      <!-- (삽입) -->
-						<h1><%= certificatevo.getCerti_name()%></h1>
+						<h1><%= certificatevo.getCerti_name()%><a id = "bookmark_btn" href="BookmarkCon" onclick="click_bookmark()" style="text-decoration: none; position: absolute;">
+                        <%
+                           	//위 두개 세션에서 가져오기
+							boolean mark_check = (boolean)session.getAttribute("mark_check");
+							int rowCnt =  (int)session.getAttribute("rowCnt");
+                        
+	                        if(mark_check==false)
+	                        {
+	                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star_gray.png' title='즐겨찾기하기'>");
+	                        }
+	                        else
+	                        {
+	                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star.png' title='즐겨찾기취소'>");
+	 						}  	
+ 						%>
+ 						<span><%= rowCnt%></span>
+                        </a></h1>
   <%--                       <!-- (삽입)취득 자격증 icon -->
                            <a id = "get_btn" href="GetCertiCon" onclick="click_get_btn()">
                         <%
@@ -193,23 +208,7 @@
                            <!-- (삽입)즐겨찾기 icon --> 
                            
 							
-                        <a id = "bookmark_btn" href="BookmarkCon" onclick="click_bookmark()" style="text-decoration: none;">
-                        <%
-                           	//위 두개 세션에서 가져오기
-							boolean mark_check = (boolean)session.getAttribute("mark_check");
-							int rowCnt =  (int)session.getAttribute("rowCnt");
                         
-	                        if(mark_check==false)
-	                        {
-	                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star_gray.png' title='즐겨찾기하기'>");
-	                        }
-	                        else
-	                        {
-	                        	out.println("<img  class = 'boormark_img' alt='' src='img/btn-img/star.png' title='즐겨찾기취소'>");
-	 						}  	
- 						%>
- 						<h6 style="margin-left : 2%"><%= rowCnt%></h6>
-                        </a>
                           
                           
                         <!-- 버튼들 끝 -->
