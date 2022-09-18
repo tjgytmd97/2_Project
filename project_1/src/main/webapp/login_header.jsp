@@ -107,7 +107,7 @@
 									<li><a href="login_certi_all.html"
 										style="font-size: 20px; font-weight: bold;">자격증 정보 보기</a></li>
 									<!-- 달력(수정) -->
-									<li><a href="login_calendar.html"
+									<li><a href="login_calendar.jsp"
 										style="font-size: 20px; font-weight: bold;">My 달력</a></li>
 								</ul>
 
