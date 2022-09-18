@@ -101,9 +101,9 @@
 			}
 
 			// 계속 수정할 부분!!!! SQL문!!
-			String sql1 = "select distinct certi_name, row_number() over (order by certi_bookmark_cnt desc) as ranking from certificate limit 0,1;";
-			String sql2 = "select distinct certi_name, row_number() over (order by certi_bookmark_cnt desc) as ranking from certificate limit 1,1;";
-			String sql3 = "select distinct certi_name, row_number() over (order by certi_bookmark_cnt desc) as ranking from certificate limit 2,1;";
+			String sql1 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 0,1;";
+			String sql2 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 1,1;";
+			String sql3 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 2,1;";
 			psmt1 = conn.prepareStatement(sql1);
 			psmt2 = conn.prepareStatement(sql2);
 			psmt3 = conn.prepareStatement(sql3);
