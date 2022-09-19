@@ -119,6 +119,7 @@ public class TotalCertiDateCon extends HttpServlet {
 	        
 	        ArrayList<Certificate> totalList = new ArrayList<Certificate>();
 	        
+	        
 	        while(rs01.next())
 	        {
 	        	String certi_num = rs01.getString(1);
@@ -169,16 +170,25 @@ public class TotalCertiDateCon extends HttpServlet {
 //	         	System.out.println("rs01실행 성공!!");
 
 	        }
-	        
+	        // request.setAttribute("allCertiDate", totalList);
 	        session.setAttribute("allCertiDate", totalList);
-	        //https://coding-factory.tistory.com/14
-
+	        
+			/*
+			 * ArrayList<Certificate> test =
+			 * (ArrayList)session.getAttribute("allCertiDate");
+			 * 
+			 * for(Certificate vo : test){ System.out.println(vo.getCerti_name());
+			 * //System.out.println(vo.getCerti_prctc_test_start_date());
+			 * 
+			 * }
+			 */
+	        
 //         	for(Certificate certi: totalList) {
 //     		System.out.println("이름 : "+ certi.getCerti_name());
 //     		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
 //     	}
          	if(membervo==null) {
-         		response.sendRedirect("index.jsp");
+         		response.sendRedirect("calendar.jsp");
          	}
          	else {
          		response.sendRedirect("login_index.jsp");

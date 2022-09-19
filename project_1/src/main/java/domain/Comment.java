@@ -6,14 +6,17 @@ public class Comment {
 	private String certi_num;	// 자격증번호
 	private int member_num;	// 작성자
 	private String comm_text;
+	private String member_id;
 	
-	public Comment(int comm_num, String comm_datetime, String certi_num, int member_num, String comm_text) {
+	public Comment(int comm_num, String comm_datetime, String certi_num, int member_num, String comm_text,
+			String member_id) {
 		super();
 		this.comm_num = comm_num;
 		this.comm_datetime = comm_datetime;
 		this.certi_num = certi_num;
 		this.member_num = member_num;
 		this.comm_text = comm_text;
+		this.member_id = member_id;
 	}
 	public int getComm_num() {
 		return comm_num;
@@ -45,7 +48,10 @@ public class Comment {
 	public void setComm_text(String comm_text) {
 		this.comm_text = comm_text;
 	}
-	
-	
-	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 }

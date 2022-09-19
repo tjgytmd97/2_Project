@@ -221,6 +221,8 @@
                            <a style="font-size:15px; " target="_blank" href="<%= certificatevo.getCerti_instt_url() %>"><%= certificatevo.getCerti_instt_url() %></a>
                         </p>
                      </div>
+                     
+<hr style="border: solid 0.5px; margin-bottom:50px">
                      <h5 style="font-weight:bold;">자격증 정보</h5>
 							<p style="font-size: 15px;"><%=certificatevo.getCerti_outline()%></p>
 							<div style="padding-bottom:15px">
@@ -333,28 +335,28 @@
 									// 오류의 내용 보여주기 -> console 창에서 확인
 									e.printStackTrace();
 								} finally {
-									// 오류가 나더라도 DB 연결해제는 필수
-									try {
-										if (psmt != null) {
-											psmt.close();
-											psmt2.close();
-										}
-										if (conn != null)
-											conn.close();
+  									// 오류가 나더라도 DB 연결해제는 필수
+  									try {
+  										if (psmt != null) {
+  											psmt.close();
+  											psmt2.close();
+  										}
+  										if (conn != null)
+  											conn.close();
 
-									} catch (Exception e2) {
-										e2.printStackTrace();
-									}
+  									} catch (Exception e2) {
+  										e2.printStackTrace();
+  									}
 								}
 								%>
                      </div>
                   </div>
                </div>
-
+               
+<hr style="border: solid 0.5px;">
                <!-- 댓글보기 기능 구현 (수정)-->
                <div class="comment_area clearfix mt-70">
-                  <h5 class="title">댓글</h5>
-
+                  <h5 style="font-weight:bold; margin-bottom:10px;">댓글</h5>
                   <ol>
                      <!-- 댓글내용(수정) -->
                      <li class="single_comment_area">
@@ -364,13 +366,77 @@
                               <p>
                                  <a href="#" class="post-author">서효승</a>
                               </p> -->
+                              <%                               	
+                              	String certi_num = certificatevo.getCerti_num();
+								Connection conn1 = null;
+								PreparedStatement psmt3 = null;
+								ResultSet rs1 = null;
+																
+								try {
+									Class.forName("com.mysql.jdbc.Driver");
+							         System.out.println("클래스파일 로딩 도전!");
+
+							         String url = "jdbc:mysql://project-db-stu.ddns.net:3307/suncheon_0825_5";
+							         String dbid = "suncheon_0825_5";
+							         String dbpw = "smhrd5";
+							         conn1 = DriverManager.getConnection(url, dbid, dbpw);
+
+							         if (conn1 != null) {
+							            System.out.println("DB 연결 성공");
+							         } else {
+							            System.out.println("DB 연결 실패");
+							         }
+									// sql문 세팅
+  									String sql = "select * from comment where certi_num=?";
+  									psmt3 = conn1.prepareStatement(sql);
+  									psmt3.setString(1, certi_num);
+
+  									rs1 = psmt3.executeQuery();
+  									out.print("<table style='width: 1000px;'>");
+  									out.print("<tr>");
+  									out.print("<th style='padding-top:10px;'>작성자</th>");
+  									out.print("<th style='padding-top:10px;'>시간</th>");
+  									out.print("<th style='padding-top:10px;'>내용</th>");
+  									out.print("</tr>");
+  								
+  									while (rs1.next()) {
+  										String member_id1 = rs1.getString(6);
+  										String comm_datetime1 = rs1.getString(2);
+  										String comm_text1 = rs1.getString(5);
+  										String delname = membervo.getId();
+  										int delnum = rs1.getInt(1);
+  										
+  										out.print("<tr>");
+  										out.print("<td style='padding-top:10px;'> " + member_id1 + "</td>");
+  										out.print("<td style='padding-top:10px;'> " + comm_datetime1 + "</td>");
+  										out.print("<td style='padding-top:10px;'> " + comm_text1 + "</td>");
+  										if(delname.equals(member_id1))
+  										{		
+  											out.print("<td style='padding-top:10px;'>"); 
+  											out.print("<form action='ComdeleteCon' method='post'>");
+  											out.print("<input type='hidden' name='num' value='"+delnum+"'>");
+  						                    out.print("<button type='submit' style='border: none; width:50px; font-family:'맑은 고딕';'>삭제</button>");
+  											out.print("</form>");
+  											out.print("</td>"); 
+  										}  										 										
+  									}  									
+  									out.print("</table>");
+								} catch (Exception e) {
+  									e.printStackTrace();
+  								} finally {
+  									try {
+  										if (psmt3 != null) {
+  											psmt3.close();
+  										}
+  										if (conn1 != null)
+  											conn1.close();
+
+  									} catch (Exception e2) {
+  										e2.printStackTrace();
+  									}
+  								}
                               
-                    <%--  <span>회원아이디: <%=membervo.getId()%></span>
-                     <span> / </span>
-                     <span>시간: <%=commentvo.getComm_datetime()%></span>
-                     <span> / </span>
-                     <span>내용: <%=commentvo.getComm_text()%></span> --%>
-                     
+                              %>
                            </div>
                         </div>
                      </li>
@@ -385,6 +451,7 @@
                      <input type="hidden" name="num" value="<%=membervo.getNum()%>">
                      <input type="hidden" name="certi_num" value="<%=certificatevo.getCerti_num()%>">
                      <input type="hidden" name="datetime" value="<%=(String)sf.format(nowTime)%>">
+                     <input type="hidden" name="id" value="<%=membervo.getId()%>">
                   <div style="margin-bottom: 50px">
                      <span>회원아이디: <%=membervo.getId()%></span>
                      <span> / </span>
@@ -403,12 +470,11 @@
                      </div>
                   </form>
                </div>
+               
             </div>
          </div>
       </div>
    </div>
-
-
    
    <!-- jQuery (Necessary for All JavaScript Plugins) -->
    <script src="js/jquery/jquery-2.2.4.min.js"></script>

@@ -1,3 +1,5 @@
+<%@page import="domain.Certificate"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -38,15 +40,37 @@
           contentHeight: 600,//캘린더 크기 설정
           editable: true,//수정 여부
           locale:'ko',
-          dateClick: function() {
-        	    alert('a day has been clicked!');
-        	  },
+          dayMaxEvents: true,
           events: [
-            {
-              title  : 'event2',
-              start  : '2022-09-05',
-              end    : '2022-09-07'
-            },
+        	  
+        	  <%
+        	  ArrayList<Certificate> test = (ArrayList)session.getAttribute("allCertiDate");
+              
+              %>
+              <% for (Certificate vo : test){%>
+              	{   <% if(vo.getCerti_prctc_test_start_date() == null){%>
+              				title : '<%= vo.getCerti_name() %>',
+              		<%} else{%>
+              				title : '<%= vo.getCerti_name() %>필기',
+              		<%}%>
+            		  start : '<%= vo.getCerti_hndw_test_start_date() %>',
+            		  end : '<%= vo.getCerti_hndw_test_end_date() %>',
+            		  color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+            	  },
+             <% } %>
+              //for(Certificate vo : test){
+                 //System.out.println(vo.getCerti_name());
+                 //System.out.println(vo.getCerti_prctc_test_start_date());
+                 
+              //}
+              <% for (Certificate vo : test){%>
+	              {
+	              title  : '<%= vo.getCerti_name() %>실기',
+	              start  : '<%= vo.getCerti_prctc_test_start_date() %>',
+	              end : '<%= vo.getCerti_prctc_test_end_date() %>',
+	              color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+	            	},
+            <% } %>
             {
               title  : 'event3',
               start  : '2010-01-09T12:30:00',

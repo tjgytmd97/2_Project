@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="domain.Certificate"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -42,15 +45,15 @@
         	  },
           events: [
             {
-              title  : 'event2',
-              start  : '2022-09-05',
-              end    : '2022-09-07'
+              title  : '정보통신기사',
+              start  : '2022-09-19',
+              end    : '2022-09-24'
             },
             {
-              title  : 'event3',
-              start  : '2010-01-09T12:30:00',
-              allDay : false // will make the time show
-            }
+                title  : '파이썬마스터3급',
+                start  : '2022-09-19',
+                end    : '2022-09-29'
+              }
           ]
         ,eventClick:function(info){
             window.location.href(info.event.url);
@@ -240,7 +243,7 @@
 				e2.printStackTrace();
 			}
 		}
-	
+		
 	%>
 				<!-- 추천 자격증 구현 끝! -->
 			</div>

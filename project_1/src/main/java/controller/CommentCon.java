@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.Certificate;
 import domain.Comment;
 
 @WebServlet("/CommentCon")
@@ -31,6 +33,7 @@ public class CommentCon extends HttpServlet {
 		String certi_num = request.getParameter("certi_num");
 		String datetime = request.getParameter("datetime");
 		String message = request.getParameter("message");
+		String member_userid = request.getParameter("id");
 		
 		// 전역변수로 선언해주기
 		Connection conn = null;
@@ -53,27 +56,32 @@ public class CommentCon extends HttpServlet {
 				System.out.println("DB 연결 실패");
 			}
 			
-			String sql = "insert into comment(comm_datetime, certi_num, member_num, comm_text) values(?,?,?,?)";
+			String sql = "insert into comment(comm_datetime, certi_num, member_num, comm_text, member_userid) values(?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, datetime);
 			psmt.setString(2, certi_num);
 			psmt.setInt(3, num);
 			psmt.setString(4, message);
+			psmt.setString(5, member_userid);
 			int cnt = psmt.executeUpdate();
 			
 			sql = "select * from comment where certi_num=?";
 			psmt2 =  conn.prepareStatement(sql);
 			psmt2.setString(1, certi_num);
 			rs = psmt2.executeQuery();
-
+	
+			//HttpSession session = request.getSession();
+	        //ArrayList<Comment> commList = new ArrayList<Comment>();
+			
 			if ((cnt > 0) && (rs.next() == true)) {
 				int unum = rs.getInt(1); 
 				String udatetime = rs.getString(2); 
 				String ucerti_num = rs.getString(3); 
 				int umember_num = rs.getInt(4); 
 				String umessage = rs.getString(5);  
+				String uid= rs.getString(6);  
 				
-				Comment commentvo = new Comment(unum, udatetime, ucerti_num, umember_num, umessage);
+				Comment commentvo = new Comment(unum, udatetime, ucerti_num, umember_num, umessage, uid);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("commentvo", commentvo);
@@ -82,7 +90,20 @@ public class CommentCon extends HttpServlet {
 				response.sendRedirect("login_certi_outline.jsp");
 			} else {
 				System.out.println("sql문 실행 실패!!!");
-			}			
+			}		
+	        
+//	        while(rs.next())
+//	        {
+//	        	int unum = rs.getInt(1); 
+//				String udatetime = rs.getString(2); 
+//				String ucerti_num = rs.getString(3); 
+//				int umember_num = rs.getInt(4); 
+//				String umessage = rs.getString(5);  
+//				String uid= rs.getString(6); 
+//				
+//				commList.add(new Comment(unum, udatetime, ucerti_num, umember_num, umessage, uid));
+//	        }
+//	        session.setAttribute("commList", commList);
 
 		} catch (Exception e) {
 			// Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류
