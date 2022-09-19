@@ -187,12 +187,12 @@ public class TotalCertiDateCon extends HttpServlet {
 //     		System.out.println("이름 : "+ certi.getCerti_name());
 //     		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
 //     	}
-         	if(membervo==null) {
+         	//if(membervo==null) {
          		response.sendRedirect("calendar.jsp");
-         	}
-         	else {
-         		response.sendRedirect("login_index.jsp");
-         	}
+         	//}
+         	//else {
+         	//	response.sendRedirect("login_index.jsp");
+         	//}
 	     } catch (Exception e) {
 	        e.printStackTrace();
 	     } finally {
