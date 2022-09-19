@@ -48,8 +48,11 @@
               
               %>
               <% for (Certificate vo : test){%>
-            	  {
-            		  title : '<%= vo.getCerti_name() %>',
+              	{   <% if(vo.getCerti_prctc_test_start_date() == null){%>
+              				title : '<%= vo.getCerti_name() %>',
+              		<%} else{%>
+              				title : '<%= vo.getCerti_name() %>필기',
+              		<%}%>
             		  start : '<%= vo.getCerti_hndw_test_start_date() %>',
             		  end : '<%= vo.getCerti_hndw_test_end_date() %>',
             		  color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
@@ -60,6 +63,14 @@
                  //System.out.println(vo.getCerti_prctc_test_start_date());
                  
               //}
+              <% for (Certificate vo : test){%>
+	              {
+	              title  : '<%= vo.getCerti_name() %>실기',
+	              start  : '<%= vo.getCerti_prctc_test_start_date() %>',
+	              end : '<%= vo.getCerti_prctc_test_end_date() %>',
+	              color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+	            	},
+            <% } %>
             {
               title  : 'event3',
               start  : '2010-01-09T12:30:00',
