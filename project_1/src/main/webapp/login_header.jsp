@@ -81,7 +81,7 @@
 		<!-- 모두의 자격증 로고 끝 -->
 
 		<!-- 메뉴바 -->
-		<div class="original-nav-area" id="stickyNav" style="margin-left: 700px;">
+		<div class="original-nav-area" id="stickyNav">
 			<div class="classy-nav-container breakpoint-off">
 				<div class="container">
 					<nav class="classy-navbar justify-content-between">

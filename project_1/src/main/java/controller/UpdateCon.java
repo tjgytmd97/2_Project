@@ -96,8 +96,10 @@ public class UpdateCon extends HttpServlet {
 		} finally {
 			// DB 연결해제는 필수
 			try {
-				if (psmt != null)
+				if (psmt != null) {
 					psmt.close();
+					psmt2.close();
+				}
 				if (conn != null)
 					conn.close();
 
