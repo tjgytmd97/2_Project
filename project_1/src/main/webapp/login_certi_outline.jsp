@@ -371,7 +371,7 @@
 								Connection conn1 = null;
 								PreparedStatement psmt3 = null;
 								ResultSet rs1 = null;
-								
+																
 								try {
 									Class.forName("com.mysql.jdbc.Driver");
 							         System.out.println("클래스파일 로딩 도전!");
@@ -398,16 +398,27 @@
   									out.print("<th style='padding-top:10px;'>시간</th>");
   									out.print("<th style='padding-top:10px;'>내용</th>");
   									out.print("</tr>");
-  																		
+  								
   									while (rs1.next()) {
   										String member_id1 = rs1.getString(6);
   										String comm_datetime1 = rs1.getString(2);
   										String comm_text1 = rs1.getString(5);
-
+  										String delname = membervo.getId();
+  										int delnum = rs1.getInt(1);
+  										
   										out.print("<tr>");
   										out.print("<td style='padding-top:10px;'> " + member_id1 + "</td>");
   										out.print("<td style='padding-top:10px;'> " + comm_datetime1 + "</td>");
   										out.print("<td style='padding-top:10px;'> " + comm_text1 + "</td>");
+  										if(delname.equals(member_id1))
+  										{		
+  											out.print("<td style='padding-top:10px;'>"); 
+  											out.print("<form action='ComdeleteCon' method='post'>");
+  											out.print("<input type='hidden' name='num' value='"+delnum+"'>");
+  						                    out.print("<button type='submit' style='border: none; width:50px; font-family:'맑은 고딕';'>삭제</button>");
+  											out.print("</form>");
+  											out.print("</td>"); 
+  										}  										 										
   									}  									
   									out.print("</table>");
 								} catch (Exception e) {
