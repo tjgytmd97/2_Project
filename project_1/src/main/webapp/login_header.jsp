@@ -101,7 +101,7 @@
 							<div class="classynav">
 								<ul>
 									<!-- 메인페이지버튼 -->
-									<li><a href="index.jsp"
+									<li><a href="login_index.jsp"
 										style="font-size: 20px; font-weight: bold;">메인페이지</a></li>
 									<!-- 자격증정보보기버튼 (수정)-->
 									<li><a href="login_certi_all.html"

@@ -42,11 +42,6 @@
         	  },
           events: [
             {
-              title  : 'event2',
-              start  : '2022-09-05',
-              end    : '2022-09-07'
-            },
-            {
               title  : 'event3',
               start  : '2010-01-09T12:30:00',
               allDay : false // will make the time show
