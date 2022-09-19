@@ -672,17 +672,17 @@ p {
 	<script type="text/javascript">
 				$('.sub1').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 				$('.sub2').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 				$('.sub3').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 	</script>
