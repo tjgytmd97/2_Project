@@ -170,7 +170,7 @@ public class MyCertiDateCon extends HttpServlet {
 //	         		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
 //	         	}
 	             	
-	    	        response.sendRedirect("login_calendar.jsp");
+	    	        response.sendRedirect("DdayCon");
 	    	        
 	    	     } catch (Exception e) {
 	    	        e.printStackTrace();
