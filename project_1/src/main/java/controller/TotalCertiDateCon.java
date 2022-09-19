@@ -1,13 +1,11 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +18,8 @@ import domain.Certificate;
 import domain.Member;
 
 
-@WebServlet("/DateCon")
-public class DateCon extends HttpServlet {
+@WebServlet("/TotalCertiDateCon")
+public class TotalCertiDateCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public String DateCheck(String str) {
@@ -67,7 +65,7 @@ public class DateCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	    System.out.println("\n\n[DateCon]");
+	    System.out.println("\n\n[TotalCertiDateCon]");
         
 /*	    select certi_hndw_rcp_start_date  ,certi_hndw_rcp_end_date  ,certi_hndw_test_start_date  ,
 	    certi_hndw_test_end_date  ,certi_hndw_pass_start_date  ,certi_hndw_pass_end_date  ,
@@ -90,12 +88,8 @@ public class DateCon extends HttpServlet {
 	     Connection conn = null;
 	     
 	     PreparedStatement psmt01 = null;
-	     PreparedStatement psmt02 = null;
 	     
 	     ResultSet rs01 = null;
-	     ResultSet rs02 = null; 
-	     
-	     int rowCnt = 0;
 	     
 	     try {
 	         Class.forName("com.mysql.jdbc.Driver");
@@ -120,11 +114,8 @@ public class DateCon extends HttpServlet {
 	        // 전체 자격증 날짜 조회 sql문
 	        String sql01 = "select * from certificate";     
 	        
-	        
 	        psmt01 =  conn.prepareStatement(sql01);
 	        rs01 = psmt01.executeQuery();
-	        
-//	        Certificate certi = new Certificate();
 	        
 	        ArrayList<Certificate> totalList = new ArrayList<Certificate>();
 	        
@@ -187,17 +178,15 @@ public class DateCon extends HttpServlet {
 //     		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
 //     	}
          	
-	        //response.sendRedirect("login_calendar.jsp");
+	        //response.sendRedirect("calendar.jsp");
 	        
 	     } catch (Exception e) {
 	        e.printStackTrace();
 	     } finally {
 	        try {
 	           if(psmt01 != null) psmt01.close();
-	           if(psmt02 != null) psmt02.close();           
 	           if(conn != null) conn.close();
 	           if(rs01 != null) rs01.close();
-	           if(rs02 != null) rs02.close();          
 	        } catch (Exception e2) {
 	                 e2.printStackTrace();
 	        }
