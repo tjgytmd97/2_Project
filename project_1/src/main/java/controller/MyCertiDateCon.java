@@ -165,12 +165,12 @@ public class MyCertiDateCon extends HttpServlet {
 	    	        
 	    	        session.setAttribute("myCertiDate", myList);
 
-	             	for(Certificate certi: myList) {
-	         		System.out.println("이름 : "+ certi.getCerti_name());
-	         		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
-	         	}
+//	             	for(Certificate certi: myList) {
+//	         		System.out.println("이름 : "+ certi.getCerti_name());
+//	         		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
+//	         	}
 	             	
-	    	        //response.sendRedirect("login_calendar.jsp");
+	    	        response.sendRedirect("login_calendar.jsp");
 	    	        
 	    	     } catch (Exception e) {
 	    	        e.printStackTrace();
