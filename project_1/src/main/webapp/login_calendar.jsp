@@ -1,3 +1,5 @@
+<%@page import="domain.Certificate"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,11 +37,30 @@
         	    alert('a day has been clicked!');
         	  },
           events: [
-            {
-              title  : 'event2',
-              start  : '2022-09-05',
-              end    : '2022-09-07'
-            },
+        	  
+        	  <%
+        	  ArrayList<Certificate> test = (ArrayList)session.getAttribute("myCertiDate");
+              
+              %>
+              <% for (Certificate vo : test){%>
+            	{   <% if(vo.getCerti_prctc_test_start_date() == null){%>
+            				title : '<%= vo.getCerti_name() %>',
+            		<%} else{%>
+            				title : '<%= vo.getCerti_name() %>필기',
+            		<%}%>
+          		  start : '<%= vo.getCerti_hndw_test_start_date() %>',
+          		  end : '<%= vo.getCerti_hndw_test_end_date() %>',
+          		  color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+          	  },
+           <% } %>
+	           <% for (Certificate vo : test){%>
+	           {
+	           title  : '<%= vo.getCerti_name() %>실기',
+	           start  : '<%= vo.getCerti_prctc_test_start_date() %>',
+	           end : '<%= vo.getCerti_prctc_test_end_date() %>',
+	           color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+	         	},
+	     <% } %>
             {
               title  : 'event3',
               start  : '2010-01-09T12:30:00',
