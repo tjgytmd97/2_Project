@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="domain.Certificate"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -461,18 +463,125 @@ p {
                <div class="single-blog-post d-flex align-items-center widget-post">
                   <!-- Post Content -->
                   <%
-                     String hName = (String)session.getAttribute("hName");
-                     String pName = (String)session.getAttribute("pName");
-                     
-                     int hDdays = (int)session.getAttribute("hDdays");
-                     int pDdays = (int)session.getAttribute("pDdays");
+                  System.out.println("\n\n[login_calendar.jsp]");
+          		// 1. 값 가져오기
+          		// 2. 자격증 번호, 자격증 이름, 필기 / 실기 시험 시작일
+          		// 3. 현재 날짜에서 제일 가까운 날짜 2개 가져오기
+          		// 3-1. 현재 이후 날짜에서 제일 작은 거(if(now<date){제일 작은거})
+          		// 4. 그 날짜가 어떤 자격증의 필기인지 실기인지 알아야 함
+          		
+          		//사용자가 북마크 한 자격증 정보들
+          		
+          		ArrayList<Certificate> list = (ArrayList)session.getAttribute("myCertiDate");
+          	
+          		//현재 시스템 시간
+          		//date를 문자열로 바꾸기
+          		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+          		Date now = new Date();
+          		String formatedNow = formatter.format(now);
+          		
+          		now = formatter.parse(formatedNow);
+          		
+          		Date hndwDate = new Date();
+          		Date prctcDate = new Date();
+          		
+          		int hIndex = 0;
+          		int pIndex = 0;
+          		
+          		String hName = "";
+          		String pName = "";
+          		
+          		long hCal = 0;
+				int hDdays =0; 
+  				long pCal = 0;
+  				int pDdays = 0;
+  				
+  				String hShowDday ="";
+  				String pShowDday ="";
+          		
+          		String lineDate = "9999-12-31";
+          		Date hndwMin = new Date();
+          		Date prctcMin = new Date();
+          		
+          			for(int i=0; i<list.size();i++){
+		          			if(list.get(i).getCerti_hndw_test_start_date()!=null)
+		          			{
+		          					hndwDate = formatter.parse(list.get(i).getCerti_hndw_test_start_date());
+		
+		          					System.out.println("hndwDate : "+hndwDate);
+		          					System.out.println("prctcDate : "+prctcDate);
+		          					if(hndwDate.after(now))
+		          					{
+		          						//이후 날짜들
+		          							hndwMin = formatter.parse(lineDate);
+		
+		          						//hndwDate
+		          					if(hndwDate.before(hndwMin)){
+		          						hndwMin = hndwDate;
+		          						hIndex = i;
+		          						
+		          						 hName = list.get(hIndex).getCerti_name();
+			          					 hCal = hndwMin.getTime() - now.getTime();
+			          					 hDdays = (int) (hCal / ( 24*60*60*1000));
+			          					hShowDday = hName+" D-"+hDdays;
+		          						//System.out.println("필기인덱스 : "+i);
+		          					}
+		          				}
+		          					else{
+		          						//System.out.println(formatter.format(hndwDate)+"\n이전날짜 입니다\n\n");
+		          					}
+		          					
+		          					
+		          			}
+		          			
+		          			if(list.get(i).getCerti_prctc_test_start_date()!=null)
+		          			{
+		          				// 현재 이후 날짜 구하기
+		          					prctcDate =formatter.parse(list.get(i).getCerti_prctc_test_start_date());
+		
+		          					if(prctcDate.after(now))
+		          					{
+		          							prctcMin = formatter.parse(lineDate);
+		          						
+		          					if(prctcDate.before(prctcMin)){
+		          						prctcMin = prctcDate;
+		          						pIndex = i;
+		          						
+		          						pName = list.get(pIndex).getCerti_name();
+			              				 pCal = prctcMin.getTime() - now.getTime();
+			              				 pDdays = (int) (pCal / ( 24*60*60*1000));
+			              				 pShowDday = pName+" D-"+pDdays;
+		          						//System.out.println("실기인덱스 : "+i);
+		          					}
+		          				}
+		          					else{
+		          						//System.out.println(formatter.format(prctcDate)+"\n이전날짜 입니다\n\n");
+		          					} 
+		          					
+		          			}	
+          		} 
+
+          				//System.out.println("hDdays : " + hDdays);
+          				//System.out.println("pDdays : " + pDdays);
+          				
+          				
+          				
+/*           				if(hName!=null)
+          				{
+          					hShowDday = hName+" D-"+hDdays;
+          				}
+          				if(pName!=null)
+          				{
+          					pShowDday = pName+" D-"+pDdays;
+          				} */
                   %>
                   
                   <div class="post-content">
                      <h5>필기</h5>
                      <h4>
                         <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
-                        <a href="#" class="post-headline"><%=hName%>  D-<%= hDdays%></a>
+                        <a href="#" class="post-headline"><%=hShowDday%></a>
                      </h4>
                   </div>
                </div>
@@ -482,7 +591,7 @@ p {
                   <div class="post-content">
                   <h5>실기</h5>
                      <h4>
-                        <a href="#" class="post-headline"><%=pName%>  D-<%= pDdays%></a>
+                        <a href="#" class="post-headline"><%=pShowDday%></a>
                         <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%>
                      </h4>
                   </div>
