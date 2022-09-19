@@ -39,25 +39,7 @@
           initialView: 'dayGridMonth',
           contentHeight: 600,//캘린더 크기 설정
           editable: true,//수정 여부
-          locale:'ko',
-          dateClick: function() {
-        	    alert('a day has been clicked!');
-        	  },
-          events: [
-            {
-              title  : '정보통신기사',
-              start  : '2022-09-19',
-              end    : '2022-09-24'
-            },
-            {
-                title  : '파이썬마스터3급',
-                start  : '2022-09-19',
-                end    : '2022-09-29'
-              }
-          ]
-        ,eventClick:function(info){
-            window.location.href(info.event.url);
-            }
+          locale:'ko' 
         });
         calendar.render();
         
