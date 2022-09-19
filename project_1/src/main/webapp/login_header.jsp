@@ -101,13 +101,13 @@
 							<div class="classynav">
 								<ul>
 									<!-- 메인페이지버튼 -->
-									<li><a href="login_index.jsp"
+									<li><a href="TotalCertiDateCon"
 										style="font-size: 20px; font-weight: bold;">메인페이지</a></li>
 									<!-- 자격증정보보기버튼 (수정)-->
 									<li><a href="login_certi_all.html"
 										style="font-size: 20px; font-weight: bold;">자격증 정보 보기</a></li>
 									<!-- 달력(수정) -->
-									<li><a href="login_calendar.jsp"
+									<li><a href="MyCertiDateCon"
 										style="font-size: 20px; font-weight: bold;">My 달력</a></li>
 								</ul>
 							</div>

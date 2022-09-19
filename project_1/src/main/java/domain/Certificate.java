@@ -72,6 +72,31 @@ public Certificate(String certi_name, String certi_outline, String certi_instt, 
 }
 
 
+
+
+public Certificate(String certi_num, String certi_name, String certi_hndw_rcp_start_date,
+		String certi_hndw_rcp_end_date, String certi_hndw_test_start_date, String certi_hndw_test_end_date,
+		String certi_hndw_pass_start_date, String certi_hndw_pass_end_date, String certi_prctc_rcp_start_date, String certi_prctc_rcp_end_date,
+		String certi_prctc_test_start_date, String certi_prctc_test_end_date, String certi_final_pass_start_date,
+		String certi_final_pass_end_date) {
+	super();
+	this.certi_num = certi_num;
+	this.certi_name = certi_name;
+	this.certi_hndw_rcp_start_date = certi_hndw_rcp_start_date;
+	this.certi_hndw_rcp_end_date = certi_hndw_rcp_end_date;
+	this.certi_hndw_test_start_date = certi_hndw_test_start_date;
+	this.certi_hndw_test_end_date = certi_hndw_test_end_date;
+	this.certi_hndw_pass_start_date = certi_hndw_pass_start_date;
+	this.certi_hndw_pass_end_date = certi_hndw_pass_end_date;
+	this.certi_prctc_rcp_start_date = certi_prctc_rcp_start_date;
+	this.certi_prctc_rcp_end_date = certi_prctc_rcp_end_date;
+	this.certi_prctc_test_start_date = certi_prctc_test_start_date;
+	this.certi_prctc_test_end_date = certi_prctc_test_end_date;
+	this.certi_final_pass_start_date = certi_final_pass_start_date;
+	this.certi_final_pass_end_date = certi_final_pass_end_date;
+}
+
+
 public Certificate(String certi_num, String certi_name, String certi_category, String certi_year, String certi_rnd,
          String certi_outline, String certi_instt, String certi_instt_url, String certi_fee, String certi_acq_mthd,
          String certi_qlf, String certi_related, String certi_testId_issue_start_date,
