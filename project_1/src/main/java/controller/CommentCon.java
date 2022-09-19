@@ -31,6 +31,7 @@ public class CommentCon extends HttpServlet {
 		String certi_num = request.getParameter("certi_num");
 		String datetime = request.getParameter("datetime");
 		String message = request.getParameter("message");
+		String member_userid = request.getParameter("id");
 		
 		// 전역변수로 선언해주기
 		Connection conn = null;
@@ -53,12 +54,13 @@ public class CommentCon extends HttpServlet {
 				System.out.println("DB 연결 실패");
 			}
 			
-			String sql = "insert into comment(comm_datetime, certi_num, member_num, comm_text) values(?,?,?,?)";
+			String sql = "insert into comment(comm_datetime, certi_num, member_num, comm_text, member_userid) values(?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, datetime);
 			psmt.setString(2, certi_num);
 			psmt.setInt(3, num);
 			psmt.setString(4, message);
+			psmt.setString(5, member_userid);
 			int cnt = psmt.executeUpdate();
 			
 			sql = "select * from comment where certi_num=?";
@@ -72,8 +74,9 @@ public class CommentCon extends HttpServlet {
 				String ucerti_num = rs.getString(3); 
 				int umember_num = rs.getInt(4); 
 				String umessage = rs.getString(5);  
+				String uid= rs.getString(5);  
 				
-				Comment commentvo = new Comment(unum, udatetime, ucerti_num, umember_num, umessage);
+				Comment commentvo = new Comment(unum, udatetime, ucerti_num, umember_num, umessage, uid);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("commentvo", commentvo);
