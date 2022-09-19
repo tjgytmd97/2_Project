@@ -69,6 +69,7 @@
 										href="<%=certificatevo.getCerti_instt_url()%>"><%=certificatevo.getCerti_instt_url()%></a>
 								</p>
 							</div>
+<hr style="border: solid 0.5px; margin-bottom:50px">
 							<h5 style="font-weight:bold;">자격증 정보</h5>
 							<p style="font-size: 15px;"><%=certificatevo.getCerti_outline()%></p>
 							<div style="padding-bottom:15px">
@@ -195,76 +196,89 @@
 									}
 								}
 								%>
-								
-								
-								<%-- <table style="width: 1000px;">
-								<tr>
-								<th style="padding-top:10px;">가격</th>
-								<th style="padding-top:10px;">필기 원서 접수 기간</th>
-								<th style="padding-top:10px;">필기 시험 기간</th>
-								<th style="padding-top:10px;">필기 시험 발표일</th>
-								</tr>
-								
-								<tr>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_fee() %></td>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_rcp_start_date() %>~<%= certificatevo.getCerti_hndw_rcp_end_date() %></td>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_test_start_date() %>~<%= certificatevo.getCerti_hndw_test_end_date() %></td>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_hndw_pass_start_date() %>~<%= certificatevo.getCerti_hndw_pass_end_date() %></td>
-								</tr>
-								
-								<tr>
-								<th style="padding-top:10px;">실기 원서 접수 기간</th>
-								<th style="padding-top:10px;">실기 시험 기간</th>
-								<th style="padding-top:10px;">최종 합격 발표일</th>
-								</tr>
-								
-								<tr>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_prctc_rcp_start_date() %>~<%= certificatevo.getCerti_prctc_rcp_end_date() %></td>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_prctc_test_start_date()%>~<%= certificatevo.getCerti_prctc_test_end_date()%></td>
-								<td style="padding-bottom:10px;"><%= certificatevo.getCerti_final_pass_start_date()%>~<%= certificatevo.getCerti_final_pass_end_date()%></td>
-								</tr>
-							</table> --%>
 							</div>
 						</div>
 					</div>
 
-					<!-- 댓글보기 기능 구현 (수정)-->
-					<div class="comment_area clearfix mt-70">
-						<h5 class="title">댓글</h5>
+					
+<hr style="border: solid 0.5px;">
+               <!-- 댓글보기 기능 구현 (수정)-->
+               <div class="comment_area clearfix mt-70">
+                  <h5 style="font-weight:bold; margin-bottom:10px;">댓글</h5>
+                  <ol>
+                     <!-- 댓글내용(수정) -->
+                     <li class="single_comment_area">
+                        <div class="comment-content d-flex">
+                           <div class="comment-meta">
+                              <!-- <a href="#" class="post-date">날짜</a>
+                              <p>
+                                 <a href="#" class="post-author">서효승</a>
+                              </p> -->
+                              <%                               	
+                              	String certi_num = certificatevo.getCerti_num();
+								Connection conn1 = null;
+								PreparedStatement psmt3 = null;
+								ResultSet rs1 = null;
+								
+								try {
+									Class.forName("com.mysql.jdbc.Driver");
+							         System.out.println("클래스파일 로딩 도전!");
 
-						<ol>
-							<!-- 댓글내용(수정) -->
-							<li class="single_comment_area">
-								<div class="comment-content d-flex">
-									<div class="comment-meta">
-										<a href="#" class="post-date">날짜</a>
-										<p>
-											<a href="#" class="post-author">서효승</a>
-										</p>
-									</div>
-								</div>
-							</li>
-						</ol>
-					</div>
+							         String url = "jdbc:mysql://project-db-stu.ddns.net:3307/suncheon_0825_5";
+							         String dbid = "suncheon_0825_5";
+							         String dbpw = "smhrd5";
+							         conn1 = DriverManager.getConnection(url, dbid, dbpw);
 
-					<!-- 댓글달기 기능 구현(수정) -->
-					<div class="post-a-comment-area mt-70">
-						<h5>댓글달기</h5>
-						<!-- Reply Form -->
-						<form action="#" method="post">
-							<div class="row">
-								<div class="col-12">
-									<div class="group">
-										<textarea name="message" id="message" required></textarea>
-										<span class="highlight"></span> <span class="bar"></span> <label>댓글</label>
-									</div>
-								</div>
-								<div class="col-12">
-									<button type="submit" class="btn original-btn">확인</button>
-								</div>
-							</div>
-						</form>
-					</div>
+							         if (conn1 != null) {
+							            System.out.println("DB 연결 성공");
+							         } else {
+							            System.out.println("DB 연결 실패");
+							         }
+									// sql문 세팅
+  									String sql = "select * from comment where certi_num=?";
+  									psmt3 = conn1.prepareStatement(sql);
+  									psmt3.setString(1, certi_num);
+
+  									rs1 = psmt3.executeQuery();
+  									out.print("<table style='width: 1000px;'>");
+  									out.print("<tr>");
+  									out.print("<th style='padding-top:10px;'>작성자</th>");
+  									out.print("<th style='padding-top:10px;'>시간</th>");
+  									out.print("<th style='padding-top:10px;'>내용</th>");
+  									out.print("</tr>");
+  																		
+  									while (rs1.next()) {
+  										String member_id1 = rs1.getString(6);
+  										String comm_datetime1 = rs1.getString(2);
+  										String comm_text1 = rs1.getString(5);
+
+  										out.print("<tr>");
+  										out.print("<td style='padding-top:10px;'> " + member_id1 + "</td>");
+  										out.print("<td style='padding-top:10px;'> " + comm_datetime1 + "</td>");
+  										out.print("<td style='padding-top:10px;'> " + comm_text1 + "</td>");
+  									}  									
+  									out.print("</table>");
+								} catch (Exception e) {
+  									e.printStackTrace();
+  								} finally {
+  									try {
+  										if (psmt3 != null) {
+  											psmt3.close();
+  										}
+  										if (conn1 != null)
+  											conn1.close();
+
+  									} catch (Exception e2) {
+  										e2.printStackTrace();
+  									}
+  								}
+                              
+                              %>
+                           </div>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
 
 
 				</div>
