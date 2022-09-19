@@ -453,32 +453,42 @@ p {
 						</div>
 					</div>
 				</div>
-				<div style="margin-bottom: 50px;">
-					<h2 class="title">디데이</h2>
-					<div class="widget-content"
-						style="border: 1px solid black; width: 300px;">
-						<!-- Single Blog Post -->
-						<div
-							class="single-blog-post d-flex align-items-center widget-post">
-							<!-- Post Content -->
-							<div class="post-content">
-								<h4>
-									<a href="#" class="post-headline">디데이1</a>
-								</h4>
-							</div>
-						</div>
-						<!-- Single Blog Post -->
-						<div
-							class="single-blog-post d-flex align-items-center widget-post">
-							<!-- Post Content -->
-							<div class="post-content">
-								<h4>
-									<a href="#" class="post-headline">디데이2</a>
-								</h4>
-							</div>
-						</div>
-					</div>
-				</div>
+         <div style="margin-bottom: 50px;">
+            <h2 class="title">디데이</h2>
+            <div class="widget-content"
+               style="border: 1px solid black; width: 300px;">
+               <!-- Single Blog Post -->
+               <div class="single-blog-post d-flex align-items-center widget-post">
+                  <!-- Post Content -->
+                  <%
+                     String hName = (String)session.getAttribute("hName");
+                     String pName = (String)session.getAttribute("pName");
+                     
+                     int hDdays = (int)session.getAttribute("hDdays");
+                     int pDdays = (int)session.getAttribute("pDdays");
+                  %>
+                  
+                  <div class="post-content">
+                     <h5>필기</h5>
+                     <h4>
+                        <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
+                        <a href="#" class="post-headline"><%=hName%>  D-<%= hDdays%></a>
+                     </h4>
+                  </div>
+               </div>
+               <!-- Single Blog Post -->
+               <div class="single-blog-post d-flex align-items-center widget-post">
+                  <!-- Post Content -->
+                  <div class="post-content">
+                  <h5>실기</h5>
+                     <h4>
+                        <a href="#" class="post-headline"><%=pName%>  D-<%= pDdays%></a>
+                        <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%>
+                     </h4>
+                  </div>
+               </div>
+            </div>
+         </div>
 				<div style="margin-bottom: 50px;">
 					<h2 class="title">자격증 추천</h2>
 					<div class="widget-content"
