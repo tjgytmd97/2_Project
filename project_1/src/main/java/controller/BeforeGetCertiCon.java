@@ -80,7 +80,7 @@ public class BeforeGetCertiCon extends HttpServlet {
  	        }
 	         
 	         session.setAttribute("getCertiNames", nameList);
-	         response.sendRedirect("login_calendar.jsp");
+	         response.sendRedirect("ShowBookmarkCon");
 	         
 	      } catch (Exception e) {
 	         // Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류
