@@ -57,7 +57,7 @@
 			height: 70%;
 			width: 90%;
 		}
-		img{
+		.img2{
 			height: 120px!important;
 			float: left!important;
 		}
@@ -151,7 +151,7 @@
                         	out.print(media);
                         	out.print("</h3>");
                         	String src = rs1.getString("news_img");
-                        	out.print("<img src="+ src +">");
+                        	out.print("<img class='img2' src="+ src +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url1 = rs1.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url1 +"' class='post-headline'>");
@@ -173,7 +173,7 @@
                         	out.print(media2);
                         	out.print("</h3>");
                         	String src2 = rs2.getString("news_img");
-                        	out.print("<img src="+ src2 +">");
+                        	out.print("<img class='img2' src="+ src2 +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url2 = rs2.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url2 +"' class='post-headline'>");
@@ -196,7 +196,7 @@
                         	out.print(media3);
                         	out.print("</h3>");
                         	String src3 = rs3.getString("news_img");
-                        	out.print("<img src="+ src3 +">");
+                        	out.print("<img class='img2' src="+ src3 +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url3 = rs3.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url3 +"' class='post-headline'>");
