@@ -53,24 +53,19 @@ public class GetCertiCon extends HttpServlet {
          }
          
        HttpSession session = request.getSession();
-       String test = (String)request.getParameter("certi_name");
-       System.out.println(test);
-       Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
-       String cnum = certificatevo.getCerti_num(); 
-       
        Member membervo = (Member)session.getAttribute("membervo");
        String unum= Integer.toString(membervo.getNum());
-         
-         String sql = "INSERT INTO get_certificate(certi_num, member_num) "
-         			+ "SELECT ?,? FROM dual "
-         			+ "where NOT EXISTS "
-         			+ "(SELECT certi_num, member_num FROM get_certificate "
-         			+ "WHERE certi_name = ? AND member_num = ?)";
+       String sql = "INSERT INTO get_certificate(certi_num, member_num)  "
+       		+ "SELECT (select certi_num from certificate where certi_name = ? limit 1), ? FROM dual  "
+       		+ "where NOT EXISTS  "
+       		+ "(SELECT certi_num, member_num FROM get_certificate  "
+       		+ "WHERE certi_num = (select certi_num from certificate where certi_name = ? limit 1) AND member_num = ?)";
+       
          // sql 실행전 셋팅
          psmt = conn.prepareStatement(sql);
          // 바인드 변수는 자동으로 "" 안에 id를 넣는다.
          
-         psmt.setString(1, cnum);
+         psmt.setString(1, certi_name);
          psmt.setString(2, unum);
          psmt.setString(3, certi_name);
          psmt.setString(4, unum);
@@ -79,7 +74,7 @@ public class GetCertiCon extends HttpServlet {
 //         psmt.setString(2, "6");
          
          int cnt = psmt.executeUpdate();
-
+         
          // 6. 실행 후 처리
          if (cnt > 0) {
             // sql문 실행 성공
@@ -91,7 +86,9 @@ public class GetCertiCon extends HttpServlet {
             
          }
          
-         response.sendRedirect("login_calendar.jsp");
+         
+         session.setAttribute("getCertiName", certi_name);
+         response.sendRedirect("BeforeGetCertiCon");
          
       } catch (Exception e) {
          // Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류
