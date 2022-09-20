@@ -5,7 +5,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -184,7 +184,7 @@
 						<div class="post-content">
 							<h4>
 								<a href="#" class="post-headline sub1">
-									<%
+								<%
 									if (rs1.next() == true) {
 										String name1 = rs1.getString("certi_name");
 										out.print(name1);
@@ -295,17 +295,17 @@
 	<script type="text/javascript">
 				$('.sub1').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 				$('.sub2').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 				$('.sub3').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 	</script>

@@ -58,7 +58,7 @@ public class MyCertiDateCon extends HttpServlet {
 				
 			}
 		}
-		catch(IndexOutOfBoundsException e) {	str=null;	}
+		catch(IndexOutOfBoundsException e) {str=null;}
 		return str;
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -170,7 +170,7 @@ public class MyCertiDateCon extends HttpServlet {
 //	         		System.out.println(" 필기원서접수 시작: " + certi.getCerti_hndw_rcp_start_date());
 //	         	}
 	             	
-	    	        response.sendRedirect("DdayCon");
+	    	        response.sendRedirect("login_calendar.jsp");
 	    	        
 	    	     } catch (Exception e) {
 	    	        e.printStackTrace();
