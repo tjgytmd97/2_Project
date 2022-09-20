@@ -15,8 +15,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
@@ -75,13 +74,10 @@
             }
           ]
         ,eventClick:function(info){
-           /* 수정해야할부분 */
-          <%--  <%Certificate vo = (Certificate)session.getAttribute("allCertiDate");%>
-           location.href="SearchCon?certi_name=<%=vo.getCerti_name()%>"; --%>
-           
-           
-           
-           window.location.href(info.event.url);
+           var res = info.event.title;
+           console.log("res ::::: "+res);
+           /* location.href="SearchCon?certi_name="; */
+           /* window.location.href(info.event.url); */
             }
         });
         calendar.render();
