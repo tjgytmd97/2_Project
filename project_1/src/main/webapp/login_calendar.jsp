@@ -39,6 +39,7 @@
           contentHeight: 600,//캘린더 크기 설정
           editable: true,//수정 여부
           locale:'ko',
+          dayMaxEvents: true,
           events: [
         	  
         	  <%
