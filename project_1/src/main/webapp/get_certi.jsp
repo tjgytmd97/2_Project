@@ -65,7 +65,9 @@ a {
       <li><a href="GetCertiCon?certiname=통신선로기능사">통신선로기능사</a></li>
       <li><a href="GetCertiCon?certiname=통신선로산업기사">통신선로산업기사</a></li>
       <li><a href="GetCertiCon?certiname=통신설비기능장">통신설비기능장</a></li>
+      <li><a href="GetCertiCon?certiname=파이썬마스터1급">파이썬마스터1급</a></li>
       <li><a href="GetCertiCon?certiname=파이썬마스터2급">파이썬마스터2급</a></li>
+      <li><a href="GetCertiCon?certiname=파이썬마스터3급">파이썬마스터3급</a></li>
     </ul>
     
     </li>
