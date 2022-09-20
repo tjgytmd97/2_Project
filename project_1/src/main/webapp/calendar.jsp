@@ -5,7 +5,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -301,13 +301,11 @@
 				$('.sub2').click(function () {
 					   var hello = $(this).text();
 				        $('#kind').val(hello.trim());
-				        console.log(hello);
 				        $('form').submit();
 				});
 				$('.sub3').click(function () {
 					   var hello = $(this).text();
-				        $('#kind').val(hello);
-				        console.log(hello.trim());
+				        $('#kind').val(hello.trim());
 				        $('form').submit();
 				});
 	</script>
