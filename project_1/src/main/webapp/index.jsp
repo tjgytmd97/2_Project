@@ -57,7 +57,11 @@
 			height: 70%;
 			width: 90%;
 		}
-	
+		img{
+			height: 120px!important;
+			float: left!important;
+		}
+		
 	</style>
 	
 </head>
@@ -136,7 +140,7 @@
 			%>
 		<!-- 뉴스 구현(수정) -->
 		<div class="sidebar-widget-area">
-			<h5 class="title" style="margin-right: 500px;">뉴스</h5>
+			<h5 class="title" style="margin-right: 500px; font-size:40px;">뉴스</h5>
 			<div class="widget-content">
 				<div class="single-blog-post d-flex align-items-center widget-post">
 					<div class="post-content">
@@ -148,7 +152,7 @@
                         	out.print("</h3>");
                         	String src = rs1.getString("news_img");
                         	out.print("<img src="+ src +">");
-                        	out.print("<h4>");
+                        	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url1 = rs1.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url1 +"' class='post-headline'>");
                         	String title = rs1.getString("news_title");
@@ -170,7 +174,7 @@
                         	out.print("</h3>");
                         	String src2 = rs2.getString("news_img");
                         	out.print("<img src="+ src2 +">");
-                        	out.print("<h4>");
+                        	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url2 = rs2.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url2 +"' class='post-headline'>");
                         	String title2= rs2.getString("news_title");
@@ -193,7 +197,7 @@
                         	out.print("</h3>");
                         	String src3 = rs3.getString("news_img");
                         	out.print("<img src="+ src3 +">");
-                        	out.print("<h4>");
+                        	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url3 = rs3.getString("news_url");
                         	out.print("<a target='_blank' href='"+ url3 +"' class='post-headline'>");
                         	String title3 = rs3.getString("news_title");
