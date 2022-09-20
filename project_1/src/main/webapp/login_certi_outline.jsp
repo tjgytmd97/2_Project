@@ -217,8 +217,7 @@
                      </h4>
                      <div class="post-meta mb-50">
                         <p style="font-size:large;">
-                           <%= certificatevo.getCerti_instt() %> <br> 
-                           <a style="font-size:15px; " target="_blank" href="<%= certificatevo.getCerti_instt_url() %>"><%= certificatevo.getCerti_instt_url() %></a>
+                           <a style="font-size:15px; " target="_blank" href="<%= certificatevo.getCerti_instt_url() %>"> <%= certificatevo.getCerti_instt() %></a>
                         </p>
                      </div>
                      
@@ -362,10 +361,6 @@
                      <li class="single_comment_area">
                         <div class="comment-content d-flex">
                            <div class="comment-meta">
-                              <!-- <a href="#" class="post-date">날짜</a>
-                              <p>
-                                 <a href="#" class="post-author">서효승</a>
-                              </p> -->
                               <%                               	
                               	String certi_num = certificatevo.getCerti_num();
 								Connection conn1 = null;
@@ -392,12 +387,6 @@
   									psmt3.setString(1, certi_num);
 
   									rs1 = psmt3.executeQuery();
-  									out.print("<table style='width: 1000px;'>");
-  									out.print("<tr>");
-  									out.print("<th style='padding-top:10px;'>작성자</th>");
-  									out.print("<th style='padding-top:10px;'>시간</th>");
-  									out.print("<th style='padding-top:10px;'>내용</th>");
-  									out.print("</tr>");
   								
   									while (rs1.next()) {
   										String member_id1 = rs1.getString(6);
@@ -405,22 +394,21 @@
   										String comm_text1 = rs1.getString(5);
   										String delname = membervo.getId();
   										int delnum = rs1.getInt(1);
-  										
-  										out.print("<tr>");
-  										out.print("<td style='padding-top:10px;'> " + member_id1 + "</td>");
-  										out.print("<td style='padding-top:10px;'> " + comm_datetime1 + "</td>");
-  										out.print("<td style='padding-top:10px;'> " + comm_text1 + "</td>");
+  										out.print("<div style='width:500px;>");
+  										out.print("<span style='font-size:20px'>"+ member_id1 + "</span>"+"<br>");
+  										out.print("<span style='font-size:20px'>" + comm_text1 +"</span>"+"<br>");
+  										out.print("<span style='font-size:13px;'>"+comm_datetime1+"</span><br>");
   										if(delname.equals(member_id1))
   										{		
-  											out.print("<td style='padding-top:10px;'>"); 
-  											out.print("<form action='ComdeleteCon' method='post'>");
+  											out.print("<form action='ComdeleteCon' method='post' style='text-aline:right;'>");
   											out.print("<input type='hidden' name='num' value='"+delnum+"'>");
   						                    out.print("<button type='submit' style='border: none; width:50px; font-family:'맑은 고딕';'>삭제</button>");
   											out.print("</form>");
-  											out.print("</td>"); 
-  										}  										 										
-  									}  									
-  									out.print("</table>");
+  										}  	
+  										out.print("</div>");
+  										out.print("<hr style='background:black;'>");
+  																			 										
+  									} 
 								} catch (Exception e) {
   									e.printStackTrace();
   								} finally {
@@ -453,9 +441,7 @@
                      <input type="hidden" name="datetime" value="<%=(String)sf.format(nowTime)%>">
                      <input type="hidden" name="id" value="<%=membervo.getId()%>">
                   <div style="margin-bottom: 50px">
-                     <span>회원아이디: <%=membervo.getId()%></span>
-                     <span> / </span>
-                     <span>현재시간: <%=sf.format(nowTime)%></span>
+                     <span style="font-size:13px"><%=membervo.getId()%></span>
                   </div>
                      <div class="row">
                         <div class="col-12">
