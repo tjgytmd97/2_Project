@@ -64,9 +64,8 @@
 							</h4>
 							<div class="post-meta mb-50">
 								<p style="font-size: large;">
-									<%=certificatevo.getCerti_instt()%>
-									<br> <a style="font-size: 15px;" target="_blank"
-										href="<%=certificatevo.getCerti_instt_url()%>"><%=certificatevo.getCerti_instt_url()%></a>
+									<a style="font-size: 15px;" target="_blank"
+										href="<%=certificatevo.getCerti_instt_url()%>"><%=certificatevo.getCerti_instt()%><img src="./img/linklogo.jpg" width=30px;></a>								
 								</p>
 							</div>
 <hr style="border: solid 0.5px; margin-bottom:50px">
