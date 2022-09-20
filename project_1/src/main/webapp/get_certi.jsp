@@ -39,8 +39,8 @@
 				<button class="tablinks active" data-country="정보통신">
 					<p data-title="정보통신">정보통신</p>
 				</button>
-				<button class="tablinks active" data-country="네트워크및보안">
-					<p data-title="정보통신">네트워크 및 보안</p>
+				<button class="tablinks" data-country="네트워크및보안">
+					<p data-title="네트워크및보안">네트워크 및 보안</p>
 				</button>
 				<button class="tablinks" data-country="데이터베이스">
 					<p data-title="데이터베이스">데이터베이스</p>
@@ -57,12 +57,13 @@
 			</div>
 
 			<!-- Tab content -->
-			<div class="wrapper_tabcontent">
-			<form action="">
+			<!-- <div class="wrapper_tabcontent"> -->
+			<div>
 				<div id="정보통신" class="tabcontent active">
 					<h3>정보통신</h3>
+					<form action="GetCertiCon" method="post">
 					<p>
-						<button type="submit" name="certi_name" value="ICDL">ICDL</button>
+						<button type="submit" name="certi_name" value="ICDL">ICDL</button>	
 						<button type="submit" name="certi_name" value="SW코딩자격">SW코딩자격
 						</button>
 						<button type="submit" name="certi_name" value="리눅스마스터1급">리눅스마스터1급</button>
@@ -119,6 +120,7 @@
 						<button type="submit" name="certi_name" value="파이썬마스터">파이썬마스터3급
 						</button>
 					</p>
+					</form>
 				</div>
 
 				<div id="네트워크및보안" class="tabcontent">
@@ -234,7 +236,7 @@
 				</div>
 			</div>
 		</div>
-		</form>
+		
 		<%
 			//response.sendRedirect("GetCertiCon");
 		%>
