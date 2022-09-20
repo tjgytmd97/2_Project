@@ -253,14 +253,15 @@ p {
 		<div class="sidebar-widget-area" style="margin: 50px 200px 50px 1px;">
 			<div style="margin-bottom: 50px;">
 				<div class="container">
-					<div class="modal-btn-box">
-					<form action="get_certi.jsp">
+					
+					
 						<!-- 취득 자격증 카테고리로 이동 -->
-						<button  type="submit" id="modal-open">취득자격증</button>
-					</form>
-					</div>
+						<h2 class="title">취득자격증 <a href='get_certi.jsp'><img width="30px" height="30px" alt="" src="img/btn-img/plus.png"></a></h2>
+					
+					
 					<div class="widget-content"
-						style="border: 1px solid black; width: 300px;">
+						style="border: 1px solid black; width: 300px; height:200px; overflow:scroll;  margin-bottom: 50px;">
+						<div>
 						<%
 							ArrayList<String> nameList = (ArrayList)session.getAttribute("getCertiNames");
 									
@@ -270,7 +271,6 @@ p {
 									//System.out.println(nameList.get(i));
 									out.print("<!-- Single Blog Post -->");
 									out.print("<div class='single-blog-post d-flex align-items-center widget-post'>");
-												
 									out.print("<!-- Post Content -->");
 									out.print("<div class='post-content'>");
 									out.print("<h4>");
@@ -281,14 +281,15 @@ p {
 								} 
 							} 
 						%>
+						</div>
 					</div>
 				</div>
          <div style="margin-bottom: 50px;">
             <h2 class="title">디데이</h2>
             <div class="widget-content"
-               style="border: 1px solid black; width: 300px;">
+               style="border: 1px solid black; width: 300px; margin-bottom: 50px;">
                <!-- Single Blog Post -->
-               <div class="single-blog-post d-flex align-items-center widget-post">
+               <div class="single-blog-post d-flex align-items-center widget-post" >
                   <!-- Post Content -->
                   <%
                  
@@ -463,7 +464,7 @@ p {
 				<div style="margin-bottom: 50px;">
 					<h2 class="title">자격증 추천</h2>
 					<div class="widget-content"
-						style="border: 1px solid black; width: 300px;">
+						style="border: 1px solid black; width: 300px;  margin-bottom: 50px;">
 						<form action="SearchCon3">
 					<!-- Single Blog Post 폼테그 실험중 -->
 					<input type="hidden" name="kind" id="kind" value="" />
