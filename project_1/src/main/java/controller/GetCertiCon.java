@@ -26,13 +26,15 @@ public class GetCertiCon extends HttpServlet {
 //     	1. 버튼 취소
 //      2. 취득자격증을 화면에 표시 시키기
 //	    3. 버튼 위치 수정
-	   
-
       System.out.println("\n\n[GetCertiCon]");
 
       // 전역변수로 선언해주기
       Connection conn = null;
       PreparedStatement psmt = null;
+      
+      request.setCharacterEncoding("UTF-8");
+      String certi_name = request.getParameter("certiname");
+      System.out.println("certi_name"+certi_name);
 
       try {
          // 2. 동적로딩: 해당 경로의 클래스를 실행해서 JVM이 Driver에 로딩한다.
@@ -50,11 +52,12 @@ public class GetCertiCon extends HttpServlet {
             System.out.println("DB 연결 실패");
          }
          
-         HttpSession session = request.getSession();
-       
+       HttpSession session = request.getSession();
+       String test = (String)request.getParameter("certi_name");
+       System.out.println(test);
        Certificate certificatevo = (Certificate)session.getAttribute("certificatevo");
        String cnum = certificatevo.getCerti_num(); 
-      
+       
        Member membervo = (Member)session.getAttribute("membervo");
        String unum= Integer.toString(membervo.getNum());
          
@@ -62,14 +65,14 @@ public class GetCertiCon extends HttpServlet {
          			+ "SELECT ?,? FROM dual "
          			+ "where NOT EXISTS "
          			+ "(SELECT certi_num, member_num FROM get_certificate "
-         			+ "WHERE certi_num = ? AND member_num = ?)";
+         			+ "WHERE certi_name = ? AND member_num = ?)";
          // sql 실행전 셋팅
          psmt = conn.prepareStatement(sql);
          // 바인드 변수는 자동으로 "" 안에 id를 넣는다.
          
          psmt.setString(1, cnum);
          psmt.setString(2, unum);
-         psmt.setString(3, cnum);
+         psmt.setString(3, certi_name);
          psmt.setString(4, unum);
          
 //         psmt.setString(1, "i_091");
@@ -87,6 +90,7 @@ public class GetCertiCon extends HttpServlet {
             System.out.println("sql문 실행 실패!!!");
             
          }
+         
          response.sendRedirect("login_calendar.jsp");
          
       } catch (Exception e) {

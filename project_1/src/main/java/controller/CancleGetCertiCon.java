@@ -27,6 +27,10 @@ public class CancleGetCertiCon extends HttpServlet {
 	      // 전역변수로 선언해주기
 	      Connection conn = null;
 	      PreparedStatement psmt = null;
+	      
+	       request.setCharacterEncoding("UTF-8");
+	       String certi_name = request.getParameter("certiname");
+	       System.out.println("certi_name"+certi_name);
 
 	      try {
 	         // 2. 동적로딩: 해당 경로의 클래스를 실행해서 JVM이 Driver에 로딩한다.
@@ -52,12 +56,12 @@ public class CancleGetCertiCon extends HttpServlet {
 	         Member membervo = (Member)session.getAttribute("membervo");
 	         String unum= Integer.toString(membervo.getNum());
 	         
-	         String sql = "delete from get_certificate  where certi_num = ? and member_num = ?";
+	         String sql = "delete from get_certificate  where certi_name = ? and member_num = ?";
 	         // sql 실행전 셋팅
 	         psmt = conn.prepareStatement(sql);
 	         // 바인드 변수는 자동으로 "" 안에 id를 넣는다.
 	         
-	         psmt.setString(1, cnum);
+	         psmt.setString(1, certi_name);
 	         psmt.setString(2, unum);
 	         
 //	         psmt.setString(1, "i_091");
