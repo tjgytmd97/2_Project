@@ -78,6 +78,7 @@
             }
           ]
         ,eventClick:function(info){
+        	/* 수정해야할부분 */
             window.location.href(info.event.url);
             }
         });
