@@ -60,11 +60,13 @@
 			</div>
 			<!-- 로그아웃 버튼 (수정)-->
 			<div class="subscribe-btn">
-				<a href="index.jsp" class="btn subscribe-btn" data-target="#subsModal1">로그아웃</a>
+				<a href="index.jsp" class="btn subscribe-btn" data-target="#subsModal1" 
+				style="font-family: 휴먼편지체; font-size: 20px;">로그아웃</a>
 			</div>
 			<!-- 마이페이지 버튼 (수정) -->
 			<div class="subscribe-btn">
-				<a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal2">마이페이지</a>
+				<a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal2"
+				style="font-family: 휴먼편지체; font-size: 20px;">마이페이지</a>
 			</div>
 		</div>
 
@@ -102,13 +104,13 @@
 								<ul>
 									<!-- 메인페이지버튼 -->
 									<li><a href="login_index.jsp"
-										style="font-size: 20px; font-weight: bold;">메인페이지</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">메인페이지</a></li>
 									<!-- 자격증정보보기버튼 (수정)-->
 									<li><a href="login_certi_all.html"
-										style="font-size: 20px; font-weight: bold;">자격증 정보 보기</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">자격증 정보 보기</a></li>
 									<!-- 달력(수정) -->
 									<li><a href="MyCertiDateCon"
-										style="font-size: 20px; font-weight: bold;">My 달력</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">My 달력</a></li>
 								</ul>
 							</div>
 						</div>
