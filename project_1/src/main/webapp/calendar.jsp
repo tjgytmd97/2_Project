@@ -182,7 +182,7 @@ a {
 		%>
 		<div class="sidebar-widget-area">
 			<div class="widget-content">
-				<h3>추천 자격증</h3>
+				<h3 style="font-family: 휴먼편지체; font-size: 40px;">추천 자격증</h3>
 				<div class="single-blog-post d-flex align-items-center widget-post" style="border: 1px solid black;">
 					<form action="SearchCon3">
 						<!-- Single Blog Post 폼테그 실험중 -->

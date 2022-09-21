@@ -1,3 +1,5 @@
+<%@page import="domain.Certificate"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -24,11 +26,48 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
+<style type="text/css">
+nav {
+	width: 200px;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style: none;
+	line-height: 34px;
+}
+
+a {
+	display: block; /* 중요 */
+	text-decoration: none;
+	color: #616161;
+	text-align: center;
+}
+
+.snd_menu {
+	background: #efefef;
+}
+
+.trd_menu {
+	background: #ddd;
+}
+
+.sub_menu {
+	display: none;
+} /* 서브메뉴들 숨김 */
+.selec {
+	background: #c45;
+	color: #efefef;
+}
+</style>
+    
     <!-- 마이켈린더 -->  
-    <link href='./fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
-	<script src='./fullcalendar-5.11.3/lib/main.js'></script>
-	
-	<script>
+<link href='./fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
+<script src='./fullcalendar-5.11.3/lib/main.js'></script>
+<script>
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -37,7 +76,29 @@
           contentHeight: 600,//캘린더 크기 설정
           editable: true,//수정 여부
           locale:'ko',
+          dayMaxEvents: true,
           events: [
+             
+             <%ArrayList<Certificate> test = (ArrayList) session.getAttribute("allCertiDate");%>
+              <%for (Certificate vo : test) {%>
+                 {   <%if (vo.getCerti_prctc_test_start_date() == null) {%>
+                          title : '<%=vo.getCerti_name()%>',
+                    <%} else {%>
+                          title : '<%=vo.getCerti_name()%>필기',
+                    <%}%>
+                    start : '<%=vo.getCerti_hndw_test_start_date()%>',
+                    end : '<%=vo.getCerti_hndw_test_end_date()%>',
+                    color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+                 },
+             <%}%>
+              <%for (Certificate vo : test) {%>
+                 {
+                 title  : '<%=vo.getCerti_name()%>실기',
+                 start  : '<%=vo.getCerti_prctc_test_start_date()%>',
+                 end : '<%=vo.getCerti_prctc_test_end_date()%>',
+                 color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+                  },
+            <%}%>
             {
               title  : 'event3',
               start  : '2010-01-09T12:30:00',
@@ -45,32 +106,17 @@
             }
           ]
         ,eventClick:function(info){
-            window.location.href(info.event.url);
+           var res = info.event.title;
+           console.log("res ::::: "+res);
+           var res2 = res.slice(0,-2);           
+           location.href="SearchCon?certi_name="+res2;
             }
         });
         calendar.render();
         
       });
       
-	</script>
-    
-    
-    <style>
-		.YM{
-			height: 15%;
-			width: 100%;
-		}
-		.tbl_cal{
-			height: 70%;
-			width: 90%;
-		}
-		.img2{
-			height: 120px!important;
-			float: left!important;
-		}
-	
-	</style>
-      
+   </script>
 </head>
 
 <body>
@@ -248,7 +294,28 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/active.js"></script>
+	<script type="text/javascript">
+            $('.sub1').click(function () {
+                  var hello = $(this).text();
+                    $('#kind').val(hello.trim());
+                    $('form').submit();
+            });
+            $('.sub2').click(function () {
+                  var hello = $(this).text();
+                    $('#kind').val(hello.trim());
+                    $('form').submit();
+            });
+            $('.sub3').click(function () {
+                  var hello = $(this).text();
+                    $('#kind').val(hello.trim());
+                    $('form').submit();
+            });
+   </script>
 </body>
 
 </html>

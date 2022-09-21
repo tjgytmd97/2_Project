@@ -71,7 +71,9 @@ public class LoginCon extends HttpServlet {
 				session.setAttribute("membervo", membervo);
 
 				System.out.println("로그인성공");
-				response.sendRedirect("login_index.jsp");
+				//response.sendRedirect("login_index.jsp");
+
+				response.sendRedirect("TotalCertiDateCon2");
 			}
 			else
 			{
