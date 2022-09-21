@@ -76,7 +76,9 @@
         ,eventClick:function(info){
            var res = info.event.title;
            console.log("res ::::: "+res);
-           /* location.href="SearchCon?certi_name="; */
+           var res2 = res.slice(0,-2);
+           
+           location.href="SearchCon?certi_name="+res2;
            /* window.location.href(info.event.url); */
             }
         });
