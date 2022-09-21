@@ -9,7 +9,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
 * {
-	font-size: 25px
+	font-size: 25px;
+	font-family: 휴먼편지체;
 }
 
 nav {
