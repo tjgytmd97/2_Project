@@ -135,8 +135,10 @@ a {
       <!-- 취득 자격증 구현(수정) -->
       <div class="sidebar-widget-area">
          <div class="widget-content">
-            <h3 style="font-family: 휴먼편지체; font-size: 28px;">취득자격증<a href="get_certi.jsp"><img width="30px" height="30px" alt="" src="img/btn-img/plus.png"></h3>
-            <div class="single-blog-post d-flex align-items-center widget-post"
+             <h3 style="font-family: 휴먼편지체; font-size: 28px;">
+             <a href="get_certi.jsp"><img width="30px" height="30px" alt="" src="img/btn-img/plus.png" style="float:right;"></a>
+             	취득자격증</h3>
+             <div class="single-blog-post d-flex align-items-center widget-post"
                style="border: 1px solid black; height: 100px; overflow: scroll;">
                <div class="post-content">
                <br>
