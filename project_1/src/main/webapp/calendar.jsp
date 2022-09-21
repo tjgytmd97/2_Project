@@ -196,7 +196,7 @@ a {
 			rs6 = psmt6.executeQuery();
 		%>
 		<div class="sidebar-widget-area">
-			<div class="widget-content">
+			<div class="widget-content" style="position:relative; top:-300px;">
 				<h3 style="font-family: 휴먼편지체; font-size: 40px;">추천 자격증</h3>
 				<div class="single-blog-post d-flex align-items-center widget-post" style="border: 1px solid black;">
 					<form action="SearchCon3">
@@ -262,7 +262,6 @@ a {
 					</form>
 				</div>
 			</div>
-
 			<%
 			} catch (Exception e) {
 			e.printStackTrace();
