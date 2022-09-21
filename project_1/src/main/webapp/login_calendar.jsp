@@ -272,15 +272,17 @@ a {
                            }
                         }
                         %>
-                        <div class="post-content">
-                           <h5>필기 - 
+                        <table class="post-content">
+                           <tr>
+                           <td>필기 - 
                               <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
-                              <%=hShowDday%></h5>
-                        <hr style="background:black;">
-                        <h5>실기 - 
+                              <%=hShowDday%></td></tr>
+                        <tr>
+                        <td>실기 - 
                            <%=pShowDday%>
-                           <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%></h5>
-                        </div>
+                           <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%>
+                           </td></tr>
+                        </table>
                   </div>
                </div>
             </div>
