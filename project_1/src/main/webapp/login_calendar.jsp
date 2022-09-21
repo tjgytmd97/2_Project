@@ -135,7 +135,7 @@ a {
       <!-- 취득 자격증 구현(수정) -->
       <div class="sidebar-widget-area">
          <div class="widget-content">
-            <h3>취득자격증</h3>
+            <h3 style="font-family: 휴먼편지체; font-size: 28px;">취득자격증<a href="get_certi.jsp"><img width="30px" height="30px" alt="" src="img/btn-img/plus.png"></h3>
             <div class="single-blog-post d-flex align-items-center widget-post"
                style="border: 1px solid black; height: 100px; overflow: scroll;">
                <div class="post-content">
@@ -146,17 +146,17 @@ a {
                   if (nameList != null) {
                      for (int i = 0; i < nameList.size(); i++) {
                         //System.out.println(nameList.get(i));
-                        out.print("<div class='post-content'>");
+                        out.print("<div class='post-content' style='font-family: 휴먼편지체; font-size:23px;'>");
                         out.print(nameList.get(i));
                         out.print("</div>");
                      }
                   }
                   %>
                </div>
-            </div>
+            </div> 
 
             <div class="widget-content">
-               <h3>즐겨찾기</h3>
+               <h3 style="font-family: 휴먼편지체; font-size: 28px;">즐겨찾기</h3>
                <div class="single-blog-post d-flex align-items-center widget-post"
                   style="border: 1px solid black; height: 100px; overflow: scroll;">
                   <div class="post-content">
@@ -166,7 +166,7 @@ a {
                      ArrayList<String> markNameList = (ArrayList) session.getAttribute("markNames");
                      if (markNameList != null) {
                         for (int i = 0; i < markNameList.size(); i++) {
-                           out.print("<div class='post-content'>");
+                           out.print("<div class='post-content' style='font-family: 휴먼편지체; font-size:22px; margin-top:10px;'>");
                            out.print(markNameList.get(i));
                            out.print("</div>");
                            //System.out.println("markNameList.get(i) : "+markNameList.get(i));
@@ -177,7 +177,7 @@ a {
                </div>
 
                <div class="widget-content">
-                  <h3>D-day</h3>
+                  <h3 style="font-family: 휴먼편지체; font-size: 28px;">D-day</h3>
                   <div
                      class="single-blog-post d-flex align-items-center widget-post" >
                      <div class="post-content" style="border: 1px solid black; width:400px;">
@@ -274,11 +274,11 @@ a {
                         %>
                         <table class="post-content">
                            <tr>
-                           <td>필기 - 
+                           <td style="font-family: 휴먼편지체; font-size:23px;">필기 - 
                               <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
                               <%=hShowDday%></td></tr>
                         <tr>
-                        <td>실기 - 
+                        <td style="font-family: 휴먼편지체;  font-size:23px;">실기 - 
                            <%=pShowDday%>
                            <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%>
                            </td></tr>
@@ -334,12 +334,12 @@ a {
             %>
 
             <div class="widget-content">
-               <h3>추천 자격증</h3>
+               <h3 style="font-family: 휴먼편지체; font-size: 28px;">추천 자격증</h3>
                <div class="widget-content" style="border: 1px solid black;">
                   <form action="SearchCon3">
                      <!-- Single Blog Post 폼테그 실험중 -->
                      <input type="hidden" name="kind" id="kind" value="" />
-                        <a href="#" class="post-headline sub1" style="text-align:left;"> <%
+                        <a href="#" class="post-headline sub1" style="text-align:left; font-size:15px; font-family: 휴먼편지체; font-size:23px"> <%
  if (rs1.next() == true) {
     String name1 = rs1.getString("certi_name");
     out.print(name1);
@@ -351,7 +351,7 @@ a {
                      <!-- <form action="SearchCon">
                    Single Blog Post 폼테그 실험중
                    <input type="hidden" name="kind" id="kind" value="" /> -->
-                        <a href="#" class="post-headline sub2" style="text-align:left;"> <%
+                        <a href="#" class="post-headline sub2" style="text-align:left; font-size:15px; font-family: 휴먼편지체; font-size:23px"> <%
  if (rs2.next() == true) {
     String name2 = rs2.getString("certi_name");
     out.print(name2);
@@ -359,7 +359,7 @@ a {
  %>
                         </a>
                      <!-- </form> -->
-                     <a href="#" class="post-headline sub3" style="text-align:left;"> <%
+                     <a href="#" class="post-headline sub3" style="text-align:left; font-size:15px; font-family: 휴먼편지체; font-size:23px"> <%
  if (rs3.next() == true) {
     String name3 = rs3.getString("certi_name");
     out.print(name3);
