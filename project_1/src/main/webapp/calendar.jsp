@@ -28,24 +28,40 @@
 
 <style type="text/css">
 nav {
-  width: 200px;
+	width: 200px;
 }
-ul { padding: 0; }
-li {
-  list-style: none;
-  line-height: 34px;
-}
-a {
-  display: block; /* 중요 */
-  text-decoration: none;
-  color: #616161;
-  text-align: center;
-}
-.snd_menu { background: #efefef; }
-.trd_menu { background: #ddd; }
-.sub_menu { display: none; } /* 서브메뉴들 숨김 */
 
-.selec { background: #c45; color: #efefef; }
+ul {
+	padding: 0;
+}
+
+li {
+	list-style: none;
+	line-height: 34px;
+}
+
+a {
+	display: block; /* 중요 */
+	text-decoration: none;
+	color: #616161;
+	text-align: center;
+}
+
+.snd_menu {
+	background: #efefef;
+}
+
+.trd_menu {
+	background: #ddd;
+}
+
+.sub_menu {
+	display: none;
+} /* 서브메뉴들 숨김 */
+.selec {
+	background: #c45;
+	color: #efefef;
+}
 </style>
 
 <!-- 마이켈린더 -->
@@ -101,19 +117,6 @@ a {
       });
       
    </script>
-
-<style>
-.YM {
-	height: 15%;
-	width: 100%;
-}
-
-.tbl_cal {
-	height: 70%;
-	width: 90%;
-}
-</style>
-
 </head>
 
 <body>
@@ -135,7 +138,7 @@ a {
 	<div class="row align-items-end" style="margin-left: 50px;">
 		<!-- 달력 -->
 		<div id="calendar"
-			style="height: 920px; width: 60%; margin-bottom: auto; margin-right: auto;"></div>
+			style="height: 920px; width: 60%; margin-bottom: auto; margin-right: 100px;"></div>
 		<%
 		// post방식 인코딩
 		request.setCharacterEncoding("UTF-8");
@@ -177,63 +180,69 @@ a {
 			rs2 = psmt2.executeQuery();
 			rs3 = psmt3.executeQuery();
 		%>
-		<div class="sidebar-widget-area"
-			style="bottom: 170px; width: 300px; margin-right: 300px; border: 4px double #006400; text-align: center;">
-			<div style="border: 4px double #006400;">
-				<h5 class="title">추천 자격증</h5>
-			</div>
-
+		<div class="sidebar-widget-area">
 			<div class="widget-content">
-				<form action="SearchCon3">
-					<!-- Single Blog Post 폼테그 실험중 -->
-					<input type="hidden" name="kind" id="kind" value="" />
-					<div class="single-blog-post d-flex align-items-center widget-post">
+				<h3>추천 자격증</h3>
+				<div class="single-blog-post d-flex align-items-center widget-post" style="border: 1px solid black;">
+					<form action="SearchCon3">
+						<!-- Single Blog Post 폼테그 실험중 -->
+						<input type="hidden" name="kind" id="kind" value="" /> <a
+							href="#" class="post-headline sub1" style="text-align: left;">
+							<%
+							if (rs1.next() == true) {
+								String name1 = rs1.getString("certi_name");
+								out.print(name1);
+							}
+							%>
+						</a>
 
-						<!-- Post Content -->
-						<div class="post-content">
-							<div>
-								<a href="#" class="post-headline sub1"> 
- 									<%if (rs1.next() == true) {
- 										String name1 = rs1.getString("certi_name");
- 										out.print(name1);
- 									}%> 
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="single-blog-post d-flex align-items-center widget-post">
-						<div class="post-content">
-							<div>
-								<a href="#" class="post-headline sub2"> 
- 									<%if (rs2.next() == true) {
- 										String name2 = rs2.getString("certi_name");
- 										out.print(name2);
- 									}%>
- 
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="single-blog-post d-flex align-items-center widget-post">
-						<div class="post-content">
-							<h4>
-								<a href="#" class="post-headline sub3"> 
-									<%if (rs3.next() == true) {
-										String name3 = rs3.getString("certi_name");
-										out.print(name3);
-									}%>
-								</a>
-							</h4>
-						</div>
-					</div>
-				</form>
+						<!-- Single Blog Post -->
+						<!-- <form action="SearchCon">
+                   Single Blog Post 폼테그 실험중
+                   <input type="hidden" name="kind" id="kind" value="" /> -->
+						<a href="#" class="post-headline sub2" style="text-align: left;">
+							<%
+							if (rs2.next() == true) {
+								String name2 = rs2.getString("certi_name");
+								out.print(name2);
+							}
+							%>
+						</a>
+						<!-- </form> -->
+						<a href="#" class="post-headline sub3" style="text-align: left;">
+							<%
+							if (rs3.next() == true) {
+								String name3 = rs3.getString("certi_name");
+								out.print(name3);
+							}
+							%>
+						</a>
+					</form>
+				</div>
 			</div>
-		</div>
-		
-		<%
-		} catch (Exception e) {
+
+			<%
+			// 회원 정보 가져왔을때 처리할일 -> 회면에 출력출력!
+			// rs.next() --> true인 경우에 정보를 볼 수 있다!
+			/* if(rs1.next() == true && rs2.next() == true && rs3.next() == true) {
+			   String name1 = rs1.getString("certi_name");
+			   String name2 = rs2.getString("certi_name");
+			   String name3 = rs3.getString("certi_name");
+			   out.print(name1);
+			   out.print(name2);
+			   out.print(name3);
+			   
+			}else{
+			   out.print("검색된 ID가 없습니다!🤪");
+			} */
+
+			} catch (Exception e) {
+			// Exception --> 모즌 종류의 오류를 다 잡을 수 있는 큰개념의 오류
+
+			// 오류의 내용 보여주기 -> console창에서 확인
 			e.printStackTrace();
-		} finally {
+			} finally {
+			// 도중에 오류가 나더라도 DB연결해제는 꼭 실행할 수 있도록
 			try {
 				if (psmt1 != null && psmt2 != null && psmt3 != null) {
 					psmt1.close();
@@ -243,15 +252,22 @@ a {
 				if (conn != null) {
 					conn.close();
 				}
-	
+
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-		}%>
-		
-		<!-- ...................................................................................................... -->
-		<!-- 추천 자격증 구현 끝! -->
+			}
+			%>
+
+
+
+
+			<!-- ...................................................................................................... -->
+
+			<!-- 추천 자격증 구현 끝! -->
+		</div>
 	</div>
+
 
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>

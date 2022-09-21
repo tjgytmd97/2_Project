@@ -160,7 +160,7 @@ a {
                <div class="single-blog-post d-flex align-items-center widget-post"
                   style="border: 1px solid black; height: 100px; overflow: scroll;">
                   <div class="post-content">
-                  <br>
+                  <br><br>
                      <%
                      //즐겨찾기 출력 부분
                      ArrayList<String> markNameList = (ArrayList) session.getAttribute("markNames");
@@ -276,13 +276,11 @@ a {
                            <h5>필기 - 
                               <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
                               <%=hShowDday%></h5>
-                        </div>
                         <hr style="background:black;">
-                        <div class="post-content">
                         <h5>실기 - 
                            <%=pShowDday%>
                            <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%></h5>
-                     </div>
+                        </div>
                   </div>
                </div>
             </div>
