@@ -148,9 +148,15 @@ a {
 		PreparedStatement psmt1 = null;
 		PreparedStatement psmt2 = null;
 		PreparedStatement psmt3 = null;
+		PreparedStatement psmt4 = null;
+		PreparedStatement psmt5 = null;
+		PreparedStatement psmt6 = null;
 		ResultSet rs1 = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
+		ResultSet rs4 = null;
+		ResultSet rs5 = null;
+		ResultSet rs6 = null;
 
 		try {
 
@@ -172,13 +178,22 @@ a {
 			String sql1 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 0,1;";
 			String sql2 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 1,1;";
 			String sql3 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 2,1;";
+			String sql4 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 3,1;";
+			String sql5 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 4,1;";
+			String sql6 = "select distinct certi_name,certi_bookmark_cnt from (select certi_name, certi_bookmark_cnt, row_number() over (order by certi_bookmark_cnt desc)  from certificate) t limit 5,1;";
 			psmt1 = conn.prepareStatement(sql1);
 			psmt2 = conn.prepareStatement(sql2);
 			psmt3 = conn.prepareStatement(sql3);
+			psmt4 = conn.prepareStatement(sql4);
+			psmt5 = conn.prepareStatement(sql5);
+			psmt6 = conn.prepareStatement(sql6);
 
 			rs1 = psmt1.executeQuery();
 			rs2 = psmt2.executeQuery();
 			rs3 = psmt3.executeQuery();
+			rs4 = psmt4.executeQuery();
+			rs5 = psmt5.executeQuery();
+			rs6 = psmt6.executeQuery();
 		%>
 		<div class="sidebar-widget-area">
 			<div class="widget-content">
@@ -217,32 +232,41 @@ a {
 							}
 							%>
 						</a>
+						<!-- </form> -->
+						<a href="#" class="post-headline sub4" style="text-align: left;">
+							<%
+							if (rs4.next() == true) {
+								String name4 = rs4.getString("certi_name");
+								out.print(name4);
+							}
+							%>
+						</a>
+						<!-- </form> -->
+						<a href="#" class="post-headline sub5" style="text-align: left;">
+							<%
+							if (rs5.next() == true) {
+								String name5 = rs5.getString("certi_name");
+								out.print(name5);
+							}
+							%>
+						</a>
+						<!-- </form> -->
+						<a href="#" class="post-headline sub6" style="text-align: left;">
+							<%
+							if (rs6.next() == true) {
+								String name6 = rs6.getString("certi_name");
+								out.print(name6);
+							}
+							%>
+						</a>
 					</form>
 				</div>
 			</div>
 
 			<%
-			// 회원 정보 가져왔을때 처리할일 -> 회면에 출력출력!
-			// rs.next() --> true인 경우에 정보를 볼 수 있다!
-			/* if(rs1.next() == true && rs2.next() == true && rs3.next() == true) {
-			   String name1 = rs1.getString("certi_name");
-			   String name2 = rs2.getString("certi_name");
-			   String name3 = rs3.getString("certi_name");
-			   out.print(name1);
-			   out.print(name2);
-			   out.print(name3);
-			   
-			}else{
-			   out.print("검색된 ID가 없습니다!🤪");
-			} */
-
 			} catch (Exception e) {
-			// Exception --> 모즌 종류의 오류를 다 잡을 수 있는 큰개념의 오류
-
-			// 오류의 내용 보여주기 -> console창에서 확인
 			e.printStackTrace();
 			} finally {
-			// 도중에 오류가 나더라도 DB연결해제는 꼭 실행할 수 있도록
 			try {
 				if (psmt1 != null && psmt2 != null && psmt3 != null) {
 					psmt1.close();
@@ -258,13 +282,6 @@ a {
 			}
 			}
 			%>
-
-
-
-
-			<!-- ...................................................................................................... -->
-
-			<!-- 추천 자격증 구현 끝! -->
 		</div>
 	</div>
 
