@@ -25,10 +25,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 <!-- 모두의 자격증 -->
-<title>자격증 상세 페이지</title>
+<title>모두의 자격증</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
@@ -50,8 +48,6 @@
    width : 45px;
    height: 45px;
 }
-
-
 </style>
 
 </head>
@@ -104,114 +100,7 @@
 	 						}  	
  						%>
  						<span><%= rowCnt%></span>
-                        </a></h1>
-  <%--                       <!-- (삽입)취득 자격증 icon -->
-                           <a id = "get_btn" href="GetCertiCon" onclick="click_get_btn()">
-                        <%
-                        	boolean check = false;
-                        	
-                           // 1. 세션에서 아이디 정보 가져와서
-                           // 2. select * from member해서 세션 id와 일치하는 id의 member_num를 가져온다.
-                           // 3. select * from certificate limit 1해서 페이지자격증이름과 일치하는 이름의 certi_num를 (제일 위 하나만) 가져온다(자격증정보)
-                           // 4. select * from get_certificate를 리스트로 뽑아내서 
-                           // 5. (중복이면 insert안하게)if member_num과 certi_num이 같은 get_num이 get_num이 있다면 TURE
-                           // 6. 아니면 false
-                           
-                           System.out.println("[\n\n취득 자격증 정보 확인 중]");
-                           
-                        // post 방식의 한글 인코딩
-                        request.setCharacterEncoding("UTF-8");
-                        
-                        //1. 세션 받아오기(id받아오기)
-                        Member member = (Member)session.getAttribute("membervo");
-                        String member_userid = member.getId();
-                        
-                        //2. 세션 생성하기(자격증명 가져오기)
-                        String certi_name = certificatevo.getCerti_name();
-                        
-                        // 전역변수로 선언해주기
-                        Connection conn = null;
-                        PreparedStatement psmt = null;
-                        
-                        ResultSet rs = null;
-                        
-                        try {
-                           Class.forName("com.mysql.jdbc.Driver");
-                           System.out.println("클래스파일 로딩 도전!");
-
-                           String url = "jdbc:mysql://project-db-stu.ddns.net:3307/suncheon_0825_5";
-                           String dbid = "suncheon_0825_5";
-                           String dbpw = "smhrd5";
-                           conn = DriverManager.getConnection(url, dbid, dbpw);
-                                 
-                           // db 연결확인
-                           if(conn != null)
-                           {
-                              System.out.println("DB 연결 성공");
-                           }
-                           else
-                           {
-                              System.out.println("DB 연결 실패");
-                           }
-                           
-                           // member_num = select member_num from member where member_userid = ?
-                           // certi_num = select certi_num from certificate where certi_name= ? limit 1;
-                           // get_num = select get_num from get_certificate where certi_num = ? and membenum= ?                                                      
-                           
-                           // 계속 수정해야하는 부분 sql문
-                           // 취득 자격증 표시해주려고 하는 select문
-                           String sql = "select * from get_certificate where member_num="
-                        		   		+"(select member_num from member where member_userid = ?)"
-                        		   		+"and certi_num = (select certi_num from certificate where certi_name= ? limit 1)";
-
-                           psmt =  conn.prepareStatement(sql);
-                           psmt.setString(1, member_userid);
-                           psmt.setString(2, certi_name);
-                           
-                           rs = psmt.executeQuery();
-                           
-                           if(rs.next() == true)
-                           {
-                              String unumber = rs.getString("member_num");
-                              String cnumber = rs.getString("certi_num");
-                              
-                              System.out.println("rs실행 성공!!");
-                              
-                              check = true;
-                           }
-                           else
-                           {
-                              System.out.println("실패");
-                           }
-                           
-                        } catch (Exception e) {
-                           e.printStackTrace();
-                        } finally {
-                           try {
-                              if(psmt != null) psmt.close();
-                              if(conn != null) conn.close();
-                              if(rs != null) rs.close();
-                           } catch (Exception e2) {
-                                    e2.printStackTrace();
-                           }
-                        }
-                   		
-                        if(check==false)
-                        {
-                        	out.println("<img class = 'getCerti_img' alt='' src='img/btn-img/medal_gray.png' title='내가 취득한 자격증에 추가'>");
-                        }
-                        else
-                        {
-                        	out.println("<img  class = 'getCerti_img' alt='' src='img/btn-img/medal.png' title='내가 취득한 자격증 취소'>");
- 						}%>
-
-                        </a> --%>
-                           <!-- (삽입)즐겨찾기 icon --> 
-                           
-							
-                        
-                          
-                          
+                        </a></h1>                          
                         <!-- 버튼들 끝 -->
                         
                      </h4>
@@ -330,11 +219,8 @@
 									out.print("</table>");
 
 								} catch (Exception e) {
-									// Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류
-									// 오류의 내용 보여주기 -> console 창에서 확인
 									e.printStackTrace();
 								} finally {
-  									// 오류가 나더라도 DB 연결해제는 필수
   									try {
   										if (psmt != null) {
   											psmt.close();

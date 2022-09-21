@@ -15,10 +15,9 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- 모두의 자격증 -->
-    <title>Original - Lifestyle Blog Template</title>
+    <title>모두의 자격증</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -90,11 +89,8 @@
 		<%
 		// post방식 인코딩
 		request.setCharacterEncoding("UTF-8");
-		// 데이터 가져오기
 		// 파라미터 수집
-		String id = request.getParameter("id");
-		
-		
+		String id = request.getParameter("id");			
 		// JDBC 코드
 		Connection conn = null;
 		PreparedStatement psmt1 = null;
@@ -107,14 +103,12 @@
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("클래스파일 로딩도전!");
-			
+			System.out.println("클래스파일 로딩도전!");		
 			
 			String url = "jdbc:mysql://project-db-stu.ddns.net:3307/suncheon_0825_5";
 			String dbid = "suncheon_0825_5";
 			String dbpw = "smhrd5";
-			conn = DriverManager.getConnection(url, dbid, dbpw);
-			
+			conn = DriverManager.getConnection(url, dbid, dbpw);			
 			
 			if(conn != null) {
 				System.out.println("DB연결성공!!");
@@ -130,15 +124,13 @@
 			psmt1 = conn.prepareStatement(sql1);
 			psmt2 = conn.prepareStatement(sql2);
 			psmt3 = conn.prepareStatement(sql3);
-			
-			
-			// select --> executeQuery()
-			// 테이블 정보를 가져올때 마치 표처럼 담는 형태 -> ResultSet
+
 			rs1 = psmt1.executeQuery();
 			rs2 = psmt2.executeQuery();
 			rs3 = psmt3.executeQuery();
 			%>
-		<!-- 뉴스 구현(수정) -->
+			
+		<!-- 뉴스 구현 -->
 		<div class="sidebar-widget-area">
 			<h5 class="title" style="margin-right: 500px; font-size:40px;">뉴스</h5>
 			<div class="widget-content">
@@ -211,12 +203,8 @@
 				</div>
 				<%	
 		} catch (Exception e) {
-			// Exception --> 모즌 종류의 오류를 다 잡을 수 있는 큰개념의 오류
-			
-			// 오류의 내용 보여주기 -> console창에서 확인
 			e.printStackTrace();
 		} finally {
-			// 도중에 오류가 나더라도 DB연결해제는 꼭 실행할 수 있도록
 			try {
 				if(psmt1 != null) {
 					psmt1.close();

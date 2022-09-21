@@ -32,7 +32,7 @@ public class UpdateCon extends HttpServlet {
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
 		String sql = "";
-		
+
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		PreparedStatement psmt2 = null;
@@ -52,10 +52,10 @@ public class UpdateCon extends HttpServlet {
 				System.out.println("DB 연결 성공");
 			} else {
 				System.out.println("DB 연결 실패");
-			}			
-			
+			}
+
 			sql = "update member set member_name=?,member_email=?,member_userid=?,member_pw=? where member_num=?";
-			
+
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, name);
 			psmt.setString(2, email);
@@ -66,26 +66,26 @@ public class UpdateCon extends HttpServlet {
 			int cnt = psmt.executeUpdate();
 
 			sql = "select * from member where member_userid=? and member_pw=?";
-			psmt2 =  conn.prepareStatement(sql);
+			psmt2 = conn.prepareStatement(sql);
 			psmt2.setString(1, id);
 			psmt2.setString(2, pw);
-			
+
 			rs = psmt2.executeQuery();
-						
+
 			if ((cnt > 0) && (rs.next() == true)) {
 				System.out.println("업데이트성공");
-				
-				int unum = rs.getInt(1); 
-				String uid = rs.getString(2); 
-				String uname = rs.getString(3); 
-				String upw = rs.getString(4);  
-				String uemail = rs.getString(5); 
-			
+
+				int unum = rs.getInt(1);
+				String uid = rs.getString(2);
+				String uname = rs.getString(3);
+				String upw = rs.getString(4);
+				String uemail = rs.getString(5);
+
 				Member membervo = new Member(unum, uid, uname, upw, uemail);
-				
+
 				HttpSession session = request.getSession();
 				session.setAttribute("membervo", membervo);
-				
+
 				response.sendRedirect("login_index.html");
 			} else {
 				System.out.println("sql문 실행 실패!!!");

@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class JoinCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("[JoinCon]");
 		
 		// 0. post 방식의 인코딩

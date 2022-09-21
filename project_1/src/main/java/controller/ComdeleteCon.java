@@ -26,7 +26,6 @@ public class ComdeleteCon extends HttpServlet {
 		PreparedStatement psmt = null;
 		
 		try {
-			// 동적로딩: 해당 경로의 클래스를 실행해서 JVM이 Driver에 로딩한다. 
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("클래스파일 로딩 도전!");
 
@@ -55,19 +54,16 @@ public class ComdeleteCon extends HttpServlet {
 			if(cnt>0)
 			{
 				System.out.println("삭제성공");
-				// sql문 실행 성공시 Main.jsp로 이동
 				response.sendRedirect("login_certi_outline.jsp");
 			}
 			else
 			{
-				// sql문 실행 실패시
 				System.out.println("sql문 실행 실패!!!");
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// DB 연결해제는 필수
 			try {
 				if(psmt != null) psmt.close();
 				if(conn != null) conn.close();

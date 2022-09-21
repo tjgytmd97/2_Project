@@ -14,6 +14,7 @@ public class Member {
 		this.email = email;
 		this.pw = pw;
 	}
+
 	public Member(String id, String pw) {
 		super();
 		this.id = id;
@@ -49,7 +50,4 @@ public class Member {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
-	
-	
 }

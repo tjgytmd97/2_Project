@@ -21,13 +21,9 @@ public class SearchCon2 extends HttpServlet {
 
    protected void service(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
-      // TODO Auto-generated method stub
       System.out.println("[SearchCon2]");
 
-      // 0. post 방식의 인코딩
       request.setCharacterEncoding("UTF-8");
-
-      // 데이터 가져오기
       String certi_name = request.getParameter("certi_name");
 
       // 전역변수로 선언해주기
@@ -36,7 +32,6 @@ public class SearchCon2 extends HttpServlet {
       ResultSet rs = null;
 
       try {
-         // 2. 동적로딩: 해당 경로의 클래스를 실행해서 JVM이 Driver에 로딩한다.
          Class.forName("com.mysql.jdbc.Driver");
          System.out.println("클래스파일 로딩 도전!");
 
@@ -93,7 +88,6 @@ public class SearchCon2 extends HttpServlet {
             System.out.println("test");
             
             // Certificate.java에서 객체 만들기
-            
             // 객체 선언해주기 
             Certificate certificatevo = new Certificate(certi_num1, certi_name1, certi_category1, certi_year1, certi_rnd1, 
             		certi_outline1, certi_instt1, certi_instt_url1, certi_fee1, certi_acq_mthd1, certi_qlf1, certi_related1, 
@@ -104,8 +98,7 @@ public class SearchCon2 extends HttpServlet {
             		certi_bookmark_cnt1);
             
             
-			HttpSession session = request.getSession();
-			
+			HttpSession session = request.getSession();			
 			session.setAttribute("certificatevo", certificatevo);
             
             System.out.println("데이터가져오기 성공");

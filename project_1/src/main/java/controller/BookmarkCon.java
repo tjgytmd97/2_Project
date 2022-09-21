@@ -20,22 +20,10 @@ import domain.Member;
 @WebServlet("/BookmarkCon")
 public class BookmarkCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-//	public void valueNullCheck(PreparedStatement psmt,int n,String str) throws SQLException {
-//		if(str.isEmpty())
-//		{
-//			System.out.println("함수비었음");
-//			psmt.setString(n, "*");
-//		}
-//		else
-//		{
-//			psmt.setString(n, str);
-//		}
-//	}
-	
+
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("\n\n[BookmarkCon]");
+		System.out.println("[BookmarkCon]");
 		// post 방식의 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
 
@@ -65,7 +53,6 @@ public class BookmarkCon extends HttpServlet {
 			// 1. 세션에서 회원정보 가져오기
 			// 2. 세션에서 자격증정보 가져오기
 			// 3. 자격증 이름, 날짜들, 회원 insert select
-
 			// 세션 가져오기
 			HttpSession session = request.getSession();
 
@@ -80,13 +67,12 @@ public class BookmarkCon extends HttpServlet {
 					+ "bookmark(certi_name, certi_hndw_rcp_start_date, certi_hndw_rcp_end_date, certi_hndw_test_start_date ,certi_hndw_test_end_date,"
 					+ "certi_hndw_pass_start_date ,certi_hndw_pass_end_date, certi_doc_submit_start_date,certi_doc_submit_end_date, certi_prctc_rcp_start_date, "
 					+ "certi_prctc_rcp_end_date, certi_prctc_test_start_date, certi_prctc_test_end_date, certi_final_pass_start_date, certi_final_pass_end_date, "
-					+ "certi_num, member_num) "
-					+ "SELECT ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? FROM dual "
+					+ "certi_num, member_num) " + "SELECT ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? FROM dual "
 					+ "where NOT EXISTS (SELECT certi_num, member_num FROM bookmark "
 					+ "WHERE certi_num = ? AND member_num = ?)";
-			
+
 			psmt = conn.prepareStatement(sql);
-			
+
 			psmt.setString(1, certificatevo.getCerti_name());
 			psmt.setString(2, certificatevo.getCerti_hndw_rcp_start_date());
 			psmt.setString(3, certificatevo.getCerti_hndw_rcp_end_date());
@@ -104,7 +90,7 @@ public class BookmarkCon extends HttpServlet {
 			psmt.setString(15, certificatevo.getCerti_final_pass_end_date());
 			psmt.setString(16, cnum);
 			psmt.setString(17, unum);
-			psmt.setString(18, cnum);		
+			psmt.setString(18, cnum);
 			psmt.setString(19, unum);
 
 			int cnt = psmt.executeUpdate();
@@ -114,13 +100,11 @@ public class BookmarkCon extends HttpServlet {
 				// sql문 실행 성공
 				System.out.println("sql문 실행 성공!!!");
 
-
 			} else {
 				// sql문 실행 실패시
 				System.out.println("sql문 실행 실패!!!");
 
 			}
-			//response.sendRedirect("BeforeBookmarkCon");
 			response.sendRedirect("AfterBookmarkCon");
 
 		} catch (Exception e) {

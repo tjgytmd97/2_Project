@@ -23,25 +23,20 @@ public class AfterBookmarkCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	    System.out.println("\n\n[AfterBookmarkCon]");
+	    System.out.println("[AfterBookmarkCon]");
         
 	     // post 방식의 한글 인코딩
 	     request.setCharacterEncoding("UTF-8");
 	     
-	     //1. 세션 받아오기(id받아오기)
+	     // 세션 받아오기(id받아오기)
 	     HttpSession session = request.getSession();
 	     Certificate certificatevo = (Certificate) session.getAttribute("certificatevo");
 	     int rowCnt =  0;
-	     //System.out.println("afterrowCnt : " + rowCnt);
 	     
 	     // 전역변수로 선언해주기
-	     Connection conn = null;
-	     
+	     Connection conn = null;	     
 	     PreparedStatement psmt = null;
-	   
-	     
-	     ResultSet rs = null;
-	  
+	     ResultSet rs = null;	  
 	     
 	     try {
 	         Class.forName("com.mysql.jdbc.Driver");
@@ -62,7 +57,7 @@ public class AfterBookmarkCon extends HttpServlet {
 	           System.out.println("DB 연결 실패");
 	        } 
 
-	      //북마크 certi로 보내기
+	        //북마크 certi로 보내기
 	        String sql ="UPDATE certificate SET certi_bookmark_cnt=(select count(*) from bookmark where certi_name=?) WHERE certi_name = ?";
 	        
 	        psmt =  conn.prepareStatement(sql);
@@ -80,7 +75,6 @@ public class AfterBookmarkCon extends HttpServlet {
 			} else {
 				System.out.println("sql문 실행 실패");
 			}
-
 		
 	     } catch (Exception e) {
 	         e.printStackTrace();

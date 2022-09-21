@@ -22,14 +22,12 @@ public class LoginCon extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("[LoginCon]");
-		// post 방식의 한글 인코딩
+		
 		request.setCharacterEncoding("UTF-8");
 		
-		// 데이터 가져오기(파라미터 수집)
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		// 전역변수로 선언해주기
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -42,8 +40,7 @@ public class LoginCon extends HttpServlet {
 			String dbid = "suncheon_0825_5";
 			String dbpw = "smhrd5";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
-					
-			// db 연결확인
+			
 			if(conn != null)
 			{
 				System.out.println("DB 연결 성공");
@@ -53,7 +50,6 @@ public class LoginCon extends HttpServlet {
 				System.out.println("DB 연결 실패");
 			}
 			
-			// 계속 수정해야하는 부분 sql문
 			String sql = "select * from member where member_userid=? and member_pw=?";
 			psmt =  conn.prepareStatement(sql);
 			psmt.setString(1, id);
@@ -90,7 +86,7 @@ public class LoginCon extends HttpServlet {
 				if(conn != null) conn.close();
 				if(rs != null) rs.close();
 			} catch (Exception e2) {
-						e2.printStackTrace();
+				e2.printStackTrace();
 			}
 		}
 		

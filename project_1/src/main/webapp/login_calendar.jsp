@@ -15,10 +15,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Original - Lifestyle Blog Template</title>
+<title>모두의 자격증</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
@@ -277,15 +276,12 @@ p {
 			               out.print("</h4>");
 			               out.print("</div>");
 			               out.print("</div>");
-			               //System.out.println("markNameList.get(i) : "+markNameList.get(i));
 			               }
 			            }
 			         %>
                   </div>
                </div>
             </div>
-         
-         
             
          <div style="margin-bottom: 50px;">
             <h2 class="title">디데이</h2>
@@ -301,9 +297,7 @@ p {
                 // 3. 현재 날짜에서 제일 가까운 날짜 2개 가져오기
                 // 3-1. 현재 이후 날짜에서 제일 작은 거(if(now<date){제일 작은거})
                 // 4. 그 날짜가 어떤 자격증의 필기인지 실기인지 알아야 함
-                
-                //사용자가 북마크 한 자격증 정보들
-                
+                //사용자가 북마크 한 자격증 정보들                
                 ArrayList<Certificate> list = (ArrayList)session.getAttribute("myCertiDate");
              
                 //현재 시스템 시간
@@ -325,12 +319,12 @@ p {
                 String pName = "";
                 
                 long hCal = 0;
-            int hDdays =0; 
-              long pCal = 0;
-              int pDdays = 0;
+            	int hDdays =0; 
+              	long pCal = 0;
+              	int pDdays = 0;
               
-              String hShowDday ="";
-              String pShowDday ="";
+              	String hShowDday ="";
+              	String pShowDday ="";
                 
                 String lineDate = "9999-12-31";
                 Date hndwMin = new Date();
@@ -341,30 +335,24 @@ p {
                          {
                                hndwDate = formatter.parse(list.get(i).getCerti_hndw_test_start_date());
       
-                               //System.out.println("hndwDate : "+hndwDate);
-                               //System.out.println("prctcDate : "+prctcDate);
                                if(hndwDate.after(now))
                                {
                                   //이후 날짜들
                                      hndwMin = formatter.parse(lineDate);
       
                                   //hndwDate
-                               if(hndwDate.before(hndwMin)){
-                                  hndwMin = hndwDate;
-                                  hIndex = i;
+                               		if(hndwDate.before(hndwMin)){
+                                  		hndwMin = hndwDate;
+                                  		hIndex = i;
                                   
-                                   hName = list.get(hIndex).getCerti_name();
-                                   hCal = hndwMin.getTime() - now.getTime();
-                                   hDdays = (int) (hCal / ( 24*60*60*1000));
-                                  hShowDday = hName+" D-"+hDdays;
-                                  //System.out.println("필기인덱스 : "+i);
-                               }
-                            }
+                                  		hName = list.get(hIndex).getCerti_name();
+                                 		hCal = hndwMin.getTime() - now.getTime();
+                                   		hDdays = (int) (hCal / ( 24*60*60*1000));
+                                  		hShowDday = hName+" D-"+hDdays;
+                               		}
+                            	}
                                else{
-                                  //System.out.println(formatter.format(hndwDate)+"\n이전날짜 입니다\n\n");
                                }
-                               
-                               
                          }
                          
                          if(list.get(i).getCerti_prctc_test_start_date()!=null)
@@ -376,30 +364,25 @@ p {
                                {
                                      prctcMin = formatter.parse(lineDate);
                                   
-                               if(prctcDate.before(prctcMin)){
-                                  prctcMin = prctcDate;
-                                  pIndex = i;
-                                  
-                                  pName = list.get(pIndex).getCerti_name();
-                                    pCal = prctcMin.getTime() - now.getTime();
-                                    pDdays = (int) (pCal / ( 24*60*60*1000));
-                                    pShowDday = pName+" D-"+pDdays;
-                                  //System.out.println("실기인덱스 : "+i);
-                               }
-                            }
+	                               if(prctcDate.before(prctcMin)){
+	                                  prctcMin = prctcDate;
+	                                  pIndex = i;
+	                                  
+	                                  pName = list.get(pIndex).getCerti_name();
+	                                  pCal = prctcMin.getTime() - now.getTime();
+	                                  pDdays = (int) (pCal / ( 24*60*60*1000));
+	                                  pShowDday = pName+" D-"+pDdays;
+	                                  //System.out.println("실기인덱스 : "+i);
+	                               	}
+                            	}
                                else{
-                                  //System.out.println(formatter.format(prctcDate)+"\n이전날짜 입니다\n\n");
                                } 
-                               
                          }   
-                } 
-
-                  %>
+                	} %>
                   
                   <div class="post-content">
                      <h5>필기</h5>
                      <h4>
-                        <%-- <a href="#" class="post-headline"><%=hName%> 필기날짜 : <%= formatter.format(hndwMin)%></a> --%>
                         <a href="#" class="post-headline"><%=hShowDday%></a>
                      </h4>
                   </div>
@@ -411,7 +394,6 @@ p {
                   <h5>실기</h5>
                      <h4>
                         <a href="#" class="post-headline"><%=pShowDday%></a>
-                        <%-- <a href="#" class="post-headline"><%=pName%> 실기날짜 : <%= formatter.format(prctcMin)%></a> --%>
                      </h4>
                   </div>
                </div>
@@ -483,8 +465,6 @@ p {
          psmt2 = conn.prepareStatement(sql2);
          psmt3 = conn.prepareStatement(sql3);
 
-         // select --> executeQuery()
-         // 테이블 정보를 가져올때 마치 표처럼 담는 형태 -> ResultSet
          rs1 = psmt1.executeQuery();
          rs2 = psmt2.executeQuery();
          rs3 = psmt3.executeQuery();
@@ -495,7 +475,6 @@ p {
                <div class="widget-content"
                   style="border: 1px solid black; width: 300px;  margin-bottom: 50px;">
                   <form action="SearchCon3">
-               <!-- Single Blog Post 폼테그 실험중 -->
                <input type="hidden" name="kind" id="kind" value="" />
                <div class="single-blog-post d-flex align-items-center widget-post">
 
@@ -514,10 +493,6 @@ p {
                   </div>
                </div>
 
-               <!-- Single Blog Post -->
-               <!-- <form action="SearchCon">
-                   Single Blog Post 폼테그 실험중
-                   <input type="hidden" name="kind" id="kind" value="" /> -->
                <div class="single-blog-post d-flex align-items-center widget-post">
 
                   <!-- Post Content -->
@@ -534,8 +509,6 @@ p {
                      </h4>
                   </div>
                </div>
-               <!-- </form> -->
-               <!-- Single Blog Post -->
                <div class="single-blog-post d-flex align-items-center widget-post">
 
                   <!-- Post Content -->
@@ -552,61 +525,33 @@ p {
                      </h4>
                   </div>
                </div>
+      		</form>
          </div>
       </div>
-      </form>
       <%
-      // 회원 정보 가져왔을때 처리할일 -> 회면에 출력출력!
-      // rs.next() --> true인 경우에 정보를 볼 수 있다!
-      /* if(rs1.next() == true && rs2.next() == true && rs3.next() == true) {
-         String name1 = rs1.getString("certi_name");
-         String name2 = rs2.getString("certi_name");
-         String name3 = rs3.getString("certi_name");
-         out.print(name1);
-         out.print(name2);
-         out.print(name3);
-         
-      }else{
-         out.print("검색된 ID가 없습니다!🤪");
-      } */
-
       } catch (Exception e) {
-      // Exception --> 모즌 종류의 오류를 다 잡을 수 있는 큰개념의 오류
-
-      // 오류의 내용 보여주기 -> console창에서 확인
-      e.printStackTrace();
+      		e.printStackTrace();
       } finally {
-      // 도중에 오류가 나더라도 DB연결해제는 꼭 실행할 수 있도록
-      try {
-         if (psmt1 != null && psmt2 != null && psmt3 != null) {
-            psmt1.close();
-            psmt2.close();
-            psmt3.close();
-         }
-         if (conn != null) {
-            conn.close();
-         }
-
-      } catch (Exception e2) {
-         e2.printStackTrace();
-      }
-      }
-      %>
-
-
-
+	      try {
+	         if (psmt1 != null && psmt2 != null && psmt3 != null) {
+	            psmt1.close();
+	            psmt2.close();
+	            psmt3.close();
+	         }
+	         if (conn != null) {
+	            conn.close();
+	         }
+	
+	      } catch (Exception e2) {
+	         e2.printStackTrace();
+	      }
+      }%>
 
       <!-- ...................................................................................................... -->
-
       <!-- 추천 자격증 구현 끝! -->
                </div>
             </div>
          </div>
-      </div>
-
-
-
-
 
    <!-- jQuery (Necessary for All JavaScript Plugins) -->
    <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -636,7 +581,7 @@ p {
             });
    </script>
    <script type="text/javascript">
-$(document).ready(function(){
+	$(document).ready(function(){
      
      $('#main_menu > li > a').click(function(){
        $(this).next($('.snd_menu')).slideToggle('fast');

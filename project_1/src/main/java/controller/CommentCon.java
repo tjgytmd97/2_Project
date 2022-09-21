@@ -69,9 +69,6 @@ public class CommentCon extends HttpServlet {
 			psmt2 =  conn.prepareStatement(sql);
 			psmt2.setString(1, certi_num);
 			rs = psmt2.executeQuery();
-	
-			//HttpSession session = request.getSession();
-	        //ArrayList<Comment> commList = new ArrayList<Comment>();
 			
 			if ((cnt > 0) && (rs.next() == true)) {
 				int unum = rs.getInt(1); 
@@ -92,19 +89,6 @@ public class CommentCon extends HttpServlet {
 				System.out.println("sql문 실행 실패!!!");
 			}		
 	        
-//	        while(rs.next())
-//	        {
-//	        	int unum = rs.getInt(1); 
-//				String udatetime = rs.getString(2); 
-//				String ucerti_num = rs.getString(3); 
-//				int umember_num = rs.getInt(4); 
-//				String umessage = rs.getString(5);  
-//				String uid= rs.getString(6); 
-//				
-//				commList.add(new Comment(unum, udatetime, ucerti_num, umember_num, umessage, uid));
-//	        }
-//	        session.setAttribute("commList", commList);
-
 		} catch (Exception e) {
 			// Exception -> 모든 종류의 오류를 잡을 수 있는 큰 개념의 오류
 			// 오류의 내용 보여주기 -> console 창에서 확인

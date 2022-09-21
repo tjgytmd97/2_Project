@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Original - Lifestyle Blog Template</title>
+<title>모두의 자격증</title>
 
 <link rel="icon" href="img/core-img/favicon.ico">
 <link rel="stylesheet" href="style.css">

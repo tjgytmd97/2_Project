@@ -19,9 +19,7 @@ public class Bookrmark {
 	private String certi_final_pass_end_date;
 	private String certi_num;
 	private String member_num;
-	
-	
-	
+
 	public Bookrmark(String certi_name) {
 		super();
 		this.certi_name = certi_name;
@@ -197,5 +195,5 @@ public class Bookrmark {
 	public void setMember_num(String member_num) {
 		this.member_num = member_num;
 	}
-	
+
 }
