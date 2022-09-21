@@ -94,7 +94,11 @@ a {
             }
           ]
         ,eventClick:function(info){
-            window.location.href(info.event.url);
+        	var res = info.event.title;
+            console.log("res ::::: "+res);
+            var res2 = res.slice(0,-2);
+            
+            location.href="SearchCon?certi_name="+res2;
             
             }
         });
