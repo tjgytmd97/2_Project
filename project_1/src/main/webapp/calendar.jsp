@@ -26,6 +26,28 @@
 <!-- Style CSS -->
 <link rel="stylesheet" href="style.css">
 
+<style type="text/css">
+nav {
+  width: 200px;
+}
+ul { padding: 0; }
+li {
+  list-style: none;
+  line-height: 34px;
+}
+a {
+  display: block; /* 중요 */
+  text-decoration: none;
+  color: #616161;
+  text-align: center;
+}
+.snd_menu { background: #efefef; }
+.trd_menu { background: #ddd; }
+.sub_menu { display: none; } /* 서브메뉴들 숨김 */
+
+.selec { background: #c45; color: #efefef; }
+</style>
+
 <!-- 마이켈린더 -->
 <link href='./fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
 <script src='./fullcalendar-5.11.3/lib/main.js'></script>

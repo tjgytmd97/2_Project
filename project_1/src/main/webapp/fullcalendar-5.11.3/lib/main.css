@@ -724,7 +724,7 @@ A HORIZONTAL event
 
 }
 .fc .fc-daygrid-day-top {
-    display: flex;
+    display: table;
     flex-direction: row-reverse;
   }
 .fc .fc-day-other .fc-daygrid-day-top {
