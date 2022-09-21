@@ -109,127 +109,6 @@ a {
    <!-- modal js-->
 <script src="./js/certi_modal.js" type="module"></script>
 
-<style>
-.YM {
-   height: 15%;
-   width: 100%;
-}
-
-.tbl_cal {
-   height: 70%;
-   width: 90%;
-}
-
-* {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
-
-p {
-   margin-top: 10px;
-}
-
-.container {
-   width: 50%;
-}
-
-.modal-btn-box {
-   width: 100%;
-   text-align: center;
-}
-
-.modal-btn-box button {
-   display: inline-block;
-   width: 150px;
-   height: 50px;
-   background-color: #ffffff;
-   border: 1px solid #e1e1e1;
-   cursor: pointer;
-   padding-top: 8px;
-}
-
-.popup-wrap {
-   background-color: rgba(0, 0, 0, .3);
-   justify-content: center;
-   align-items: center;
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   display: none;
-   padding: 15px;
-}
-
-.popup {
-   width: 100%;
-   max-width: 1000px;
-   background-color: #ffffff;
-   border-radius: 10px;
-   overflow: hidden;
-   background-color: #264db5;
-   box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
-   z-index:1000;
-}
-
-.popup-head {
-   width: 100%;
-   height: 50px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-.head-title {
-   font-size: 38px;
-   font-style: italic;
-   font-weight: 700;
-   letter-spacing: -3px;
-   text-align: center;
-}
-
-.popup-body {
-   width: 100%;
-   background-color: #ffffff;
-}
-
-.body-content {
-   width: 100%;
-   padding: 30px;
-}
-
-.body-titlebox {
-   text-align: center;
-   width: 100%;
-   height: 40px;
-   margin-bottom: 10px;
-}
-
-.body-contentbox {
-   word-break: break-word;
-   overflow-y: auto;
-   height: 400px;
-}
-
-.popup-foot {
-   width: 100%;
-   height: 50px;
-}
-
-.pop-btn {
-   display: inline-flex;
-   width: 100%;
-   height: 100%;
-   float: left;
-   justify-content: center;
-   align-items: center;
-   color: #ffffff;
-   cursor: pointer;
-   border-right: 1px solid #3b5fbf;
-}
-
-</style>
 </head>
 <body>
 <% System.out.println("\n\n[login_calendar.jsp]"); %>
@@ -460,7 +339,7 @@ p {
                   <form action="SearchCon3">
                      <!-- Single Blog Post 폼테그 실험중 -->
                      <input type="hidden" name="kind" id="kind" value="" />
-                        <a href="#" class="post-headline sub1"> <%
+                        <a href="#" class="post-headline sub1" style="text-align:left;"> <%
  if (rs1.next() == true) {
     String name1 = rs1.getString("certi_name");
     out.print(name1);
@@ -468,19 +347,19 @@ p {
  %>
                         </a>
 
-                     <!-- Single Blog Post --><br>
+                     <!-- Single Blog Post -->
                      <!-- <form action="SearchCon">
                    Single Blog Post 폼테그 실험중
                    <input type="hidden" name="kind" id="kind" value="" /> -->
-                        <a href="#" class="post-headline sub2"> <%
+                        <a href="#" class="post-headline sub2" style="text-align:left;"> <%
  if (rs2.next() == true) {
     String name2 = rs2.getString("certi_name");
     out.print(name2);
  }
  %>
                         </a>
-                     <!-- </form> --><br>
-                     <a href="#" class="post-headline sub3"> <%
+                     <!-- </form> -->
+                     <a href="#" class="post-headline sub3" style="text-align:left;"> <%
  if (rs3.next() == true) {
     String name3 = rs3.getString("certi_name");
     out.print(name3);
