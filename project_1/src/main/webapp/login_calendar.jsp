@@ -182,7 +182,7 @@ a {
                   <h3 style="font-family: 휴먼편지체; font-size: 28px;">D-day</h3>
                   <div
                      class="single-blog-post d-flex align-items-center widget-post" >
-                     <div class="post-content" style="border: 1px solid black; width:400px;">
+                     <div class="post-content" style="border: 1px solid black; width:450px;">
                         <%
                         // 1. 값 가져오기
                         // 2. 자격증 번호, 자격증 이름, 필기 / 실기 시험 시작일
