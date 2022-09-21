@@ -167,6 +167,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 }
 .fc .fc-button {
+	font-family: 휴먼편지체;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -293,6 +294,8 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     margin-top: 1.5em;
   }
 .fc .fc-toolbar-title {
+	font-weight: bold;
+	font-family: 휴먼편지체;
     font-size: 1.75em;
     margin: 0;
   }
@@ -428,6 +431,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-col-header-cell-cushion {
     display: inline-block; /* x-browser for when sticky (when multi-tier header) */
     padding: 2px 4px;
+	font-family: 휴먼편지체;
   }
 .fc .fc-bg-event,
   .fc .fc-non-business,
@@ -736,6 +740,7 @@ A HORIZONTAL event
 
 }
 .fc .fc-daygrid-day-number {
+	font-family: 휴먼편지체;
     position: relative;
     z-index: 4;
     padding: 4px;

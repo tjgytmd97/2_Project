@@ -81,7 +81,6 @@
     </script>
     <!-- 헤더고정 끝 -->
 
-
 	<div class="row align-items-end" style="margin-left: 50px;">
 		<!-- 달력 -->
 		<div id="calendar" style="height: 920px; width: 60%; margin-bottom: auto; margin-right: 100px;"></div>
@@ -132,12 +131,11 @@
 			
 		<!-- 뉴스 구현 -->
 		<div class="sidebar-widget-area">
-			<h5 class="title" style="margin-right: 500px; font-size:35px; font-family: 휴먼편지체;">뉴스</h5>
 			<div class="widget-content">
 				<div class="single-blog-post d-flex align-items-center widget-post">
 					<div class="post-content">
 						<% 
-                    		out.print("<h4>");
+                    		out.print("<h4 style='font-family: 휴먼편지체;'>");
                     		if(rs1.next() == true){
                     		String media = rs1.getString("news_media");
                         	out.print(media);
@@ -146,7 +144,7 @@
                         	out.print("<img class='img2' src="+ src +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url1 = rs1.getString("news_url");
-                        	out.print("<a target='_blank' href='"+ url1 +"' class='post-headline'>");
+                        	out.print("<a style='font-family: 휴먼편지체; font-size: 20px;' target='_blank' href='"+ url1 +"' class='post-headline'>");
                         	String title = rs1.getString("news_title");
                         	out.print(title);
                         	out.print("</a>");
@@ -159,7 +157,7 @@
 					<div class="single-blog-post d-flex align-items-center widget-post">
 						<div class="post-content">
 							<% 
-                    		out.print("<h4>");
+                    		out.print("<h4 style='font-family: 휴먼편지체;'>");
                     		if(rs2.next() == true){
                     		String media2 = rs2.getString("news_media");
                         	out.print(media2);
@@ -168,7 +166,7 @@
                         	out.print("<img class='img2' src="+ src2 +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url2 = rs2.getString("news_url");
-                        	out.print("<a target='_blank' href='"+ url2 +"' class='post-headline'>");
+                        	out.print("<a style='font-family: 휴먼편지체; font-size: 20px;' target='_blank' href='"+ url2 +"' class='post-headline'>");
                         	String title2= rs2.getString("news_title");
                         	out.print(title2);
                         	out.print("</a>");
@@ -182,7 +180,7 @@
 							class="single-blog-post d-flex align-items-center widget-post">
 							<div class="post-content">
 								<% 
-                    		out.print("<h4>");
+                    		out.print("<h4 style='font-family: 휴먼편지체;'>");
                     		if(rs3.next() == true){
                     		String media3 = rs3.getString("news_media");
                         	out.print(media3);
@@ -191,7 +189,7 @@
                         	out.print("<img class='img2' src="+ src3 +">");
                         	out.print("<h4 style='margin-left: 200px; width:270px;'>");
                         	String url3 = rs3.getString("news_url");
-                        	out.print("<a target='_blank' href='"+ url3 +"' class='post-headline'>");
+                        	out.print("<a style='font-family: 휴먼편지체; font-size: 20px;' target='_blank' href='"+ url3 +"' class='post-headline'>");
                         	String title3 = rs3.getString("news_title");
                         	out.print(title3);
                         	out.print("</a>");
