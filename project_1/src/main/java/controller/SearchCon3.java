@@ -21,7 +21,7 @@ public class SearchCon3 extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("[SearchCon1]");
+		System.out.println("[SearchCon3]");
 
 		// 0. post 방식의 인코딩
 		request.setCharacterEncoding("UTF-8");

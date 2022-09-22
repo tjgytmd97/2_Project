@@ -64,12 +64,12 @@
 			<!-- 로그아웃 버튼 (수정)-->
 			<div class="subscribe-btn">
 				<a href="index.jsp" class="btn subscribe-btn" data-target="#subsModal1" 
-				style="font-family: 휴먼편지체; font-size: 20px;">로그아웃</a>
+				style="font-family: 휴먼편지체; font-size: 21px; border-radius: 5em; background: #296a97; box-shadow: 1px 2px 10px rgba(0,0,0,0.2); margin-left: 5px; color: #F9F9F9;">로그아웃</a>
 			</div>
 			<!-- 마이페이지 버튼 (수정) -->
 			<div class="subscribe-btn">
 				<a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal2"
-				style="font-family: 휴먼편지체; font-size: 20px;">마이페이지</a>
+				style="font-family: 휴먼편지체; font-size: 21px; border-radius: 5em; background: #296a97; box-shadow: 1px 2px 10px rgba(0,0,0,0.2); margin-left: 5px; color: #F9F9F9;">마이페이지</a>
 			</div>
 		</div>
 
