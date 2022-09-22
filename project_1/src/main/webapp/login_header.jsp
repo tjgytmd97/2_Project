@@ -38,6 +38,7 @@
 					<div class="modal-body">
 						<h3 style="font-family: 휴먼편지체; font-size: 40px;" class="title">마이페이지</h3>
                         <form action="UpdateCon" class="newsletterForm" method="post">
+							<input type="hidden" name="num" value="<%=membervo.getNum()%>">
 							<h5 style="font-family: 휴먼편지체;">이름</h5>
                             <input type="text" name="name" id="subscribesForm2" placeholder="<%=membervo.getName() %>"> 
 							<h5 style="font-family: 휴먼편지체;">메일</h5>

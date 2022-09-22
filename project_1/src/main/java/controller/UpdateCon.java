@@ -86,7 +86,7 @@ public class UpdateCon extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("membervo", membervo);
 
-				response.sendRedirect("login_index.html");
+				response.sendRedirect("login_index.jsp");
 			} else {
 				System.out.println("sql문 실행 실패!!!");
 			}
