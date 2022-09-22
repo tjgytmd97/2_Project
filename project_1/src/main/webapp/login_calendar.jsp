@@ -113,7 +113,7 @@ a {
             console.log("res ::::: "+res);
             var res2 = res.slice(0,-2);
             
-            location.href="SearchCon?certi_name="+res2;
+            location.href="SearchCon2?certi_name="+res2;
             
             }
         });
