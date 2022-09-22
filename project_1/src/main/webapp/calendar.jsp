@@ -199,7 +199,7 @@ a {
 		<div class="sidebar-widget-area">
 			<div class="widget-content" style="position:relative; top:-300px; width:400px">
 				<h3 style="font-family: 휴먼편지체; font-size: 28px;">추천 자격증</h3>
-				<div class="single-blog-post d-flex align-items-center widget-post" style="border-radius: 15px 15px 15px 0; border: 3px solid #98b4d0; padding: 0.5em 0.6em;">
+				<div class="single-blog-post d-flex align-items-center widget-post" style="border-radius: 15px; border: 3px solid #98b4d0; padding: 0.5em 0.6em;">
 					<form action="SearchCon3">
 						<!-- Single Blog Post 폼테그 실험중 -->
 						<input type="hidden" name="kind" id="kind" value="" /> <a
