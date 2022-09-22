@@ -107,13 +107,13 @@
 								<ul>
 									<!-- 메인페이지버튼 -->
 									<li><a href="login_index.jsp"
-										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">메인페이지</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체; color: #3c5063; text-shadow: 1px 1px 1.2px #98b4d0;">메인페이지</a></li>
 									<!-- 자격증정보보기버튼 (수정)-->
 									<li><a href="login_certi_all.html"
-										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">자격증 정보 보기</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체; color: #3c5063; text-shadow: 1px 1px 1.2px #98b4d0;">자격증 정보 보기</a></li>
 									<!-- 달력(수정) -->
 									<li><a href="MyCertiDateCon"
-										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체">My 달력</a></li>
+										style="font-size: 30px; font-weight: bold; font-family: 휴먼편지체; color: #3c5063; text-shadow: 1px 1px 1.2px #98b4d0;">My 달력</a></li>
 								</ul>
 							</div>
 						</div>
