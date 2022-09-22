@@ -319,7 +319,6 @@
 
               <!-- 댓글달기 기능 구현(수정) -->
                <div class="post-a-comment-area mt-70">
-                  <h5>댓글달기</h5>
                   <!-- Reply Form -->
                   <form action="CommentCon" method="post">
                      <input type="hidden" name="num" value="<%=membervo.getNum()%>">
