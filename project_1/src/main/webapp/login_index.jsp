@@ -91,7 +91,7 @@ a {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          contentHeight: 600,//캘린더 크기 설정
+          contentHeight: 630,//캘린더 크기 설정
           editable: true,//수정 여부
           locale:'ko',
           dayMaxEvents: true,

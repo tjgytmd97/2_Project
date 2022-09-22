@@ -45,6 +45,22 @@ a {
 .sub_menu { display: none; } /* 서브메뉴들 숨김 */
 
 .selec { background: #c45; color: #efefef; }
+
+
+  div::-webkit-scrollbar {
+    width: 8px;
+  }
+  div::-webkit-scrollbar-thumb {
+    background-color: #2a7d4b;
+    border-radius: 8px;
+  }
+  div::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 1px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+
 </style>
 
 <!-- 마이켈린더 -->  
@@ -57,7 +73,7 @@ a {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          contentHeight: 600,//캘린더 크기 설정
+          contentHeight: 630,//캘린더 크기 설정
           editable: true,//수정 여부
           locale:'ko',
           dayMaxEvents: true,
@@ -139,7 +155,7 @@ a {
              <a href="get_certi.jsp"><img width="30px" height="30px" alt="" src="img/btn-img/plus.png" style="float:right;"></a>
              	취득자격증</h3>
              <div class="single-blog-post d-flex align-items-center widget-post"
-               style="border: 1px solid black; height: 100px; overflow: scroll;">
+               style="height: 100px; overflow: scroll; border-radius: 15px 15px 15px 0; border: 3px solid #6bbb66; padding: 0.5em 0.6em;">
                <div style="height:50px">
                   <%
                   ArrayList<String> nameList = (ArrayList) session.getAttribute("getCertiNames");
@@ -159,14 +175,14 @@ a {
             <div class="widget-content">
                <h3 style="font-family: 휴먼편지체; font-size: 28px;">즐겨찾기</h3>
                <div class="single-blog-post d-flex align-items-center widget-post"
-                  style="border: 1px solid black; height: 100px; overflow: scroll;">
-                  <div style="height:50px">
+                  style="height: 100px; overflow: scroll; border-radius: 15px 15px 15px 0; border: 3px solid #6bbb66; padding: 0.5em 0.6em;">
+                  <div style="height:50px ">
                      <%
                      //즐겨찾기 출력 부분
                      ArrayList<String> markNameList = (ArrayList) session.getAttribute("markNames");
                      if (markNameList != null) {
                         for (int i = 0; i < markNameList.size(); i++) {
-                           out.print("<span class='post-content' style='font-family: 휴먼편지체; font-size:22px; margin-top:10px;'>");
+                           out.print("<span class='post-content' style='font-family: 휴먼편지체; font-size:22px; margin-top:10px; '>");
                            out.print(markNameList.get(i));
                            out.print("</span><br>");
                            //System.out.println("markNameList.get(i) : "+markNameList.get(i));
@@ -180,7 +196,7 @@ a {
                   <h3 style="font-family: 휴먼편지체; font-size: 28px;">D-day</h3>
                   <div
                      class="single-blog-post d-flex align-items-center widget-post" >
-                     <div class="post-content" style="border: 1px solid black; width:450px;">
+                     <div class="post-content" style="border: 1px solid black; width:450px; border-radius: 15px 15px 15px 0; border: 3px solid #6bbb66; padding: 0.5em 0.6em;">
                         <%
                         // 1. 값 가져오기
                         // 2. 자격증 번호, 자격증 이름, 필기 / 실기 시험 시작일
@@ -335,7 +351,7 @@ a {
 
             <div class="widget-content">
                <h3 style="font-family: 휴먼편지체; font-size: 28px;">추천 자격증</h3>
-               <div class="widget-content" style="border: 1px solid black;">
+               <div class="widget-content" style="border-radius: 15px 15px 15px 0; border: 3px solid #6bbb66; padding: 0.5em 0.6em;">
                   <form action="SearchCon3">
                      <!-- Single Blog Post 폼테그 실험중 -->
                      <input type="hidden" name="kind" id="kind" value="" />
