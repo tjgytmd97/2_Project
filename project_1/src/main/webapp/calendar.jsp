@@ -211,11 +211,6 @@ a {
                      }
                      %>
                   </a>
-
-                  <!-- Single Blog Post -->
-                  <!-- <form action="SearchCon">
-                   Single Blog Post 폼테그 실험중
-                   <input type="hidden" name="kind" id="kind" value="" /> -->
                   <a href="#" class="post-headline sub2" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
                      <%
                      if (rs2.next() == true) {
@@ -224,7 +219,6 @@ a {
                      }
                      %>
                   </a>
-                  <!-- </form> -->
                   <a href="#" class="post-headline sub3" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
                      <%
                      if (rs3.next() == true) {
@@ -233,8 +227,7 @@ a {
                      }
                      %>
                   </a>
-                  <!-- </form> -->
-                  <a href="#" class="post-headline sub4" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
+                  <a href="#" class="post-headline sub3" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
                      <%
                      if (rs4.next() == true) {
                         String name4 = rs4.getString("certi_name");
@@ -242,8 +235,7 @@ a {
                      }
                      %>
                   </a>
-                  <!-- </form> -->
-                  <a href="#" class="post-headline sub5" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
+                  <a href="#" class="post-headline sub3" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
                      <%
                      if (rs5.next() == true) {
                         String name5 = rs5.getString("certi_name");
@@ -251,8 +243,7 @@ a {
                      }
                      %>
                   </a>
-                  <!-- </form> -->
-                  <a href="#" class="post-headline sub6" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
+                  <a href="#" class="post-headline sub3" style="text-align: left; font-family: 휴먼편지체; font-size:23px">
                      <%
                      if (rs6.next() == true) {
                         String name6 = rs6.getString("certi_name");
