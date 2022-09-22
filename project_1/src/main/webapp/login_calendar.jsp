@@ -140,17 +140,16 @@ a {
              	취득자격증</h3>
              <div class="single-blog-post d-flex align-items-center widget-post"
                style="border: 1px solid black; height: 100px; overflow: scroll;">
-               <div class="post-content">
-               <br>
+               <div style="height:50px">
                   <%
                   ArrayList<String> nameList = (ArrayList) session.getAttribute("getCertiNames");
 
                   if (nameList != null) {
                      for (int i = 0; i < nameList.size(); i++) {
                         //System.out.println(nameList.get(i));
-                        out.print("<div class='post-content' style='font-family: 휴먼편지체; font-size:23px;'>");
+                        out.print("<span class='post-content' style='font-family: 휴먼편지체; font-size:23px;'>");
                         out.print(nameList.get(i));
-                        out.print("</div>");
+                        out.print("</span><br>");
                      }
                   }
                   %>
@@ -161,16 +160,15 @@ a {
                <h3 style="font-family: 휴먼편지체; font-size: 28px;">즐겨찾기</h3>
                <div class="single-blog-post d-flex align-items-center widget-post"
                   style="border: 1px solid black; height: 100px; overflow: scroll;">
-                  <div class="post-content">
-                  <br><br>
+                  <div style="height:50px">
                      <%
                      //즐겨찾기 출력 부분
                      ArrayList<String> markNameList = (ArrayList) session.getAttribute("markNames");
                      if (markNameList != null) {
                         for (int i = 0; i < markNameList.size(); i++) {
-                           out.print("<div class='post-content' style='font-family: 휴먼편지체; font-size:22px; margin-top:10px;'>");
+                           out.print("<span class='post-content' style='font-family: 휴먼편지체; font-size:22px; margin-top:10px;'>");
                            out.print(markNameList.get(i));
-                           out.print("</div>");
+                           out.print("</span><br>");
                            //System.out.println("markNameList.get(i) : "+markNameList.get(i));
                         }
                      }
